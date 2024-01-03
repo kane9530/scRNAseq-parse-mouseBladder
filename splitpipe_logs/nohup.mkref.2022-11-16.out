@@ -1,0 +1,212 @@
+nohup: ignoring input
+# Init SplitPipe
+# Initializing defaults
+# Setting threads to 8 (ncpu=8, initial nthreads=0)
+# No random seed given; Creating one
+# Kit set to custom_1 (init kit; mkref mode)
+# Setting up run-time env; Mode mkref, Kit custom_1
+# Version info: STAR	/home/ec2-user/anaconda3/envs/parse/bin/STAR	2.7.10a
+# Version info: samtools	/home/ec2-user/anaconda3/envs/parse/bin/samtools	samtools 1.15.1
+# Opening log /data/genomes/mm39_human_klk3_hg38/split-pipe_v0_9_6p.log 
+################################################################################
+# Program                  split-pipe v0.9.6p
+# Run date                 2022-11-16 13:37:11.44
+# Run on                   ip-172-31-9-177.ap-southeast-1.compute.internal (x86_64 Linux) by ec2-user
+# System                   31.0G (33292574720) RAM and 8 CPUs
+# PID                      921
+################################################################################
+# mode                     mkref
+# kit                      custom_1
+# parfile                  <Not set>
+# logfile                  /data/genomes/mm39_human_klk3_hg38/split-pipe_v0_9_6p.log
+# output_dir               /data/genomes/mm39_human_klk3_hg38/
+# fq1                      <Not set>
+# fq2                      <Not set>
+# sublib_list              <Not set>
+# sublibraries             <Not set>
+# samp_list                <Not set>
+# samp_sltab               <Not set>
+# sample                   <Not set>
+# genome_dir               <Not set>
+# genome_name              Item_1_of_1	mm39_human_klk3_hg38
+# fasta                    Item_1_of_1	/data/genomes/Mus_musculus.GRCm39.dna.primary_assembly_with_human_klk3.fa
+# genes                    Item_1_of_1	/data/genomes/Mus_musculus.GRCm39.107_with_human_klk3.gtf
+# nthreads                 8	(automatic)
+# rseed                    9846 (automatic)
+# reuse                    False
+# no_allwell               False
+# samp_wells_unique        False
+# keep_going               True
+# keep_temps               False
+# no_compress              False
+# gzip_compresslevel       4
+# one_step                 False
+# clear_env_files          False
+# dryrun                   False
+# kit_list                 False
+# bc_list                  False
+# bc_save_data_file        True
+# bc_amp_seq               NNNNNNNNNN33333333GTGGCCGATGTTTCGCATCGGCGTACGACT22222222ATCCACGTGCTTGAGACTGTGG11111111
+# bc_round_set             Item_1_of_3	['bc1', 'v2']
+# bc_round_set             Item_2_of_3	['bc2', 'v1']
+# bc_round_set             Item_3_of_3	['bc3', 'v1']
+# bc_edit_dist             2
+# tso_seq                  AACGCAGAGTGAATGGG
+# tso_read_limit           15
+# mkref_gtf_dict_stepsize  10000
+# mkref_max_gtf_not_fas    0
+# mkref_star_splicing      True
+# mkref_star_genomesaindexnbases 14
+# mkref_star_genomesasparsed 2
+# mkref_star_extra_args    <Not set>
+# pre_min_r1_len           50
+# pre_read_samp_size       1000000
+# pre_read_samp_skip       0
+# pre_perfect_bc_samp_size 2000000
+# pre_perfect_bc_samp_skip 0
+# pre_perfect_bc_samp_min  100000
+# pre_prefect_bc_cell_thresh 0.92
+# pre_keep_no_bc_fq        False
+# align_min_reads          100000
+# align_star_outfiltermultimapnmax 3
+# align_star_keep_no_map   False
+# align_star_extra_args    <Not set>
+# post_min_map_frac        0.2
+# dge_min_tscp             10000
+# dge_copy_all_genes_file  True
+# dge_save_express_gene_file True
+# dge_read_samp_size       1000000
+# dge_read_samp_skip       0
+# dge_ssc_xstep_size       1000
+# dge_ssc_xstep_ndup       5
+# dge_species_purity_thresh 0.9
+# dge_tscp_given           <Not set>
+# dge_tscp_min             30
+# dge_tscp_max             <Not set>
+# dge_tscp_scale_fac       1.0
+# dge_cell_est             <Not set>
+# dge_cell_given           <Not set>
+# dge_cell_gxfold          3
+# dge_cell_min             10
+# dge_cell_max             30000
+# dge_cell_scale_by_frac   True
+# dge_cell_hard_min        5
+# dge_gene_cell_min        3
+# dge_tscp_umin            10
+# dge_gene_cell_umin       1
+# comb_unfilt_dge          False
+# comb_new_tscp            False
+# ana_scanpy_verbosity     <Not set>
+# ana_save_anndata         False
+# ana_mem_eff_cell_thresh  100000
+# ana_scale_zero_center    True
+# ana_pca_chunk_size       100000
+# ana_pca_min_hvar         100
+# ana_pca_dim_max          50
+# ana_pca_dim_min          10
+# ana_pca_irlbpy           True
+# ana_cluster_min_bc       30
+# ana_save_umap            True
+# ana_umap_n_neighbors     50
+# ana_umap_min_dist        0.5
+# ana_cluster_alg          leiden
+# ana_ctab_top_n           20
+# ana_ctab_sco_min_den     0.01
+# ana_gene_cell_min        3
+# rep_save_figs            True
+# rep_difxp_cluster_1base  True
+# rep_gxplt_subsamp        10000
+# rep_gxplt_ss_clus_min    10
+# rep_gxplt_norm_fac       10000.0
+# rep_gene_def_url         https://www.ncbi.nlm.nih.gov/gene/?term={gene_id}
+# rep_gene_url             <Not set>
+# map_targ_genome_dir_path map_targs
+# map_targ                 <Not set>
+# map_targ_kmer_len        30
+# map_targ_kmer_step       1
+# map_targ_kmer_search_max 41
+# map_targ_kmer_search_step 10
+################################################################################
+
+
+# Time	Starting split-pipe v0.9.6p	2022-11-16 13:37:11.44
+# Time	Before Mkref	2022-11-16 13:37:11.44
+# >> Running Mkref
+#2 MemStatus: Mkref  1.6G proc, 210.3M rss, 1.4G vms, 2.3% usd, 30.3G avail
+#2 DskStatus: Mkref  '/data/' 787.3G total, 408.9G (51.93%) used, 343.4G (43.62%) free
+# Processing fasta files
+#2 Processing mm39_human_klk3_hg38 /data/genomes/Mus_musculus.GRCm39.dna.primary_assembly_with_human_klk3.fa
+# Wrote 62 by 2 table to /data/genomes/mm39_human_klk3_hg38/all_chrom.csv
+#2 GENO_CHROM_DATA	Column_names	chrom	fasta
+#2 GENO_CHROM_DATA	Row_1_of_62	mm39_human_klk3_hg38_1	195154279
+#2 GENO_CHROM_DATA	Row_2_of_62	mm39_human_klk3_hg38_10	130530862
+#2 GENO_CHROM_DATA	Row_3_of_62	mm39_human_klk3_hg38_11	121973369
+#2 GENO_CHROM_DATA	Row_4_of_62	mm39_human_klk3_hg38_12	120092757
+#2 GENO_CHROM_DATA	Row_5_of_62	mm39_human_klk3_hg38_13	120883175
+#2 Total chromosomes 62, bases 2728228301
+# Processing gene annotation files
+#2 gtf_exon_combined (869095, 9)
+# Wrote 869095 by 9 table to /data/genomes/mm39_human_klk3_hg38/exons.gtf
+#2 GENO_PROC_EXON_GTF	Column_names	Chromosome	Source	Feature	Start	End	Score	Strand	Frame	Attributes
+#2 GENO_PROC_EXON_GTF	Row_1_of_869095	mm39_human_klk3_hg38_1	havana	exon	150956201	150958296	.	+	.	gene_id "ENSMUSG00000102628"; gene_version "2"; gene_name "Gm37671"; gene_source "havana"; gene_biotype "TEC"; transcript_id "ENSMUST00000193198"; transcript_version "2"; transcript_name "Gm37671-201"; transcript_source "havana"; transcript_biotype "TEC"; tag "basic"; transcript_support_level "NA (assigned to previous version 1)"; exon_number "1"; exon_id "ENSMUSE00001342333"; exon_version "2";
+#2 GENO_PROC_EXON_GTF	Row_2_of_869095	mm39_human_klk3_hg38_1	havana	exon	150983666	150984611	.	+	.	gene_id "ENSMUSG00000100595"; gene_version "2"; gene_name "Gm19087"; gene_source "havana"; gene_biotype "processed_pseudogene"; transcript_id "ENSMUST00000191430"; transcript_version "2"; transcript_name "Gm19087-201"; transcript_source "havana"; transcript_biotype "processed_pseudogene"; tag "basic"; transcript_support_level "NA (assigned to previous version 1)"; exon_number "1"; exon_id "ENSMUSE00001324949"; exon_version "2";
+#2 GENO_PROC_EXON_GTF	Row_3_of_869095	mm39_human_klk3_hg38_1	havana	exon	151012258	151012971	.	+	.	gene_id "ENSMUSG00000097426"; gene_version "2"; gene_name "Gm8941"; gene_source "havana"; gene_biotype "processed_pseudogene"; transcript_id "ENSMUST00000181451"; transcript_version "2"; transcript_name "Gm8941-201"; transcript_source "havana"; transcript_biotype "processed_pseudogene"; tag "basic"; transcript_support_level "NA (assigned to previous version 1)"; exon_number "1"; exon_id "ENSMUSE00001158900"; exon_version "2";
+#2 GENO_PROC_EXON_GTF	Row_4_of_869095	mm39_human_klk3_hg38_1	havana	exon	151013347	151013531	.	+	.	gene_id "ENSMUSG00000097426"; gene_version "2"; gene_name "Gm8941"; gene_source "havana"; gene_biotype "processed_pseudogene"; transcript_id "ENSMUST00000181451"; transcript_version "2"; transcript_name "Gm8941-201"; transcript_source "havana"; transcript_biotype "processed_pseudogene"; tag "basic"; transcript_support_level "NA (assigned to previous version 1)"; exon_number "2"; exon_id "ENSMUSE00001115039"; exon_version "2";
+#2 GENO_PROC_EXON_GTF	Row_5_of_869095	mm39_human_klk3_hg38_1	havana	exon	108344807	108347562	.	+	.	gene_id "ENSMUSG00000104478"; gene_version "2"; gene_name "Gm38212"; gene_source "havana"; gene_biotype "TEC"; transcript_id "ENSMUST00000194081"; transcript_version "2"; transcript_name "Gm38212-201"; transcript_source "havana"; transcript_biotype "TEC"; tag "basic"; transcript_support_level "NA (assigned to previous version 1)"; exon_number "1"; exon_id "ENSMUSE00001337335"; exon_version "2";
+#2 gtf_gene_combined, slicing True (56749, 9)
+# Wrote 56749 by 9 table to /data/genomes/mm39_human_klk3_hg38/genes.gtf
+#2 GENO_PROC_GENE_GTF	Column_names	Chromosome	Source	Feature	Start	End	Score	Strand	Frame	Attributes
+#2 GENO_PROC_GENE_GTF	Row_1_of_56749	mm39_human_klk3_hg38_1	havana	gene	150956201	150958296	.	+	.	gene_id "ENSMUSG00000102628"; gene_version "2"; gene_name "Gm37671"; gene_source "havana"; gene_biotype "TEC";
+#2 GENO_PROC_GENE_GTF	Row_2_of_56749	mm39_human_klk3_hg38_1	havana	gene	150983666	150984611	.	+	.	gene_id "ENSMUSG00000100595"; gene_version "2"; gene_name "Gm19087"; gene_source "havana"; gene_biotype "processed_pseudogene";
+#2 GENO_PROC_GENE_GTF	Row_3_of_56749	mm39_human_klk3_hg38_1	havana	gene	151012258	151013531	.	+	.	gene_id "ENSMUSG00000097426"; gene_version "2"; gene_name "Gm8941"; gene_source "havana"; gene_biotype "processed_pseudogene";
+#2 GENO_PROC_GENE_GTF	Row_4_of_56749	mm39_human_klk3_hg38_1	havana	gene	108344807	108347562	.	+	.	gene_id "ENSMUSG00000104478"; gene_version "2"; gene_name "Gm38212"; gene_source "havana"; gene_biotype "TEC";
+#2 GENO_PROC_GENE_GTF	Row_5_of_56749	mm39_human_klk3_hg38_1	havana	gene	6980784	6981446	.	+	.	gene_id "ENSMUSG00000104385"; gene_version "2"; gene_name "Gm7449"; gene_source "havana"; gene_biotype "processed_pseudogene";
+#2 Saving gene_info file
+#2 Number of gene_bins 375595
+#2 Write_gene_info: /data/genomes/mm39_human_klk3_hg38/gene_info.json
+#2 Read Dataframe: Dims 62 x 1, Mem 992B (992) from /data/genomes/mm39_human_klk3_hg38/all_chrom.csv
+# Wrote 62 by 4 table to /data/genomes/mm39_human_klk3_hg38/all_chrom.csv
+#2 GENO_CHROM_DATA	Column_names	chrom	fasta	gene	exon
+#2 GENO_CHROM_DATA	Row_1_of_62	mm39_human_klk3_hg38_1	195154279	3538	55334
+#2 GENO_CHROM_DATA	Row_2_of_62	mm39_human_klk3_hg38_10	130530862	2686	40503
+#2 GENO_CHROM_DATA	Row_3_of_62	mm39_human_klk3_hg38_11	121973369	3117	59717
+#2 GENO_CHROM_DATA	Row_4_of_62	mm39_human_klk3_hg38_12	120092757	2542	30921
+#2 GENO_CHROM_DATA	Row_5_of_62	mm39_human_klk3_hg38_13	120883175	2549	30819
+# Checking fasta gtf overlap
+#2 Read Dataframe: Dims 62 x 3, Mem 1.9K (1984) from /data/genomes/mm39_human_klk3_hg38/all_chrom.csv
+#2 Fasta chrom (min 1 bp) 62, gtf chrom (min 1 gene) 40, gtf uncovered 0
+# Generating gene data tables
+#2 Building gene data table
+# Wrote 56749 by 3 table to /data/genomes/mm39_human_klk3_hg38/all_genes.csv
+#2 GENO_GENE_DATA	Column_names	gene_id	gene_name	genome
+#2 GENO_GENE_DATA	Row_1_of_56749	ENSG00000142515	KLK3	mm39
+#2 GENO_GENE_DATA	Row_2_of_56749	ENSMUSG00000000001	Gnai3	mm39
+#2 GENO_GENE_DATA	Row_3_of_56749	ENSMUSG00000000003	Pbsn	mm39
+#2 GENO_GENE_DATA	Row_4_of_56749	ENSMUSG00000000028	Cdc45	mm39
+#2 GENO_GENE_DATA	Row_5_of_56749	ENSMUSG00000000031	H19	mm39
+#2 Loading sequences /data/genomes/mm39_human_klk3_hg38/genome.fa
+#2 Building stats table
+# Wrote 56749 by 10 table to /data/genomes/mm39_human_klk3_hg38/all_gene_stats.csv
+#2 GENO_GENE_STATS	Column_names	gene_id	name	chrom	g_start	g_len	ex_num	ex_len	g_gc	ex_gc	biotype
+#2 GENO_GENE_STATS	Row_1_of_56749	ENSMUSG00000102628	Gm37671	mm39_human_klk3_hg38_1	150956200	2095	1	2096	43.0100	43.0300	TEC
+#2 GENO_GENE_STATS	Row_2_of_56749	ENSMUSG00000100595	Gm19087	mm39_human_klk3_hg38_1	150983665	945	1	946	37.1400	37.2100	processed_pseudogene
+#2 GENO_GENE_STATS	Row_3_of_56749	ENSMUSG00000097426	Gm8941	mm39_human_klk3_hg38_1	151012257	1273	2	899	49.1800	49.6100	processed_pseudogene
+#2 GENO_GENE_STATS	Row_4_of_56749	ENSMUSG00000104478	Gm38212	mm39_human_klk3_hg38_1	108344806	2755	1	2756	34.2300	34.2200	TEC
+#2 GENO_GENE_STATS	Row_5_of_56749	ENSMUSG00000104385	Gm7449	mm39_human_klk3_hg38_1	6980783	662	1	663	43.8100	43.7400	processed_pseudogene
+# Creating genome index
+# Subproc:, Call:   /home/ec2-user/anaconda3/envs/parse/bin/STAR --runMode genomeGenerate --genomeDir /data/genomes/mm39_human_klk3_hg38 --genomeFastaFiles /data/genomes/mm39_human_klk3_hg38/genome.fa --runThreadN 8 --limitGenomeGenerateRAM 24000000000 --genomeSAindexNbases 14 --genomeSAsparseD 2 --sjdbGTFfile /data/genomes/mm39_human_klk3_hg38/exons.gtf
+# Subproc: Status: True
+# Subproc: Output: 	/home/ec2-user/anaconda3/envs/parse/bin/STAR --runMode genomeGenerate --genomeDir /data/genomes/mm3
+# Subproc: Duration 0:22:52.74
+# Cleaning up
+#2 MemStatus: Mkref  2.5G proc, 631.7M rss, 1.8G vms, 3.6% usd, 29.9G avail
+#2 DskStatus: Mkref  '/data/' 787.3G total, 426.7G (54.2%) used, 325.5G (41.35%) free
+# << Running Mkref; Status True; Duration 0:26:47.34
+
+# Finished successfully (0 problems)
+
+# Time	Total elapsed 	0:26:47.34
+# Time	All done	2022-11-16 14:03:58.79
+# Closing down SplitPipe
+New file: /data/genomes/mm39_human_klk3_hg38/split-pipe_v0_9_6p.log
+# Total time 0:26:47.41

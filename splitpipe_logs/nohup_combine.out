@@ -1,0 +1,2385 @@
+nohup: ignoring input
+# Init SplitPipe
+# Initializing defaults
+# Parsing parameters from /data/analysis/parfile.txt
+# Combine mode; Setting reuse False
+# Setting threads to 8 (ncpu=8, initial nthreads=0)
+# No random seed given; Creating one
+#2 Reading kit definition file /data/analysis/16112022/Sublibrary1/process/kit_def.csv
+# Kit set to WT_mini (init kit)
+# Set parameters for kit WT_mini (12)
+#2 Reading genome definition file /data/analysis/16112022/Sublibrary1/process/genome_def.csv
+# Genome set to /data/genomes/mm39_human_klk3_hg38 (init genome)
+# Barcode sets [['bc1', 'n24_v4'], ['bc2', 'v1'], ['bc3', 'v1']] (init barcodes)
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/scanpy/logging.py:172: FutureWarning: Passing argument 'file' to print_versions is deprecated, and will be removed in a future version.
+  warnings.warn(
+# Setting up run-time env; Mode comb, Kit WT_mini
+# Wrote scanpy version info to /data/analysis/16112022/Combined/process/scanpy_info.txt
+# Version info: STAR	/home/ec2-user/anaconda3/envs/parse/bin/STAR	2.7.10a
+# Version info: samtools	/home/ec2-user/anaconda3/envs/parse/bin/samtools	samtools 1.15.1
+# Copy /data/genomes/mm39_human_klk3_hg38/all_genes.csv to /data/analysis/16112022/Combined/process/all_genes.csv
+# Opening log /data/analysis/16112022/Combined/split-pipe_v0_9_6p.log 
+################################################################################
+# Program                  split-pipe v0.9.6p
+# Run date                 2022-11-17 06:20:26.65
+# Run on                   ip-172-31-9-177.ap-southeast-1.compute.internal (x86_64 Linux) by ec2-user
+# System                   31.0G (33292574720) RAM and 8 CPUs
+# PID                      696
+################################################################################
+# mode                     comb
+# kit                      WT_mini
+# parfile                  /data/analysis/parfile.txt
+# logfile                  /data/analysis/16112022/Combined/split-pipe_v0_9_6p.log
+# output_dir               /data/analysis/16112022/Combined/
+# fq1                      <Not set>
+# fq2                      <Not set>
+# sublib_list              <Not set>
+# sublibraries             Item_1_of_2	/data/analysis/16112022/Sublibrary1/
+# sublibraries             Item_2_of_2	/data/analysis/16112022/Sublibrary2/
+# samp_list                <Not set>
+# samp_sltab               <Not set>
+# sample                   Item_1_of_8	['KO-BL', 'NA', '(Combine mode; 2 sublibraries)']
+# sample                   Item_2_of_8	['KO-NN', 'NA', '(Combine mode; 2 sublibraries)']
+# sample                   Item_3_of_8	['KO-TL', 'NA', '(Combine mode; 2 sublibraries)']
+# sample                   Item_4_of_8	['KO-TR', 'NA', '(Combine mode; 2 sublibraries)']
+# sample                   Item_5_of_8	['WT-BR', 'NA', '(Combine mode; 2 sublibraries)']
+# sample                   Item_6_of_8	['WT-TR', 'NA', '(Combine mode; 2 sublibraries)']
+# sample                   Item_7_of_8	['WT-TRBR', 'NA', '(Combine mode; 2 sublibraries)']
+# sample                   Item_8_of_8	['all-well', 'NA', '(Combine mode; 2 sublibraries)']
+# genome_dir               /data/genomes/mm39_human_klk3_hg38
+# genome_name              <Not set>
+# fasta                    <Not set>
+# genes                    <Not set>
+# nthreads                 8	(automatic)
+# rseed                    758 (automatic)
+# reuse                    False
+# no_allwell               False
+# samp_wells_unique        False
+# keep_going               True
+# keep_temps               False
+# no_compress              False
+# gzip_compresslevel       4
+# one_step                 False
+# clear_env_files          False
+# dryrun                   False
+# kit_list                 False
+# bc_list                  False
+# bc_save_data_file        True
+# bc_amp_seq               NNNNNNNNNN33333333GTGGCCGATGTTTCGCATCGGCGTACGACT22222222ATCCACGTGCTTGAGACTGTGG11111111
+# bc_round_set             Item_1_of_3	['bc1', 'n24_v4', '24 barcodes, 12 wells; A-A, 1-12']
+# bc_round_set             Item_2_of_3	['bc2', 'v1', '96 barcodes, 96 wells; A-H, 1-12']
+# bc_round_set             Item_3_of_3	['bc3', 'v1', '96 barcodes, 96 wells; A-H, 1-12']
+# bc_edit_dist             2
+# tso_seq                  AACGCAGAGTGAATGGG
+# tso_read_limit           15
+# mkref_gtf_dict_stepsize  10000
+# mkref_max_gtf_not_fas    0
+# mkref_star_splicing      True
+# mkref_star_genomesaindexnbases 14
+# mkref_star_genomesasparsed 2
+# mkref_star_extra_args    <Not set>
+# pre_min_r1_len           50
+# pre_read_samp_size       1000000
+# pre_read_samp_skip       0
+# pre_perfect_bc_samp_size 2000000
+# pre_perfect_bc_samp_skip 0
+# pre_perfect_bc_samp_min  100000
+# pre_prefect_bc_cell_thresh 0.92
+# pre_keep_no_bc_fq        False
+# align_min_reads          100000
+# align_star_outfiltermultimapnmax 3
+# align_star_keep_no_map   False
+# align_star_extra_args    <Not set>
+# post_min_map_frac        0.2
+# dge_min_tscp             10000
+# dge_copy_all_genes_file  True
+# dge_save_express_gene_file True
+# dge_read_samp_size       1000000
+# dge_read_samp_skip       0
+# dge_ssc_xstep_size       1000
+# dge_ssc_xstep_ndup       5
+# dge_species_purity_thresh 0.9
+# dge_tscp_given           <Not set>
+# dge_tscp_min             30
+# dge_tscp_max             <Not set>
+# dge_tscp_scale_fac       1.0
+# dge_cell_est             <Not set>
+# dge_cell_given           <Not set>
+# dge_cell_gxfold          3
+# dge_cell_min             10
+# dge_cell_max             30000
+# dge_cell_scale_by_frac   True
+# dge_cell_hard_min        5
+# dge_gene_cell_min        3
+# dge_tscp_umin            10
+# dge_gene_cell_umin       1
+# comb_unfilt_dge          True
+# comb_new_tscp            False
+# ana_scanpy_verbosity     <Not set>
+# ana_save_anndata         False
+# ana_mem_eff_cell_thresh  100000
+# ana_scale_zero_center    True
+# ana_pca_chunk_size       100000
+# ana_pca_min_hvar         100
+# ana_pca_dim_max          50
+# ana_pca_dim_min          10
+# ana_pca_irlbpy           True
+# ana_cluster_min_bc       30
+# ana_save_umap            True
+# ana_umap_n_neighbors     50
+# ana_umap_min_dist        0.5
+# ana_cluster_alg          leiden
+# ana_ctab_top_n           20
+# ana_ctab_sco_min_den     0.01
+# ana_gene_cell_min        3
+# rep_save_figs            True
+# rep_difxp_cluster_1base  True
+# rep_gxplt_subsamp        10000
+# rep_gxplt_ss_clus_min    10
+# rep_gxplt_norm_fac       10000.0
+# rep_gene_def_url         https://www.ncbi.nlm.nih.gov/gene/?term={gene_id}
+# rep_gene_url             <Not set>
+# map_targ_genome_dir_path map_targs
+# map_targ                 <Not set>
+# map_targ_kmer_len        30
+# map_targ_kmer_step       1
+# map_targ_kmer_search_max 41
+# map_targ_kmer_search_step 10
+################################################################################
+
+
+# Time	Starting split-pipe v0.9.6p	2022-11-17 06:20:26.65
+# Saving env def files; force overwrite = False
+# Time	Before Combine	2022-11-17 06:20:26.67
+# >> Running DGE
+#2 MemStatus: DGE  2.2G proc, 537.9M rss, 1.7G vms, 3.7% usd, 29.8G avail
+#2 DskStatus: DGE  '/data/' 787.3G total, 465.0G (59.06%) used, 287.2G (36.49%) free
+# Processing global (not per-sample) data
+#2 Not combining tscp assign files (comb_new_tscp False)
+#2 Read Dataframe: Dims 14 x 1, Mem 224B (224) from /data/analysis/16112022/Sublibrary1/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 14 x 1, Mem 224B (224) from /data/analysis/16112022/Sublibrary2/process/pipeline_stats.csv
+# Wrote 14 by 4 table to /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 PF_STAT_PIPE	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 PF_STAT_PIPE	Row_1_of_14	number_of_reads	427117479	221455170	205662309
+#2 PF_STAT_PIPE	Row_2_of_14	reads_valid_barcode	259491931	132971930	126520001
+#2 PF_STAT_PIPE	Row_3_of_14	reads_too_short	0	0	0
+#2 PF_STAT_PIPE	Row_4_of_14	reads_ambig_bc	12079209	6223735	5855474
+#2 PF_STAT_PIPE	Row_5_of_14	bc_edit_dist_NA	132776058	70262756	62513302
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/process/sequencing_stats.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 PF_STAT_SEQ	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 PF_STAT_SEQ	Row_1_of_6	reads_Q30_sampled	1000000.0000	1000000.0000	1000000.0000
+#2 PF_STAT_SEQ	Row_2_of_6	bc1_Q30	0.8537	0.8560	0.8512
+#2 PF_STAT_SEQ	Row_3_of_6	bc2_Q30	0.8793	0.8809	0.8776
+#2 PF_STAT_SEQ	Row_4_of_6	bc3_Q30	0.8901	0.8914	0.8886
+#2 PF_STAT_SEQ	Row_5_of_6	polyN_Q30	0.9074	0.9083	0.9065
+# Processing data for 8 samples
+
+# DGE processing sample (1) KO-BL
+#2 MemStatus: DGE_samp_1  2.2G proc, 538.1M rss, 1.7G vms, 3.7% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 1606 x 12, Mem 163.1K (167024) from /data/analysis/16112022/Sublibrary1/KO-BL/DGE_filtered/cell_metadata.csv
+#2 Loaded 500592 data from /data/analysis/16112022/Sublibrary1/KO-BL/DGE_filtered/DGE.mtx
+#2 Processed cells 1606, 1606 total
+#2 Read Dataframe: Dims 1369 x 12, Mem 139.0K (142376) from /data/analysis/16112022/Sublibrary2/KO-BL/DGE_filtered/cell_metadata.csv
+#2 Loaded 438817 data from /data/analysis/16112022/Sublibrary2/KO-BL/DGE_filtered/DGE.mtx
+#2 Processed cells 1369, 2975 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-BL/DGE_filtered/all_genes.csv
+#2 Wrote mtx 2975 by 56749 with 939408 to /data/analysis/16112022/Combined/KO-BL/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 15519 x 3, Mem 485.0K (496608) from /data/analysis/16112022/Sublibrary1/KO-BL/report/expressed_genes.csv
+#2 Read Dataframe: Dims 14156 x 3, Mem 442.4K (452992) from /data/analysis/16112022/Sublibrary2/KO-BL/report/expressed_genes.csv
+# Wrote 16885 by 6 table to /data/analysis/16112022/Combined/KO-BL/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_16885	ENSMUSG00000000001	Gnai3	mm39	149	90	59
+#2 SFF_EXPRESS_GENE	Row_2_of_16885	ENSMUSG00000000028	Cdc45	mm39	7	7	0
+#2 SFF_EXPRESS_GENE	Row_3_of_16885	ENSMUSG00000000037	Scml2	mm39	9	6	3
+#2 SFF_EXPRESS_GENE	Row_4_of_16885	ENSMUSG00000000049	Apoh	mm39	4	0	4
+#2 SFF_EXPRESS_GENE	Row_5_of_16885	ENSMUSG00000000056	Narf	mm39	18	7	11
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_KO-BL  2.3G proc, 575.9M rss, 1.8G vms, 3.9% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 8697 x 12, Mem 883.3K (904488) from /data/analysis/16112022/Sublibrary1/KO-BL/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 713639 data from /data/analysis/16112022/Sublibrary1/KO-BL/DGE_unfiltered/DGE.mtx
+#2 Processed cells 8697, 8697 total
+#2 Read Dataframe: Dims 7566 x 12, Mem 768.4K (786864) from /data/analysis/16112022/Sublibrary2/KO-BL/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 580101 data from /data/analysis/16112022/Sublibrary2/KO-BL/DGE_unfiltered/DGE.mtx
+#2 Processed cells 7566, 16263 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-BL/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 16263 by 56749 with 1293739 to /data/analysis/16112022/Combined/KO-BL/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/KO-BL_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/KO-BL_analysis_summary.csv
+#2 Read Dataframe: Dims 9213 x 1, Mem 144.0K (147408) from /data/analysis/16112022/Sublibrary1/KO-BL/report/tscp_counts.csv
+#2 Read Dataframe: Dims 9203 x 1, Mem 143.8K (147248) from /data/analysis/16112022/Sublibrary2/KO-BL/report/tscp_counts.csv
+# Wrote 18416 by 2 table to /data/analysis/16112022/Combined/KO-BL/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_18416	12_44_74__1	10059
+#2 SFR_TSCP_CT	Row_2_of_18416	12_53_47__1	9270
+#2 SFR_TSCP_CT	Row_3_of_18416	12_16_23__1	8257
+#2 SFR_TSCP_CT	Row_4_of_18416	12_40_87__1	7403
+#2 SFR_TSCP_CT	Row_5_of_18416	12_69_50__1	6257
+#2 Read Dataframe: Dims 1606 x 1, Mem 25.1K (25696) from /data/analysis/16112022/Sublibrary1/KO-BL/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1606 x 1, Mem 25.1K (25696) from /data/analysis/16112022/Sublibrary1/KO-BL/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1369 x 1, Mem 21.4K (21904) from /data/analysis/16112022/Sublibrary2/KO-BL/report/species_tscp_counts.csv
+# Wrote 2975 by 2 table to /data/analysis/16112022/Combined/KO-BL/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_2975	12_44_74__1	10059
+#2 SFR_SPEC_TSCP_CT	Row_2_of_2975	12_53_47__1	9270
+#2 SFR_SPEC_TSCP_CT	Row_3_of_2975	12_16_23__1	8257
+#2 SFR_SPEC_TSCP_CT	Row_4_of_2975	12_40_87__1	7403
+#2 SFR_SPEC_TSCP_CT	Row_5_of_2975	12_69_50__1	6257
+#2 Read Dataframe: Dims 8 x 1, Mem 128B (128) from /data/analysis/16112022/Sublibrary1/KO-BL/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 9 x 1, Mem 144B (144) from /data/analysis/16112022/Sublibrary2/KO-BL/report/gene_counts_subsampled.csv
+# Wrote 10 by 3 table to /data/analysis/16112022/Combined/KO-BL/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_10	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_10	1000.0	71.0000	76.0000
+#2 SFR_SS_GENE_CT	Row_3_of_10	2000.0	116.0000	122.0000
+#2 SFR_SS_GENE_CT	Row_4_of_10	3000.0	149.0000	154.0000
+#2 SFR_SS_GENE_CT	Row_5_of_10	4000.0	173.5000	179.0000
+#2 Read Dataframe: Dims 8 x 1, Mem 128B (128) from /data/analysis/16112022/Sublibrary1/KO-BL/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 9 x 1, Mem 144B (144) from /data/analysis/16112022/Sublibrary2/KO-BL/report/tscp_counts_subsampled.csv
+# Wrote 10 by 3 table to /data/analysis/16112022/Combined/KO-BL/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_10	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_10	1000.0	121.5000	129.0000
+#2 SFR_SS_TSCP_CT	Row_3_of_10	2000.0	212.0000	219.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_10	3000.0	276.5000	290.0000
+#2 SFR_SS_TSCP_CT	Row_5_of_10	4000.0	328.5000	337.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-BL/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-BL/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_TSCP_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_TSCP_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_TSCP_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_TSCP_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-BL/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-BL/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	473	408	542
+#2 SFR_TSCP_R2W	Row_2_of_96	2	532	461	607
+#2 SFR_TSCP_R2W	Row_3_of_96	3	338	331	346
+#2 SFR_TSCP_R2W	Row_4_of_96	4	462	520	402
+#2 SFR_TSCP_R2W	Row_5_of_96	5	509	477	543
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-BL/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-BL/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	738	360	1131
+#2 SFR_TSCP_R3W	Row_2_of_96	2	540	471	612
+#2 SFR_TSCP_R3W	Row_3_of_96	3	611	701	519
+#2 SFR_TSCP_R3W	Row_4_of_96	4	616	541	694
+#2 SFR_TSCP_R3W	Row_5_of_96	5	387	303	476
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/KO-BL/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/KO-BL/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	5.0000	5.0000	5.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	2500.0000	2500.0000	2500.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-BL/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-BL/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_CELL_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_CELL_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_CELL_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_CELL_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-BL/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-BL/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	29	17	12
+#2 SFR_CELL_R2W	Row_2_of_96	2	25	11	14
+#2 SFR_CELL_R2W	Row_3_of_96	3	18	10	8
+#2 SFR_CELL_R2W	Row_4_of_96	4	24	11	13
+#2 SFR_CELL_R2W	Row_5_of_96	5	25	16	9
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-BL/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-BL/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	13	8	5
+#2 SFR_CELL_R3W	Row_2_of_96	2	15	8	7
+#2 SFR_CELL_R3W	Row_3_of_96	3	18	11	7
+#2 SFR_CELL_R3W	Row_4_of_96	4	17	11	6
+#2 SFR_CELL_R3W	Row_5_of_96	5	15	10	5
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/KO-BL/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/KO-BL/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/KO-BL/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	6856068	3415582	3440486
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	2661183	1428411	1232772
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	49436	25547	23889
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	5634705	2747393	2887312
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	2085348	1088715	996633
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-BL/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 2975 x 12, Mem 302.1K (309400) from /data/analysis/16112022/Combined/KO-BL/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-BL/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/KO-BL_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	2975.0000	1606.0000	1369.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	2975.0000	1606.0000	1369.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	463.0000	453.0000	482.0000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	378.3607	389.3119	375.5727
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	238.0000	233.0000	243.0000
+
+# DGE processing sample (2) KO-NN
+#2 MemStatus: DGE_samp_2  2.3G proc, 555.6M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 1222 x 12, Mem 124.1K (127088) from /data/analysis/16112022/Sublibrary1/KO-NN/DGE_filtered/cell_metadata.csv
+#2 Loaded 1542395 data from /data/analysis/16112022/Sublibrary1/KO-NN/DGE_filtered/DGE.mtx
+#2 Processed cells 1222, 1222 total
+#2 Read Dataframe: Dims 1069 x 12, Mem 108.6K (111176) from /data/analysis/16112022/Sublibrary2/KO-NN/DGE_filtered/cell_metadata.csv
+#2 Loaded 1372232 data from /data/analysis/16112022/Sublibrary2/KO-NN/DGE_filtered/DGE.mtx
+#2 Processed cells 1069, 2291 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-NN/DGE_filtered/all_genes.csv
+#2 Wrote mtx 2291 by 56749 with 2914626 to /data/analysis/16112022/Combined/KO-NN/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 16976 x 3, Mem 530.5K (543232) from /data/analysis/16112022/Sublibrary1/KO-NN/report/expressed_genes.csv
+#2 Read Dataframe: Dims 16410 x 3, Mem 512.8K (525120) from /data/analysis/16112022/Sublibrary2/KO-NN/report/expressed_genes.csv
+# Wrote 18084 by 6 table to /data/analysis/16112022/Combined/KO-NN/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_18084	ENSMUSG00000000001	Gnai3	mm39	544	292	252
+#2 SFF_EXPRESS_GENE	Row_2_of_18084	ENSMUSG00000000028	Cdc45	mm39	117	61	56
+#2 SFF_EXPRESS_GENE	Row_3_of_18084	ENSMUSG00000000037	Scml2	mm39	32	22	10
+#2 SFF_EXPRESS_GENE	Row_4_of_18084	ENSMUSG00000000049	Apoh	mm39	8	4	4
+#2 SFF_EXPRESS_GENE	Row_5_of_18084	ENSMUSG00000000056	Narf	mm39	124	69	55
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_KO-NN  2.3G proc, 543.3M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 18342 x 12, Mem 1.8M (1907568) from /data/analysis/16112022/Sublibrary1/KO-NN/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 2459680 data from /data/analysis/16112022/Sublibrary1/KO-NN/DGE_unfiltered/DGE.mtx
+#2 Processed cells 18342, 18342 total
+#2 Read Dataframe: Dims 17612 x 12, Mem 1.7M (1831648) from /data/analysis/16112022/Sublibrary2/KO-NN/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1950458 data from /data/analysis/16112022/Sublibrary2/KO-NN/DGE_unfiltered/DGE.mtx
+#2 Processed cells 17612, 35954 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-NN/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 35954 by 56749 with 4410137 to /data/analysis/16112022/Combined/KO-NN/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/KO-NN_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/KO-NN_analysis_summary.csv
+#2 Read Dataframe: Dims 18432 x 1, Mem 288.0K (294912) from /data/analysis/16112022/Sublibrary1/KO-NN/report/tscp_counts.csv
+#2 Read Dataframe: Dims 18432 x 1, Mem 288.0K (294912) from /data/analysis/16112022/Sublibrary2/KO-NN/report/tscp_counts.csv
+# Wrote 36864 by 2 table to /data/analysis/16112022/Combined/KO-NN/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_36864	07_50_94__1	55236
+#2 SFR_TSCP_CT	Row_2_of_36864	07_01_68__1	37105
+#2 SFR_TSCP_CT	Row_3_of_36864	07_28_47__1	33675
+#2 SFR_TSCP_CT	Row_4_of_36864	07_13_37__1	33556
+#2 SFR_TSCP_CT	Row_5_of_36864	07_65_70__1	33152
+#2 Read Dataframe: Dims 1222 x 1, Mem 19.1K (19552) from /data/analysis/16112022/Sublibrary1/KO-NN/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1222 x 1, Mem 19.1K (19552) from /data/analysis/16112022/Sublibrary1/KO-NN/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1069 x 1, Mem 16.7K (17104) from /data/analysis/16112022/Sublibrary2/KO-NN/report/species_tscp_counts.csv
+# Wrote 2291 by 2 table to /data/analysis/16112022/Combined/KO-NN/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_2291	07_50_94__1	55236
+#2 SFR_SPEC_TSCP_CT	Row_2_of_2291	07_01_68__1	37105
+#2 SFR_SPEC_TSCP_CT	Row_3_of_2291	07_28_47__1	33675
+#2 SFR_SPEC_TSCP_CT	Row_4_of_2291	07_13_37__1	33556
+#2 SFR_SPEC_TSCP_CT	Row_5_of_2291	07_65_70__1	33152
+#2 Read Dataframe: Dims 19 x 1, Mem 304B (304) from /data/analysis/16112022/Sublibrary1/KO-NN/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 20 x 1, Mem 320B (320) from /data/analysis/16112022/Sublibrary2/KO-NN/report/gene_counts_subsampled.csv
+# Wrote 21 by 3 table to /data/analysis/16112022/Combined/KO-NN/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_21	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_21	1000.0	70.0000	73.0000
+#2 SFR_SS_GENE_CT	Row_3_of_21	2000.0	128.0000	130.0000
+#2 SFR_SS_GENE_CT	Row_4_of_21	3000.0	180.0000	183.0000
+#2 SFR_SS_GENE_CT	Row_5_of_21	4000.0	227.5000	232.0000
+#2 Read Dataframe: Dims 19 x 1, Mem 304B (304) from /data/analysis/16112022/Sublibrary1/KO-NN/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 20 x 1, Mem 320B (320) from /data/analysis/16112022/Sublibrary2/KO-NN/report/tscp_counts_subsampled.csv
+# Wrote 21 by 3 table to /data/analysis/16112022/Combined/KO-NN/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_21	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_21	1000.0	146.5000	152.0000
+#2 SFR_SS_TSCP_CT	Row_3_of_21	2000.0	289.5000	296.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_21	3000.0	426.0000	436.0000
+#2 SFR_SS_TSCP_CT	Row_5_of_21	4000.0	546.5000	563.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-NN/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-NN/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_TSCP_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_TSCP_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_TSCP_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_TSCP_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-NN/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-NN/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	2650	3392	1869
+#2 SFR_TSCP_R2W	Row_2_of_96	2	3072	3744	2364
+#2 SFR_TSCP_R2W	Row_3_of_96	3	2191	1823	2580
+#2 SFR_TSCP_R2W	Row_4_of_96	4	3995	4580	3380
+#2 SFR_TSCP_R2W	Row_5_of_96	5	4255	2901	5684
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-NN/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-NN/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	3564	1875	5346
+#2 SFR_TSCP_R3W	Row_2_of_96	2	2926	2056	3843
+#2 SFR_TSCP_R3W	Row_3_of_96	3	3006	3572	2411
+#2 SFR_TSCP_R3W	Row_4_of_96	4	7455	6096	8888
+#2 SFR_TSCP_R3W	Row_5_of_96	5	3547	2117	5055
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/KO-NN/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/KO-NN/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	5.0000	5.0000	5.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	5000.0000	5000.0000	5000.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-NN/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-NN/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_CELL_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_CELL_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_CELL_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_CELL_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-NN/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-NN/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	20	12	8
+#2 SFR_CELL_R2W	Row_2_of_96	2	20	12	8
+#2 SFR_CELL_R2W	Row_3_of_96	3	12	7	5
+#2 SFR_CELL_R2W	Row_4_of_96	4	28	11	17
+#2 SFR_CELL_R2W	Row_5_of_96	5	29	16	13
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-NN/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-NN/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	11	5	6
+#2 SFR_CELL_R3W	Row_2_of_96	2	12	7	5
+#2 SFR_CELL_R3W	Row_3_of_96	3	16	8	8
+#2 SFR_CELL_R3W	Row_4_of_96	4	13	8	5
+#2 SFR_CELL_R3W	Row_5_of_96	5	10	4	6
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/KO-NN/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/KO-NN/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/KO-NN/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	35565904	17907522	17658382
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	13355393	7221030	6134363
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	52567	26780	25787
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	30434313	14897428	15536885
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	10716150	5575164	5140986
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-NN/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 2291 x 12, Mem 232.7K (238264) from /data/analysis/16112022/Combined/KO-NN/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-NN/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/KO-NN_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	2291.0000	1222.0000	1069.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	2291.0000	1222.0000	1069.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	2961.0000	2991.0000	2941.0000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	2370.7388	2506.0328	2253.2634
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	979.0000	1000.0000	969.0000
+
+# DGE processing sample (3) KO-TL
+#2 MemStatus: DGE_samp_3  2.3G proc, 547.8M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 979 x 12, Mem 99.4K (101816) from /data/analysis/16112022/Sublibrary1/KO-TL/DGE_filtered/cell_metadata.csv
+#2 Loaded 1290953 data from /data/analysis/16112022/Sublibrary1/KO-TL/DGE_filtered/DGE.mtx
+#2 Processed cells 979, 979 total
+#2 Read Dataframe: Dims 1350 x 12, Mem 137.1K (140400) from /data/analysis/16112022/Sublibrary2/KO-TL/DGE_filtered/cell_metadata.csv
+#2 Loaded 1320041 data from /data/analysis/16112022/Sublibrary2/KO-TL/DGE_filtered/DGE.mtx
+#2 Processed cells 1350, 2329 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-TL/DGE_filtered/all_genes.csv
+#2 Wrote mtx 2329 by 56749 with 2610993 to /data/analysis/16112022/Combined/KO-TL/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 17092 x 3, Mem 534.1K (546944) from /data/analysis/16112022/Sublibrary1/KO-TL/report/expressed_genes.csv
+#2 Read Dataframe: Dims 17311 x 3, Mem 541.0K (553952) from /data/analysis/16112022/Sublibrary2/KO-TL/report/expressed_genes.csv
+# Wrote 18654 by 6 table to /data/analysis/16112022/Combined/KO-TL/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_18654	ENSMUSG00000000001	Gnai3	mm39	407	192	215
+#2 SFF_EXPRESS_GENE	Row_2_of_18654	ENSMUSG00000000028	Cdc45	mm39	103	44	59
+#2 SFF_EXPRESS_GENE	Row_3_of_18654	ENSMUSG00000000037	Scml2	mm39	23	8	15
+#2 SFF_EXPRESS_GENE	Row_4_of_18654	ENSMUSG00000000049	Apoh	mm39	18	11	7
+#2 SFF_EXPRESS_GENE	Row_5_of_18654	ENSMUSG00000000056	Narf	mm39	77	35	42
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_KO-TL  2.3G proc, 586.0M rss, 1.8G vms, 3.9% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 18207 x 12, Mem 1.8M (1893528) from /data/analysis/16112022/Sublibrary1/KO-TL/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 2132589 data from /data/analysis/16112022/Sublibrary1/KO-TL/DGE_unfiltered/DGE.mtx
+#2 Processed cells 18207, 18207 total
+#2 Read Dataframe: Dims 17248 x 12, Mem 1.7M (1793792) from /data/analysis/16112022/Sublibrary2/KO-TL/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1758017 data from /data/analysis/16112022/Sublibrary2/KO-TL/DGE_unfiltered/DGE.mtx
+#2 Processed cells 17248, 35455 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-TL/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 35455 by 56749 with 3890605 to /data/analysis/16112022/Combined/KO-TL/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/KO-TL_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/KO-TL_analysis_summary.csv
+#2 Read Dataframe: Dims 18432 x 1, Mem 288.0K (294912) from /data/analysis/16112022/Sublibrary1/KO-TL/report/tscp_counts.csv
+#2 Read Dataframe: Dims 18431 x 1, Mem 288.0K (294896) from /data/analysis/16112022/Sublibrary2/KO-TL/report/tscp_counts.csv
+# Wrote 36863 by 2 table to /data/analysis/16112022/Combined/KO-TL/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_36863	10_35_08__1	58070
+#2 SFR_TSCP_CT	Row_2_of_36863	09_50_63__1	38285
+#2 SFR_TSCP_CT	Row_3_of_36863	09_10_11__1	29196
+#2 SFR_TSCP_CT	Row_4_of_36863	10_37_23__1	27993
+#2 SFR_TSCP_CT	Row_5_of_36863	09_37_21__1	26999
+#2 Read Dataframe: Dims 979 x 1, Mem 15.3K (15664) from /data/analysis/16112022/Sublibrary1/KO-TL/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 979 x 1, Mem 15.3K (15664) from /data/analysis/16112022/Sublibrary1/KO-TL/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1350 x 1, Mem 21.1K (21600) from /data/analysis/16112022/Sublibrary2/KO-TL/report/species_tscp_counts.csv
+# Wrote 2329 by 2 table to /data/analysis/16112022/Combined/KO-TL/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_2329	10_35_08__1	58070
+#2 SFR_SPEC_TSCP_CT	Row_2_of_2329	09_50_63__1	38285
+#2 SFR_SPEC_TSCP_CT	Row_3_of_2329	09_10_11__1	29196
+#2 SFR_SPEC_TSCP_CT	Row_4_of_2329	10_37_23__1	27993
+#2 SFR_SPEC_TSCP_CT	Row_5_of_2329	09_37_21__1	26999
+#2 Read Dataframe: Dims 20 x 1, Mem 320B (320) from /data/analysis/16112022/Sublibrary1/KO-TL/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 18 x 1, Mem 288B (288) from /data/analysis/16112022/Sublibrary2/KO-TL/report/gene_counts_subsampled.csv
+# Wrote 21 by 3 table to /data/analysis/16112022/Combined/KO-TL/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_21	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_21	1000.0	73.0000	59.0000
+#2 SFR_SS_GENE_CT	Row_3_of_21	2000.0	133.0000	105.0000
+#2 SFR_SS_GENE_CT	Row_4_of_21	3000.0	188.0000	145.5000
+#2 SFR_SS_GENE_CT	Row_5_of_21	4000.0	237.0000	183.5000
+#2 Read Dataframe: Dims 20 x 1, Mem 320B (320) from /data/analysis/16112022/Sublibrary1/KO-TL/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 18 x 1, Mem 288B (288) from /data/analysis/16112022/Sublibrary2/KO-TL/report/tscp_counts_subsampled.csv
+# Wrote 21 by 3 table to /data/analysis/16112022/Combined/KO-TL/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_21	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_21	1000.0	159.0000	118.0000
+#2 SFR_SS_TSCP_CT	Row_3_of_21	2000.0	313.0000	230.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_21	3000.0	459.0000	335.5000
+#2 SFR_SS_TSCP_CT	Row_5_of_21	4000.0	585.0000	428.5000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-TL/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-TL/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_TSCP_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_TSCP_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_TSCP_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_TSCP_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TL/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TL/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	1408	1796	1018
+#2 SFR_TSCP_R2W	Row_2_of_96	2	3144	4233	2049
+#2 SFR_TSCP_R2W	Row_3_of_96	3	3261	5100	1411
+#2 SFR_TSCP_R2W	Row_4_of_96	4	2927	3914	1935
+#2 SFR_TSCP_R2W	Row_5_of_96	5	2166	2898	1429
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TL/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TL/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	2661	4556	754
+#2 SFR_TSCP_R3W	Row_2_of_96	2	3518	5763	1259
+#2 SFR_TSCP_R3W	Row_3_of_96	3	5805	8057	3539
+#2 SFR_TSCP_R3W	Row_4_of_96	4	2312	2697	1926
+#2 SFR_TSCP_R3W	Row_5_of_96	5	2365	2682	2046
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/KO-TL/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/KO-TL/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	5.0000	5.0000	5.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	5000.0000	5000.0000	5000.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-TL/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-TL/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_CELL_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_CELL_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_CELL_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_CELL_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TL/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TL/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	26	8	18
+#2 SFR_CELL_R2W	Row_2_of_96	2	13	5	8
+#2 SFR_CELL_R2W	Row_3_of_96	3	22	9	13
+#2 SFR_CELL_R2W	Row_4_of_96	4	24	8	16
+#2 SFR_CELL_R2W	Row_5_of_96	5	9	5	4
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TL/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TL/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	15	9	6
+#2 SFR_CELL_R3W	Row_2_of_96	2	12	5	7
+#2 SFR_CELL_R3W	Row_3_of_96	3	13	3	10
+#2 SFR_CELL_R3W	Row_4_of_96	4	16	7	9
+#2 SFR_CELL_R3W	Row_5_of_96	5	17	10	7
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/KO-TL/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/KO-TL/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/KO-TL/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	30804582	15192425	15612157
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	11582576	6131285	5451291
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	52794	26805	25989
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	26233246	12164169	14069077
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	9270923	4560629	4710294
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-TL/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 2329 x 12, Mem 236.5K (242216) from /data/analysis/16112022/Combined/KO-TL/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-TL/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/KO-TL_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	2329.0000	979.0000	1350.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	2329.0000	979.0000	1350.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	2582.0000	3422.0000	1694.5000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	2068.9160	2868.7604	1301.7985
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	894.0000	1106.0000	627.5000
+
+# DGE processing sample (4) KO-TR
+#2 MemStatus: DGE_samp_4  2.3G proc, 548.8M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 607 x 12, Mem 61.6K (63128) from /data/analysis/16112022/Sublibrary1/KO-TR/DGE_filtered/cell_metadata.csv
+#2 Loaded 971898 data from /data/analysis/16112022/Sublibrary1/KO-TR/DGE_filtered/DGE.mtx
+#2 Processed cells 607, 607 total
+#2 Read Dataframe: Dims 1019 x 12, Mem 103.5K (105976) from /data/analysis/16112022/Sublibrary2/KO-TR/DGE_filtered/cell_metadata.csv
+#2 Loaded 924615 data from /data/analysis/16112022/Sublibrary2/KO-TR/DGE_filtered/DGE.mtx
+#2 Processed cells 1019, 1626 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-TR/DGE_filtered/all_genes.csv
+#2 Wrote mtx 1626 by 56749 with 1896512 to /data/analysis/16112022/Combined/KO-TR/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 18231 x 3, Mem 569.7K (583392) from /data/analysis/16112022/Sublibrary1/KO-TR/report/expressed_genes.csv
+#2 Read Dataframe: Dims 18032 x 3, Mem 563.5K (577024) from /data/analysis/16112022/Sublibrary2/KO-TR/report/expressed_genes.csv
+# Wrote 19859 by 6 table to /data/analysis/16112022/Combined/KO-TR/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_19859	ENSMUSG00000000001	Gnai3	mm39	295	147	148
+#2 SFF_EXPRESS_GENE	Row_2_of_19859	ENSMUSG00000000028	Cdc45	mm39	74	39	35
+#2 SFF_EXPRESS_GENE	Row_3_of_19859	ENSMUSG00000000037	Scml2	mm39	16	9	7
+#2 SFF_EXPRESS_GENE	Row_4_of_19859	ENSMUSG00000000049	Apoh	mm39	11	4	7
+#2 SFF_EXPRESS_GENE	Row_5_of_19859	ENSMUSG00000000056	Narf	mm39	48	33	15
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_KO-TR  2.3G proc, 546.7M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 9205 x 12, Mem 934.9K (957320) from /data/analysis/16112022/Sublibrary1/KO-TR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1713128 data from /data/analysis/16112022/Sublibrary1/KO-TR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 9205, 9205 total
+#2 Read Dataframe: Dims 8958 x 12, Mem 909.8K (931632) from /data/analysis/16112022/Sublibrary2/KO-TR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1225541 data from /data/analysis/16112022/Sublibrary2/KO-TR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 8958, 18163 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/KO-TR/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 18163 by 56749 with 2938668 to /data/analysis/16112022/Combined/KO-TR/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/KO-TR_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/KO-TR_analysis_summary.csv
+#2 Read Dataframe: Dims 9216 x 1, Mem 144.0K (147456) from /data/analysis/16112022/Sublibrary1/KO-TR/report/tscp_counts.csv
+#2 Read Dataframe: Dims 9216 x 1, Mem 144.0K (147456) from /data/analysis/16112022/Sublibrary2/KO-TR/report/tscp_counts.csv
+# Wrote 18432 by 2 table to /data/analysis/16112022/Combined/KO-TR/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_18432	11_07_65__1	30805
+#2 SFR_TSCP_CT	Row_2_of_18432	11_07_77__1	25538
+#2 SFR_TSCP_CT	Row_3_of_18432	11_58_92__1	23480
+#2 SFR_TSCP_CT	Row_4_of_18432	11_04_63__1	21995
+#2 SFR_TSCP_CT	Row_5_of_18432	11_28_36__1	21783
+#2 Read Dataframe: Dims 607 x 1, Mem 9.5K (9712) from /data/analysis/16112022/Sublibrary1/KO-TR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 607 x 1, Mem 9.5K (9712) from /data/analysis/16112022/Sublibrary1/KO-TR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1019 x 1, Mem 15.9K (16304) from /data/analysis/16112022/Sublibrary2/KO-TR/report/species_tscp_counts.csv
+# Wrote 1626 by 2 table to /data/analysis/16112022/Combined/KO-TR/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_1626	11_07_65__1	30805
+#2 SFR_SPEC_TSCP_CT	Row_2_of_1626	11_07_77__1	25538
+#2 SFR_SPEC_TSCP_CT	Row_3_of_1626	11_58_92__1	23480
+#2 SFR_SPEC_TSCP_CT	Row_4_of_1626	11_04_63__1	21995
+#2 SFR_SPEC_TSCP_CT	Row_5_of_1626	11_28_36__1	21783
+#2 Read Dataframe: Dims 20 x 1, Mem 320B (320) from /data/analysis/16112022/Sublibrary1/KO-TR/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 16 x 1, Mem 256B (256) from /data/analysis/16112022/Sublibrary2/KO-TR/report/gene_counts_subsampled.csv
+# Wrote 21 by 3 table to /data/analysis/16112022/Combined/KO-TR/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_21	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_21	1000.0	78.0000	59.0000
+#2 SFR_SS_GENE_CT	Row_3_of_21	2000.0	147.0000	105.0000
+#2 SFR_SS_GENE_CT	Row_4_of_21	3000.0	208.0000	143.0000
+#2 SFR_SS_GENE_CT	Row_5_of_21	4000.0	264.0000	182.0000
+#2 Read Dataframe: Dims 20 x 1, Mem 320B (320) from /data/analysis/16112022/Sublibrary1/KO-TR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 16 x 1, Mem 256B (256) from /data/analysis/16112022/Sublibrary2/KO-TR/report/tscp_counts_subsampled.csv
+# Wrote 21 by 3 table to /data/analysis/16112022/Combined/KO-TR/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_21	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_21	1000.0	140.0000	107.0000
+#2 SFR_SS_TSCP_CT	Row_3_of_21	2000.0	276.0000	199.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_21	3000.0	405.0000	281.0000
+#2 SFR_SS_TSCP_CT	Row_5_of_21	4000.0	527.0000	363.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-TR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-TR/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_TSCP_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_TSCP_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_TSCP_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_TSCP_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TR/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	2845	3576	1972
+#2 SFR_TSCP_R2W	Row_2_of_96	2	4155	3268	5216
+#2 SFR_TSCP_R2W	Row_3_of_96	3	2145	1991	2330
+#2 SFR_TSCP_R2W	Row_4_of_96	4	2615	3620	1414
+#2 SFR_TSCP_R2W	Row_5_of_96	5	3300	4707	1620
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TR/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	2339	3461	1000
+#2 SFR_TSCP_R3W	Row_2_of_96	2	1650	2377	783
+#2 SFR_TSCP_R3W	Row_3_of_96	3	2594	4065	837
+#2 SFR_TSCP_R3W	Row_4_of_96	4	10308	7252	13961
+#2 SFR_TSCP_R3W	Row_5_of_96	5	3831	6161	1047
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/KO-TR/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/KO-TR/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	5.0000	5.0000	5.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	2500.0000	2500.0000	2500.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/KO-TR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/KO-TR/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_CELL_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_CELL_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_CELL_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_CELL_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TR/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	11	6	5
+#2 SFR_CELL_R2W	Row_2_of_96	2	6	1	5
+#2 SFR_CELL_R2W	Row_3_of_96	3	14	5	9
+#2 SFR_CELL_R2W	Row_4_of_96	4	26	9	17
+#2 SFR_CELL_R2W	Row_5_of_96	5	15	4	11
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/KO-TR/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/KO-TR/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	9	4	5
+#2 SFR_CELL_R3W	Row_2_of_96	2	11	4	7
+#2 SFR_CELL_R3W	Row_3_of_96	3	10	4	6
+#2 SFR_CELL_R3W	Row_4_of_96	4	6	4	2
+#2 SFR_CELL_R3W	Row_5_of_96	5	18	5	13
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/KO-TR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/KO-TR/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/KO-TR/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	18939170	10110644	8828526
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	7273007	4158121	3114886
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	55111	28194	26917
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	15314052	7513237	7800815
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	5508916	2868594	2640322
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-TR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 1626 x 12, Mem 165.1K (169104) from /data/analysis/16112022/Combined/KO-TR/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/KO-TR/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/KO-TR_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	1626.0000	607.0000	1019.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	1626.0000	607.0000	1019.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	2206.5000	3279.0000	1147.0000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	1791.0464	2784.7689	886.1531
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	921.5000	1317.0000	514.0000
+
+# DGE processing sample (5) WT-BR
+#2 MemStatus: DGE_samp_5  2.3G proc, 546.8M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 1436 x 12, Mem 145.8K (149344) from /data/analysis/16112022/Sublibrary1/WT-BR/DGE_filtered/cell_metadata.csv
+#2 Loaded 902825 data from /data/analysis/16112022/Sublibrary1/WT-BR/DGE_filtered/DGE.mtx
+#2 Processed cells 1436, 1436 total
+#2 Read Dataframe: Dims 1001 x 12, Mem 101.7K (104104) from /data/analysis/16112022/Sublibrary2/WT-BR/DGE_filtered/cell_metadata.csv
+#2 Loaded 709836 data from /data/analysis/16112022/Sublibrary2/WT-BR/DGE_filtered/DGE.mtx
+#2 Processed cells 1001, 2437 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/WT-BR/DGE_filtered/all_genes.csv
+#2 Wrote mtx 2437 by 56749 with 1612660 to /data/analysis/16112022/Combined/WT-BR/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 23405 x 3, Mem 731.4K (748960) from /data/analysis/16112022/Sublibrary1/WT-BR/report/expressed_genes.csv
+#2 Read Dataframe: Dims 22859 x 3, Mem 714.3K (731488) from /data/analysis/16112022/Sublibrary2/WT-BR/report/expressed_genes.csv
+# Wrote 25232 by 6 table to /data/analysis/16112022/Combined/WT-BR/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_25232	ENSMUSG00000000001	Gnai3	mm39	138	85	53
+#2 SFF_EXPRESS_GENE	Row_2_of_25232	ENSMUSG00000000003	Pbsn	mm39	5	5	0
+#2 SFF_EXPRESS_GENE	Row_3_of_25232	ENSMUSG00000000028	Cdc45	mm39	53	28	25
+#2 SFF_EXPRESS_GENE	Row_4_of_25232	ENSMUSG00000000037	Scml2	mm39	49	26	23
+#2 SFF_EXPRESS_GENE	Row_5_of_25232	ENSMUSG00000000049	Apoh	mm39	44	27	17
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_WT-BR  2.3G proc, 548.1M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 16894 x 12, Mem 1.7M (1756976) from /data/analysis/16112022/Sublibrary1/WT-BR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1392335 data from /data/analysis/16112022/Sublibrary1/WT-BR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 16894, 16894 total
+#2 Read Dataframe: Dims 13663 x 12, Mem 1.4M (1420952) from /data/analysis/16112022/Sublibrary2/WT-BR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1042081 data from /data/analysis/16112022/Sublibrary2/WT-BR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 13663, 30557 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/WT-BR/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 30557 by 56749 with 2434415 to /data/analysis/16112022/Combined/WT-BR/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/WT-BR_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/WT-BR_analysis_summary.csv
+#2 Read Dataframe: Dims 18428 x 1, Mem 287.9K (294848) from /data/analysis/16112022/Sublibrary1/WT-BR/report/tscp_counts.csv
+#2 Read Dataframe: Dims 18359 x 1, Mem 286.9K (293744) from /data/analysis/16112022/Sublibrary2/WT-BR/report/tscp_counts.csv
+# Wrote 36787 by 2 table to /data/analysis/16112022/Combined/WT-BR/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_36787	06_14_63__1	19736
+#2 SFR_TSCP_CT	Row_2_of_36787	06_73_83__1	17093
+#2 SFR_TSCP_CT	Row_3_of_36787	06_79_49__1	16340
+#2 SFR_TSCP_CT	Row_4_of_36787	06_42_73__1	14292
+#2 SFR_TSCP_CT	Row_5_of_36787	06_13_84__1	11337
+#2 Read Dataframe: Dims 1436 x 1, Mem 22.4K (22976) from /data/analysis/16112022/Sublibrary1/WT-BR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1436 x 1, Mem 22.4K (22976) from /data/analysis/16112022/Sublibrary1/WT-BR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1001 x 1, Mem 15.6K (16016) from /data/analysis/16112022/Sublibrary2/WT-BR/report/species_tscp_counts.csv
+# Wrote 2437 by 2 table to /data/analysis/16112022/Combined/WT-BR/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_2437	06_14_63__1	19736
+#2 SFR_SPEC_TSCP_CT	Row_2_of_2437	06_73_83__1	17093
+#2 SFR_SPEC_TSCP_CT	Row_3_of_2437	06_79_49__1	16340
+#2 SFR_SPEC_TSCP_CT	Row_4_of_2437	06_42_73__1	14292
+#2 SFR_SPEC_TSCP_CT	Row_5_of_2437	06_13_84__1	11337
+#2 Read Dataframe: Dims 13 x 1, Mem 208B (208) from /data/analysis/16112022/Sublibrary1/WT-BR/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 13 x 1, Mem 208B (208) from /data/analysis/16112022/Sublibrary2/WT-BR/report/gene_counts_subsampled.csv
+# Wrote 14 by 3 table to /data/analysis/16112022/Combined/WT-BR/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_14	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_14	1000.0	70.0000	69.0000
+#2 SFR_SS_GENE_CT	Row_3_of_14	2000.0	126.5000	122.0000
+#2 SFR_SS_GENE_CT	Row_4_of_14	3000.0	173.0000	165.0000
+#2 SFR_SS_GENE_CT	Row_5_of_14	4000.0	213.0000	203.0000
+#2 Read Dataframe: Dims 13 x 1, Mem 208B (208) from /data/analysis/16112022/Sublibrary1/WT-BR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 13 x 1, Mem 208B (208) from /data/analysis/16112022/Sublibrary2/WT-BR/report/tscp_counts_subsampled.csv
+# Wrote 14 by 3 table to /data/analysis/16112022/Combined/WT-BR/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_14	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_14	1000.0	111.5000	106.0000
+#2 SFR_SS_TSCP_CT	Row_3_of_14	2000.0	204.5000	195.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_14	3000.0	283.0000	271.0000
+#2 SFR_SS_TSCP_CT	Row_5_of_14	4000.0	353.0000	340.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/WT-BR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-BR/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_TSCP_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_TSCP_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_TSCP_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_TSCP_R1W	Row_5_of_12	5	784	783	786
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-BR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-BR/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	731	659	817
+#2 SFR_TSCP_R2W	Row_2_of_96	2	810	941	658
+#2 SFR_TSCP_R2W	Row_3_of_96	3	1191	761	1697
+#2 SFR_TSCP_R2W	Row_4_of_96	4	703	521	917
+#2 SFR_TSCP_R2W	Row_5_of_96	5	597	535	672
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-BR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-BR/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	567	418	744
+#2 SFR_TSCP_R3W	Row_2_of_96	2	764	711	827
+#2 SFR_TSCP_R3W	Row_3_of_96	3	474	504	439
+#2 SFR_TSCP_R3W	Row_4_of_96	4	1204	798	1682
+#2 SFR_TSCP_R3W	Row_5_of_96	5	804	1009	565
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/WT-BR/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/WT-BR/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	5.0000	5.0000	5.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	5000.0000	5000.0000	5000.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/WT-BR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-BR/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_CELL_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_CELL_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_CELL_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_CELL_R1W	Row_5_of_12	5	1012	603	409
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-BR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-BR/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	10	7	3
+#2 SFR_CELL_R2W	Row_2_of_96	2	15	8	7
+#2 SFR_CELL_R2W	Row_3_of_96	3	17	11	6
+#2 SFR_CELL_R2W	Row_4_of_96	4	23	11	12
+#2 SFR_CELL_R2W	Row_5_of_96	5	22	11	11
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-BR/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-BR/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	8	7	1
+#2 SFR_CELL_R3W	Row_2_of_96	2	19	11	8
+#2 SFR_CELL_R3W	Row_3_of_96	3	12	6	6
+#2 SFR_CELL_R3W	Row_4_of_96	4	13	8	5
+#2 SFR_CELL_R3W	Row_5_of_96	5	18	11	7
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/WT-BR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/WT-BR/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/WT-BR/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	12132087	6448213	5683874
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	4734746	2687516	2047230
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	65633	32997	32636
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	9405291	4993647	4411644
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	3457244	1942560	1514684
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/WT-BR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 2437 x 12, Mem 247.5K (253448) from /data/analysis/16112022/Combined/WT-BR/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/WT-BR/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/WT-BR_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	2437.0000	1436.0000	1001.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	2437.0000	1436.0000	1001.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	806.0000	804.5000	808.0000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	660.9444	689.7109	631.4297
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	457.0000	457.0000	459.0000
+
+# DGE processing sample (6) WT-TR
+#2 MemStatus: DGE_samp_6  2.3G proc, 566.9M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 1176 x 12, Mem 119.4K (122304) from /data/analysis/16112022/Sublibrary1/WT-TR/DGE_filtered/cell_metadata.csv
+#2 Loaded 647065 data from /data/analysis/16112022/Sublibrary1/WT-TR/DGE_filtered/DGE.mtx
+#2 Processed cells 1176, 1176 total
+#2 Read Dataframe: Dims 868 x 12, Mem 88.2K (90272) from /data/analysis/16112022/Sublibrary2/WT-TR/DGE_filtered/cell_metadata.csv
+#2 Loaded 510160 data from /data/analysis/16112022/Sublibrary2/WT-TR/DGE_filtered/DGE.mtx
+#2 Processed cells 868, 2044 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/WT-TR/DGE_filtered/all_genes.csv
+#2 Wrote mtx 2044 by 56749 with 1157224 to /data/analysis/16112022/Combined/WT-TR/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 18382 x 3, Mem 574.4K (588224) from /data/analysis/16112022/Sublibrary1/WT-TR/report/expressed_genes.csv
+#2 Read Dataframe: Dims 16997 x 3, Mem 531.2K (543904) from /data/analysis/16112022/Sublibrary2/WT-TR/report/expressed_genes.csv
+# Wrote 19611 by 6 table to /data/analysis/16112022/Combined/WT-TR/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_19611	ENSMUSG00000000001	Gnai3	mm39	136	81	55
+#2 SFF_EXPRESS_GENE	Row_2_of_19611	ENSMUSG00000000003	Pbsn	mm39	8	4	4
+#2 SFF_EXPRESS_GENE	Row_3_of_19611	ENSMUSG00000000028	Cdc45	mm39	13	8	5
+#2 SFF_EXPRESS_GENE	Row_4_of_19611	ENSMUSG00000000037	Scml2	mm39	30	13	17
+#2 SFF_EXPRESS_GENE	Row_5_of_19611	ENSMUSG00000000049	Apoh	mm39	9	5	4
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_WT-TR  2.4G proc, 592.2M rss, 1.8G vms, 3.9% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 15192 x 12, Mem 1.5M (1579968) from /data/analysis/16112022/Sublibrary1/WT-TR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1014688 data from /data/analysis/16112022/Sublibrary1/WT-TR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 15192, 15192 total
+#2 Read Dataframe: Dims 11147 x 12, Mem 1.1M (1159288) from /data/analysis/16112022/Sublibrary2/WT-TR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 746549 data from /data/analysis/16112022/Sublibrary2/WT-TR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 11147, 26339 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/WT-TR/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 26339 by 56749 with 1761236 to /data/analysis/16112022/Combined/WT-TR/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/WT-TR_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/WT-TR_analysis_summary.csv
+#2 Read Dataframe: Dims 18417 x 1, Mem 287.8K (294672) from /data/analysis/16112022/Sublibrary1/WT-TR/report/tscp_counts.csv
+#2 Read Dataframe: Dims 18263 x 1, Mem 285.4K (292208) from /data/analysis/16112022/Sublibrary2/WT-TR/report/tscp_counts.csv
+# Wrote 36680 by 2 table to /data/analysis/16112022/Combined/WT-TR/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_36680	02_80_38__1	19632
+#2 SFR_TSCP_CT	Row_2_of_36680	02_32_76__1	16975
+#2 SFR_TSCP_CT	Row_3_of_36680	01_39_92__1	11357
+#2 SFR_TSCP_CT	Row_4_of_36680	02_43_61__1	7970
+#2 SFR_TSCP_CT	Row_5_of_36680	01_31_29__1	7602
+#2 Read Dataframe: Dims 1176 x 1, Mem 18.4K (18816) from /data/analysis/16112022/Sublibrary1/WT-TR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1176 x 1, Mem 18.4K (18816) from /data/analysis/16112022/Sublibrary1/WT-TR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 868 x 1, Mem 13.6K (13888) from /data/analysis/16112022/Sublibrary2/WT-TR/report/species_tscp_counts.csv
+# Wrote 2044 by 2 table to /data/analysis/16112022/Combined/WT-TR/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_2044	02_80_38__1	19632
+#2 SFR_SPEC_TSCP_CT	Row_2_of_2044	02_32_76__1	16975
+#2 SFR_SPEC_TSCP_CT	Row_3_of_2044	01_39_92__1	11357
+#2 SFR_SPEC_TSCP_CT	Row_4_of_2044	02_43_61__1	7970
+#2 SFR_SPEC_TSCP_CT	Row_5_of_2044	01_31_29__1	7602
+#2 Read Dataframe: Dims 11 x 1, Mem 176B (176) from /data/analysis/16112022/Sublibrary1/WT-TR/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-TR/report/gene_counts_subsampled.csv
+# Wrote 13 by 3 table to /data/analysis/16112022/Combined/WT-TR/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_13	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_13	1000.0	71.5000	80.0000
+#2 SFR_SS_GENE_CT	Row_3_of_13	2000.0	124.0000	136.5000
+#2 SFR_SS_GENE_CT	Row_4_of_13	3000.0	164.5000	180.0000
+#2 SFR_SS_GENE_CT	Row_5_of_13	4000.0	199.0000	217.0000
+#2 Read Dataframe: Dims 11 x 1, Mem 176B (176) from /data/analysis/16112022/Sublibrary1/WT-TR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-TR/report/tscp_counts_subsampled.csv
+# Wrote 13 by 3 table to /data/analysis/16112022/Combined/WT-TR/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_13	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_13	1000.0	105.5000	117.5000
+#2 SFR_SS_TSCP_CT	Row_3_of_13	2000.0	189.5000	212.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_13	3000.0	257.0000	292.5000
+#2 SFR_SS_TSCP_CT	Row_5_of_13	4000.0	321.0000	349.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/WT-TR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-TR/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	604	562	653
+#2 SFR_TSCP_R1W	Row_2_of_12	2	695	642	757
+#2 SFR_TSCP_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_TSCP_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_TSCP_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TR/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	469	424	521
+#2 SFR_TSCP_R2W	Row_2_of_96	2	495	535	450
+#2 SFR_TSCP_R2W	Row_3_of_96	3	715	731	698
+#2 SFR_TSCP_R2W	Row_4_of_96	4	925	786	1087
+#2 SFR_TSCP_R2W	Row_5_of_96	5	977	553	1467
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TR/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	1500	1096	1966
+#2 SFR_TSCP_R3W	Row_2_of_96	2	683	606	772
+#2 SFR_TSCP_R3W	Row_3_of_96	3	1179	946	1448
+#2 SFR_TSCP_R3W	Row_4_of_96	4	933	470	1467
+#2 SFR_TSCP_R3W	Row_5_of_96	5	690	490	922
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/WT-TR/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/WT-TR/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	5.0000	5.0000	5.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	5000.0000	5000.0000	5000.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/WT-TR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-TR/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	872	511	361
+#2 SFR_CELL_R1W	Row_2_of_12	2	1172	665	507
+#2 SFR_CELL_R1W	Row_3_of_12	3	0	0	0
+#2 SFR_CELL_R1W	Row_4_of_12	4	0	0	0
+#2 SFR_CELL_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TR/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	15	11	4
+#2 SFR_CELL_R2W	Row_2_of_96	2	12	5	7
+#2 SFR_CELL_R2W	Row_3_of_96	3	22	12	10
+#2 SFR_CELL_R2W	Row_4_of_96	4	25	19	6
+#2 SFR_CELL_R2W	Row_5_of_96	5	16	11	5
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TR/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TR/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	8	3	5
+#2 SFR_CELL_R3W	Row_2_of_96	2	11	6	5
+#2 SFR_CELL_R3W	Row_3_of_96	3	16	7	9
+#2 SFR_CELL_R3W	Row_4_of_96	4	6	5	1
+#2 SFR_CELL_R3W	Row_5_of_96	5	17	12	5
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/WT-TR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/WT-TR/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/WT-TR/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	8054735	4219535	3835200
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	3128256	1759742	1368514
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	55672	28470	27202
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	6238283	3239446	2998837
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	2266244	1253306	1012938
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/WT-TR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 2044 x 12, Mem 207.6K (212576) from /data/analysis/16112022/Combined/WT-TR/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/WT-TR/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/WT-TR_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	2044.0000	1176.0000	868.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	2044.0000	1176.0000	868.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	648.0000	614.0000	696.5000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	529.7362	526.6286	541.4586
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	372.0000	354.5000	397.0000
+
+# DGE processing sample (7) WT-TRBR
+#2 MemStatus: DGE_samp_7  2.3G proc, 551.3M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 1964 x 12, Mem 199.5K (204256) from /data/analysis/16112022/Sublibrary1/WT-TRBR/DGE_filtered/cell_metadata.csv
+#2 Loaded 880359 data from /data/analysis/16112022/Sublibrary1/WT-TRBR/DGE_filtered/DGE.mtx
+#2 Processed cells 1964, 1964 total
+#2 Read Dataframe: Dims 1688 x 12, Mem 171.4K (175552) from /data/analysis/16112022/Sublibrary2/WT-TRBR/DGE_filtered/cell_metadata.csv
+#2 Loaded 793050 data from /data/analysis/16112022/Sublibrary2/WT-TRBR/DGE_filtered/DGE.mtx
+#2 Processed cells 1688, 3652 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/WT-TRBR/DGE_filtered/all_genes.csv
+#2 Wrote mtx 3652 by 56749 with 1673408 to /data/analysis/16112022/Combined/WT-TRBR/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 17933 x 3, Mem 560.4K (573856) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/expressed_genes.csv
+#2 Read Dataframe: Dims 17120 x 3, Mem 535.0K (547840) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/expressed_genes.csv
+# Wrote 19253 by 6 table to /data/analysis/16112022/Combined/WT-TRBR/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_19253	ENSMUSG00000000001	Gnai3	mm39	191	108	83
+#2 SFF_EXPRESS_GENE	Row_2_of_19253	ENSMUSG00000000028	Cdc45	mm39	16	11	5
+#2 SFF_EXPRESS_GENE	Row_3_of_19253	ENSMUSG00000000037	Scml2	mm39	16	5	11
+#2 SFF_EXPRESS_GENE	Row_4_of_19253	ENSMUSG00000000049	Apoh	mm39	8	4	4
+#2 SFF_EXPRESS_GENE	Row_5_of_19253	ENSMUSG00000000056	Narf	mm39	45	20	25
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_WT-TRBR  2.3G proc, 549.8M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 16472 x 12, Mem 1.6M (1713088) from /data/analysis/16112022/Sublibrary1/WT-TRBR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1314480 data from /data/analysis/16112022/Sublibrary1/WT-TRBR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 16472, 16472 total
+#2 Read Dataframe: Dims 13377 x 12, Mem 1.3M (1391208) from /data/analysis/16112022/Sublibrary2/WT-TRBR/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 1065210 data from /data/analysis/16112022/Sublibrary2/WT-TRBR/DGE_unfiltered/DGE.mtx
+#2 Processed cells 13377, 29849 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/WT-TRBR/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 29849 by 56749 with 2379689 to /data/analysis/16112022/Combined/WT-TRBR/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/WT-TRBR_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/WT-TRBR_analysis_summary.csv
+#2 Read Dataframe: Dims 18422 x 1, Mem 287.8K (294752) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/tscp_counts.csv
+#2 Read Dataframe: Dims 18383 x 1, Mem 287.2K (294128) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/tscp_counts.csv
+# Wrote 36805 by 2 table to /data/analysis/16112022/Combined/WT-TRBR/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_36805	03_49_50__1	14627
+#2 SFR_TSCP_CT	Row_2_of_36805	04_48_44__1	9517
+#2 SFR_TSCP_CT	Row_3_of_36805	04_05_79__1	9345
+#2 SFR_TSCP_CT	Row_4_of_36805	03_27_44__1	7766
+#2 SFR_TSCP_CT	Row_5_of_36805	04_63_82__1	6420
+#2 Read Dataframe: Dims 1964 x 1, Mem 30.7K (31424) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1964 x 1, Mem 30.7K (31424) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 1688 x 1, Mem 26.4K (27008) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/species_tscp_counts.csv
+# Wrote 3652 by 2 table to /data/analysis/16112022/Combined/WT-TRBR/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_3652	03_49_50__1	14627
+#2 SFR_SPEC_TSCP_CT	Row_2_of_3652	04_48_44__1	9517
+#2 SFR_SPEC_TSCP_CT	Row_3_of_3652	04_05_79__1	9345
+#2 SFR_SPEC_TSCP_CT	Row_4_of_3652	03_27_44__1	7766
+#2 SFR_SPEC_TSCP_CT	Row_5_of_3652	04_63_82__1	6420
+#2 Read Dataframe: Dims 9 x 1, Mem 144B (144) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 10 x 1, Mem 160B (160) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/gene_counts_subsampled.csv
+# Wrote 11 by 3 table to /data/analysis/16112022/Combined/WT-TRBR/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_11	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_11	1000.0	83.0000	85.0000
+#2 SFR_SS_GENE_CT	Row_3_of_11	2000.0	139.0000	141.0000
+#2 SFR_SS_GENE_CT	Row_4_of_11	3000.0	181.0000	182.5000
+#2 SFR_SS_GENE_CT	Row_5_of_11	4000.0	218.0000	216.0000
+#2 Read Dataframe: Dims 9 x 1, Mem 144B (144) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 10 x 1, Mem 160B (160) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/tscp_counts_subsampled.csv
+# Wrote 11 by 3 table to /data/analysis/16112022/Combined/WT-TRBR/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_11	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_11	1000.0	117.0000	123.0000
+#2 SFR_SS_TSCP_CT	Row_3_of_11	2000.0	206.0000	213.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_11	3000.0	273.0000	282.0000
+#2 SFR_SS_TSCP_CT	Row_5_of_11	4000.0	333.0000	335.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_TSCP_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_TSCP_R1W	Row_3_of_12	3	531	532	532
+#2 SFR_TSCP_R1W	Row_4_of_12	4	533	515	552
+#2 SFR_TSCP_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	674	833	513
+#2 SFR_TSCP_R2W	Row_2_of_96	2	522	641	401
+#2 SFR_TSCP_R2W	Row_3_of_96	3	498	445	553
+#2 SFR_TSCP_R2W	Row_4_of_96	4	636	780	489
+#2 SFR_TSCP_R2W	Row_5_of_96	5	519	486	553
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	550	532	569
+#2 SFR_TSCP_R3W	Row_2_of_96	2	569	544	596
+#2 SFR_TSCP_R3W	Row_3_of_96	3	524	649	398
+#2 SFR_TSCP_R3W	Row_4_of_96	4	476	558	393
+#2 SFR_TSCP_R3W	Row_5_of_96	5	1127	627	1639
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	5.0000	5.0000	5.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	5000.0000	5000.0000	5000.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	0	0	0
+#2 SFR_CELL_R1W	Row_2_of_12	2	0	0	0
+#2 SFR_CELL_R1W	Row_3_of_12	3	1975	1083	892
+#2 SFR_CELL_R1W	Row_4_of_12	4	1677	881	796
+#2 SFR_CELL_R1W	Row_5_of_12	5	0	0	0
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	32	17	15
+#2 SFR_CELL_R2W	Row_2_of_96	2	23	12	11
+#2 SFR_CELL_R2W	Row_3_of_96	3	32	13	19
+#2 SFR_CELL_R2W	Row_4_of_96	4	42	18	24
+#2 SFR_CELL_R2W	Row_5_of_96	5	30	18	12
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	19	9	10
+#2 SFR_CELL_R3W	Row_2_of_96	2	24	16	8
+#2 SFR_CELL_R3W	Row_3_of_96	3	23	11	12
+#2 SFR_CELL_R3W	Row_4_of_96	4	25	16	9
+#2 SFR_CELL_R3W	Row_5_of_96	5	22	13	9
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/WT-TRBR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/WT-TRBR/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/WT-TRBR/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	10656571	5225908	5430663
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	4109884	2190946	1918938
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	54554	27775	26779
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	8774263	4178996	4595267
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	3177116	1630559	1546557
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/WT-TRBR/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 3652 x 12, Mem 370.9K (379808) from /data/analysis/16112022/Combined/WT-TRBR/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/WT-TRBR/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/WT-TRBR_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	3652.0000	1964.0000	1688.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	3652.0000	1964.0000	1688.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	532.0000	526.5000	539.0000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	432.9897	453.2908	416.7649
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	328.0000	328.0000	328.0000
+
+# DGE processing sample (8) all-well
+#2 MemStatus: DGE_samp_8  2.3G proc, 567.2M rss, 1.7G vms, 3.8% usd, 29.8G avail
+#2 Combining filtered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 8486 x 12, Mem 861.9K (882544) from /data/analysis/16112022/Sublibrary1/all-well/DGE_filtered/cell_metadata.csv
+#2 Loaded 6859549 data from /data/analysis/16112022/Sublibrary1/all-well/DGE_filtered/DGE.mtx
+#2 Processed cells 8486, 8486 total
+#2 Read Dataframe: Dims 7816 x 12, Mem 793.8K (812864) from /data/analysis/16112022/Sublibrary2/all-well/DGE_filtered/cell_metadata.csv
+#2 Loaded 6003501 data from /data/analysis/16112022/Sublibrary2/all-well/DGE_filtered/DGE.mtx
+#2 Processed cells 7816, 16302 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/all-well/DGE_filtered/all_genes.csv
+#2 Wrote mtx 16302 by 56749 with 12863049 to /data/analysis/16112022/Combined/all-well/DGE_filtered/DGE.mtx
+#2 Read Dataframe: Dims 29495 x 3, Mem 921.7K (943840) from /data/analysis/16112022/Sublibrary1/all-well/report/expressed_genes.csv
+#2 Read Dataframe: Dims 28863 x 3, Mem 902.0K (923616) from /data/analysis/16112022/Sublibrary2/all-well/report/expressed_genes.csv
+# Wrote 31138 by 6 table to /data/analysis/16112022/Combined/all-well/report/expressed_genes.csv
+#2 SFF_EXPRESS_GENE	Column_names	gene_id	gene_names	genome	cell_count	s1_cell_count	s2_cell_count
+#2 SFF_EXPRESS_GENE	Row_1_of_31138	ENSMUSG00000000001	Gnai3	mm39	1892	1032	860
+#2 SFF_EXPRESS_GENE	Row_2_of_31138	ENSMUSG00000000003	Pbsn	mm39	16	8	8
+#2 SFF_EXPRESS_GENE	Row_3_of_31138	ENSMUSG00000000028	Cdc45	mm39	390	203	187
+#2 SFF_EXPRESS_GENE	Row_4_of_31138	ENSMUSG00000000031	H19	mm39	18	14	4
+#2 SFF_EXPRESS_GENE	Row_5_of_31138	ENSMUSG00000000037	Scml2	mm39	168	88	80
+#2 MemStatus: DGE_combinine;_After_DGE_files_samp_all-well  2.3G proc, 587.2M rss, 1.8G vms, 3.9% usd, 29.8G avail
+#2 Combining unfiltered DGE files
+#2 Files from potentially 2 sublibs
+#2 Read Dataframe: Dims 103009 x 12, Mem 10.2M (10712936) from /data/analysis/16112022/Sublibrary1/all-well/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 10740533 data from /data/analysis/16112022/Sublibrary1/all-well/DGE_unfiltered/DGE.mtx
+#2 Processed cells 103009, 103009 total
+#2 Read Dataframe: Dims 89571 x 12, Mem 8.9M (9315384) from /data/analysis/16112022/Sublibrary2/all-well/DGE_unfiltered/cell_metadata.csv
+#2 Loaded 8367951 data from /data/analysis/16112022/Sublibrary2/all-well/DGE_unfiltered/DGE.mtx
+#2 Processed cells 89571, 192580 total
+#2 Copy /data/analysis/16112022/Combined/process/all_genes.csv to /data/analysis/16112022/Combined/all-well/DGE_unfiltered/all_genes.csv
+#2 Wrote mtx 192580 by 56749 with 19108483 to /data/analysis/16112022/Combined/all-well/DGE_unfiltered/DGE.mtx
+#2 Merging combine-mode csv files
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary1/all-well_analysis_summary.csv
+#2 Read Dataframe: Dims 23 x 1, Mem 368B (368) from /data/analysis/16112022/Sublibrary2/all-well_analysis_summary.csv
+#2 Read Dataframe: Dims 110560 x 1, Mem 1.7M (1768960) from /data/analysis/16112022/Sublibrary1/all-well/report/tscp_counts.csv
+#2 Read Dataframe: Dims 110287 x 1, Mem 1.7M (1764592) from /data/analysis/16112022/Sublibrary2/all-well/report/tscp_counts.csv
+# Wrote 220847 by 2 table to /data/analysis/16112022/Combined/all-well/report/tscp_counts.csv
+#2 SFR_TSCP_CT	Column_names	bc_wells	count
+#2 SFR_TSCP_CT	Row_1_of_220847	10_35_08__1	58070
+#2 SFR_TSCP_CT	Row_2_of_220847	07_50_94__1	55236
+#2 SFR_TSCP_CT	Row_3_of_220847	09_50_63__1	38285
+#2 SFR_TSCP_CT	Row_4_of_220847	07_01_68__1	37105
+#2 SFR_TSCP_CT	Row_5_of_220847	07_28_47__1	33675
+#2 Read Dataframe: Dims 8486 x 1, Mem 132.6K (135776) from /data/analysis/16112022/Sublibrary1/all-well/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 8486 x 1, Mem 132.6K (135776) from /data/analysis/16112022/Sublibrary1/all-well/report/species_tscp_counts.csv
+#2 Read Dataframe: Dims 7816 x 1, Mem 122.1K (125056) from /data/analysis/16112022/Sublibrary2/all-well/report/species_tscp_counts.csv
+# Wrote 16302 by 2 table to /data/analysis/16112022/Combined/all-well/report/species_tscp_counts.csv
+#2 SFR_SPEC_TSCP_CT	Column_names	bc_wells	mm39
+#2 SFR_SPEC_TSCP_CT	Row_1_of_16302	10_35_08__1	58070
+#2 SFR_SPEC_TSCP_CT	Row_2_of_16302	07_50_94__1	55236
+#2 SFR_SPEC_TSCP_CT	Row_3_of_16302	09_50_63__1	38285
+#2 SFR_SPEC_TSCP_CT	Row_4_of_16302	07_01_68__1	37105
+#2 SFR_SPEC_TSCP_CT	Row_5_of_16302	07_28_47__1	33675
+#2 Read Dataframe: Dims 15 x 1, Mem 240B (240) from /data/analysis/16112022/Sublibrary1/all-well/report/gene_counts_subsampled.csv
+#2 Read Dataframe: Dims 15 x 1, Mem 240B (240) from /data/analysis/16112022/Sublibrary2/all-well/report/gene_counts_subsampled.csv
+# Wrote 16 by 3 table to /data/analysis/16112022/Combined/all-well/report/gene_counts_subsampled.csv
+#2 SFR_SS_GENE_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_GENE_CT	Row_1_of_16	0.0	0.0000	0.0000
+#2 SFR_SS_GENE_CT	Row_2_of_16	1000.0	60.0000	59.0000
+#2 SFR_SS_GENE_CT	Row_3_of_16	2000.0	107.0000	105.0000
+#2 SFR_SS_GENE_CT	Row_4_of_16	3000.0	148.0000	142.0000
+#2 SFR_SS_GENE_CT	Row_5_of_16	4000.0	184.0000	178.0000
+#2 Read Dataframe: Dims 15 x 1, Mem 240B (240) from /data/analysis/16112022/Sublibrary1/all-well/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 15 x 1, Mem 240B (240) from /data/analysis/16112022/Sublibrary2/all-well/report/tscp_counts_subsampled.csv
+# Wrote 16 by 3 table to /data/analysis/16112022/Combined/all-well/report/tscp_counts_subsampled.csv
+#2 SFR_SS_TSCP_CT	Column_names	subsample	mm39__Sublibrary1__	mm39__Sublibrary2__
+#2 SFR_SS_TSCP_CT	Row_1_of_16	0.0	0.0000	0.0000
+#2 SFR_SS_TSCP_CT	Row_2_of_16	1000.0	100.0000	96.0000
+#2 SFR_SS_TSCP_CT	Row_3_of_16	2000.0	191.0000	180.0000
+#2 SFR_SS_TSCP_CT	Row_4_of_16	3000.0	273.0000	253.0000
+#2 SFR_SS_TSCP_CT	Row_5_of_16	4000.0	346.0000	321.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/all-well/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/all-well/report/tscp_median_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/all-well/report/tscp_median_by_rnd1_well.csv
+#2 SFR_TSCP_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R1W	Row_1_of_12	1	779	815	742
+#2 SFR_TSCP_R1W	Row_2_of_12	2	895	948	840
+#2 SFR_TSCP_R1W	Row_3_of_12	3	798	864	727
+#2 SFR_TSCP_R1W	Row_4_of_12	4	803	817	789
+#2 SFR_TSCP_R1W	Row_5_of_12	5	911	1011	805
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/all-well/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/all-well/report/tscp_median_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/all-well/report/tscp_median_by_rnd2_well.csv
+#2 SFR_TSCP_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R2W	Row_1_of_96	1	1085	1226	935
+#2 SFR_TSCP_R2W	Row_2_of_96	2	907	1058	746
+#2 SFR_TSCP_R2W	Row_3_of_96	3	966	1009	920
+#2 SFR_TSCP_R2W	Row_4_of_96	4	1140	1190	1088
+#2 SFR_TSCP_R2W	Row_5_of_96	5	1043	999	1092
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/all-well/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/all-well/report/tscp_median_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/all-well/report/tscp_median_by_rnd3_well.csv
+#2 SFR_TSCP_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_TSCP_R3W	Row_1_of_96	1	1292	1504	1065
+#2 SFR_TSCP_R3W	Row_2_of_96	2	903	1016	783
+#2 SFR_TSCP_R3W	Row_3_of_96	3	1060	1135	981
+#2 SFR_TSCP_R3W	Row_4_of_96	4	1624	1658	1589
+#2 SFR_TSCP_R3W	Row_5_of_96	5	1254	1384	1116
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary1/all-well/report/tscp_cutoff_calc.csv
+#2 Read Dataframe: Dims 30 x 1, Mem 480B (480) from /data/analysis/16112022/Sublibrary2/all-well/report/tscp_cutoff_calc.csv
+# Wrote 30 by 4 table to /data/analysis/16112022/Combined/all-well/report/tscp_cutoff_calc.csv
+#2 SFR_TSCP_CUTOFF	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SFR_TSCP_CUTOFF	Row_1_of_30	min_tscp	30.0000	30.0000	30.0000
+#2 SFR_TSCP_CUTOFF	Row_2_of_30	use_tscp	0.0000	0.0000	0.0000
+#2 SFR_TSCP_CUTOFF	Row_3_of_30	min_cells	10.0000	10.0000	10.0000
+#2 SFR_TSCP_CUTOFF	Row_4_of_30	max_cells	30000.0000	30000.0000	30000.0000
+#2 SFR_TSCP_CUTOFF	Row_5_of_30	use_cells	0.0000	0.0000	0.0000
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary1/all-well/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 1, Mem 192B (192) from /data/analysis/16112022/Sublibrary2/all-well/report/cell_counts_by_rnd1_well.csv
+# Wrote 12 by 4 table to /data/analysis/16112022/Combined/all-well/report/cell_counts_by_rnd1_well.csv
+#2 SFR_CELL_R1W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R1W	Row_1_of_12	1	650	336	314
+#2 SFR_CELL_R1W	Row_2_of_12	2	897	450	447
+#2 SFR_CELL_R1W	Row_3_of_12	3	1323	656	667
+#2 SFR_CELL_R1W	Row_4_of_12	4	1121	542	579
+#2 SFR_CELL_R1W	Row_5_of_12	5	882	481	401
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/all-well/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/all-well/report/cell_counts_by_rnd2_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/all-well/report/cell_counts_by_rnd2_well.csv
+#2 SFR_CELL_R2W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R2W	Row_1_of_96	1	137	73	64
+#2 SFR_CELL_R2W	Row_2_of_96	2	106	51	55
+#2 SFR_CELL_R2W	Row_3_of_96	3	131	66	65
+#2 SFR_CELL_R2W	Row_4_of_96	4	182	82	100
+#2 SFR_CELL_R2W	Row_5_of_96	5	137	76	61
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary1/all-well/report/cell_counts_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 1, Mem 1.5K (1536) from /data/analysis/16112022/Sublibrary2/all-well/report/cell_counts_by_rnd3_well.csv
+# Wrote 96 by 4 table to /data/analysis/16112022/Combined/all-well/report/cell_counts_by_rnd3_well.csv
+#2 SFR_CELL_R3W	Column_names	well	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_CELL_R3W	Row_1_of_96	1	77	41	36
+#2 SFR_CELL_R3W	Row_2_of_96	2	98	51	47
+#2 SFR_CELL_R3W	Row_3_of_96	3	98	44	54
+#2 SFR_CELL_R3W	Row_4_of_96	4	87	52	35
+#2 SFR_CELL_R3W	Row_5_of_96	5	107	56	51
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary1/all-well/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 6 x 1, Mem 96B (96) from /data/analysis/16112022/Sublibrary2/all-well/report/sample_mrtg_counts.csv
+# Wrote 6 by 4 table to /data/analysis/16112022/Combined/all-well/report/sample_mrtg_counts.csv
+#2 SFR_SAMP_MRTG_CT	Column_names	statistic	count	count__Sublibrary1__	count__Sublibrary2__
+#2 SFR_SAMP_MRTG_CT	Row_1_of_6	read_tcount	123009117	62519829	60489288
+#2 SFR_SAMP_MRTG_CT	Row_2_of_6	tscp_tcount	46845045	25577051	21267994
+#2 SFR_SAMP_MRTG_CT	Row_3_of_6	gene_tcount	76284	38441	37843
+#2 SFR_SAMP_MRTG_CT	Row_4_of_6	read_count	103004369	50885892	52118477
+#2 SFR_SAMP_MRTG_CT	Row_5_of_6	tscp_count	36918987	19414659	17504328
+#2 Recalculating cell-data-based combined stats
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/all-well/report/sample_mrtg_counts.csv
+#2 Read Dataframe: Dims 14 x 3, Mem 448B (448) from /data/analysis/16112022/Combined/process/pipeline_stats.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/process/sequencing_stats.csv
+#2 Read Dataframe: Dims 16302 x 12, Mem 1.6M (1695408) from /data/analysis/16112022/Combined/all-well/DGE_filtered/cell_metadata.csv
+#2 Read Dataframe: Dims 6 x 3, Mem 192B (192) from /data/analysis/16112022/Combined/all-well/report/sample_mrtg_counts.csv
+# Wrote 23 by 4 table to /data/analysis/16112022/Combined/all-well_analysis_summary.csv
+#2 SF_ASUM_CSV	Column_names	statistic	value	value__Sublibrary1__	value__Sublibrary2__
+#2 SF_ASUM_CSV	Row_1_of_23	cell_number_estimate	16302.0000	8486.0000	7816.0000
+#2 SF_ASUM_CSV	Row_2_of_23	mm39_number_of_cells	16302.0000	8486.0000	7816.0000
+#2 SF_ASUM_CSV	Row_3_of_23	mm39_median_tscp_per_cell	1021.0000	1100.5000	932.0000
+#2 SF_ASUM_CSV	Row_4_of_23	mm39_median_tscp_at50	824.4853	931.2114	718.6914
+#2 SF_ASUM_CSV	Row_5_of_23	mm39_median_genes_per_cell	490.0000	521.0000	451.5000
+#2 MemStatus: DGE  2.3G proc, 567.0M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 DskStatus: DGE  '/data/' 787.3G total, 465.8G (59.17%) used, 286.4G (36.38%) free
+# << Running DGE; Status True; Duration 0:01:12.20
+
+# Time	Before Analysis	2022-11-17 06:21:38.88
+# >> Running Analysis
+#2 MemStatus: Analysis  2.3G proc, 567.0M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 DskStatus: Analysis  '/data/' 787.3G total, 465.8G (59.17%) used, 286.4G (36.38%) free
+# 
+# Analysis processing sample (1 of 8) KO-BL
+#2 MemStatus: Analysis_samp_1  2.3G proc, 567.0M rss, 1.8G vms, 3.8% usd, 29.8G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (2975, 56749)
+#2 Calling Scanpy to cluster (adata shape (2975, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(2975,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  2.3G proc, 574.2M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_filter_genes_3  2.3G proc, 574.2M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_normalize_total_target_sum=10000.0  2.3G proc, 574.2M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_setting_raw  2.3G proc, 574.4M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_log1p  2.3G proc, 574.4M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_highly_variable_genes  2.3G proc, 575.3M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_scale_(max=10,_zero_center=False)  2.3G proc, 579.1M rss, 1.8G vms, 3.8% usd, 29.8G avail
+#2 PCA using 5637 highly variable genes
+#2 PCA via irlbpy, input shape (2975, 5637), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(2975, 5637), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 5637), scale=None
+<< lanczos it=33 mprod=338
+#2 MemStatus: SCA_(2975,_18734)_After_irlbpy;_Next_neighbors  2.5G proc, 585.2M rss, 1.9G vms, 3.9% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_neighbors,_n_neighbors=50;_Next_umap  3.1G proc, 623.9M rss, 2.5G vms, 4.0% usd, 29.8G avail
+#2 MemStatus: SCA_(2975,_18734)_After_umap,_min_dist=0.5  3.2G proc, 629.6M rss, 2.5G vms, 4.0% usd, 29.8G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(2975,_18734)_After_clustering_leiden,_done  3.2G proc, 640.2M rss, 2.6G vms, 4.0% usd, 29.8G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/KO-BL/DGE_filtered/anndata.h5ad
+# Wrote 2975 by 2 table to /data/analysis/16112022/Combined/KO-BL/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_2975	12_44_74__s1	5
+#2 SFR_CLUST_ASSIGN	Row_2_of_2975	12_53_47__s1	0
+#2 SFR_CLUST_ASSIGN	Row_3_of_2975	12_16_23__s1	5
+#2 SFR_CLUST_ASSIGN	Row_4_of_2975	12_40_87__s1	5
+#2 SFR_CLUST_ASSIGN	Row_5_of_2975	12_69_50__s1	0
+# Wrote 2975 by 3 table to /data/analysis/16112022/Combined/KO-BL/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_2975	12_44_74__s1	28.6972	3.6339
+#2 SFR_CLUST_UMAP	Row_2_of_2975	12_53_47__s1	28.7181	6.2747
+#2 SFR_CLUST_UMAP	Row_3_of_2975	12_16_23__s1	28.4694	2.5820
+#2 SFR_CLUST_UMAP	Row_4_of_2975	12_40_87__s1	27.2096	2.7579
+#2 SFR_CLUST_UMAP	Row_5_of_2975	12_69_50__s1	28.8229	6.2028
+# Getting gene enrichment table, 7 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Collecting, cluster 6
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+#3 Calculating, cluster 6
+# Wrote 140 by 9 table to /data/analysis/16112022/Combined/KO-BL/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_140	1	ENSMUSG00000070695	Cntnap5a	mm39	28.6980	3.7270	0.0850	0.0110	4.014e-01
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_140	1	ENSMUSG00000021991	Cacna2d3	mm39	26.7860	3.6420	0.0740	0.0100	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_140	1	ENSMUSG00000039809	Gabbr2	mm39	25.8640	4.0640	0.0640	0.0050	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_140	1	ENSMUSG00000049176	Frmpd4	mm39	25.6410	3.5220	0.0830	0.0110	5.107e-01
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_140	1	ENSMUSG00000034310	Tmem132d	mm39	24.8400	3.5120	0.0710	0.0080	1.000e+00
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/KO-BL/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	7
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+# 
+# Analysis processing sample (2 of 8) KO-NN
+#2 MemStatus: Analysis_samp_2  3.2G proc, 663.3M rss, 2.6G vms, 4.1% usd, 29.7G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (2291, 56749)
+#2 Calling Scanpy to cluster (adata shape (2291, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(2291,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  3.3G proc, 714.4M rss, 2.6G vms, 4.2% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_filter_genes_3  3.3G proc, 714.4M rss, 2.6G vms, 4.2% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_normalize_total_target_sum=10000.0  3.3G proc, 714.4M rss, 2.6G vms, 4.2% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_setting_raw  3.3G proc, 714.4M rss, 2.6G vms, 4.2% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_log1p  3.3G proc, 714.4M rss, 2.6G vms, 4.2% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_highly_variable_genes  3.3G proc, 714.3M rss, 2.6G vms, 4.2% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_scale_(max=10,_zero_center=False)  3.3G proc, 725.1M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 PCA using 4262 highly variable genes
+#2 PCA via irlbpy, input shape (2291, 4262), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(2291, 4262), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 4262), scale=None
+<< lanczos it=46 mprod=416
+#2 MemStatus: SCA_(2291,_19494)_After_irlbpy;_Next_neighbors  3.3G proc, 726.5M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_neighbors,_n_neighbors=50;_Next_umap  3.3G proc, 727.3M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(2291,_19494)_After_umap,_min_dist=0.5  3.3G proc, 727.3M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(2291,_19494)_After_clustering_leiden,_done  3.3G proc, 728.0M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/KO-NN/DGE_filtered/anndata.h5ad
+# Wrote 2291 by 2 table to /data/analysis/16112022/Combined/KO-NN/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_2291	07_50_94__s1	7
+#2 SFR_CLUST_ASSIGN	Row_2_of_2291	07_01_68__s1	2
+#2 SFR_CLUST_ASSIGN	Row_3_of_2291	07_28_47__s1	4
+#2 SFR_CLUST_ASSIGN	Row_4_of_2291	07_13_37__s1	7
+#2 SFR_CLUST_ASSIGN	Row_5_of_2291	07_65_70__s1	2
+# Wrote 2291 by 3 table to /data/analysis/16112022/Combined/KO-NN/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_2291	07_50_94__s1	5.8668	-8.9961
+#2 SFR_CLUST_UMAP	Row_2_of_2291	07_01_68__s1	7.3751	-8.7425
+#2 SFR_CLUST_UMAP	Row_3_of_2291	07_28_47__s1	5.2162	-11.0890
+#2 SFR_CLUST_UMAP	Row_4_of_2291	07_13_37__s1	4.4662	-9.7915
+#2 SFR_CLUST_UMAP	Row_5_of_2291	07_65_70__s1	5.9924	-8.0437
+# Getting gene enrichment table, 10 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Collecting, cluster 6
+#3 Collecting, cluster 7
+#3 Collecting, cluster 8
+#3 Collecting, cluster 9
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+#3 Calculating, cluster 6
+#3 Calculating, cluster 7
+#3 Calculating, cluster 8
+#3 Calculating, cluster 9
+# Wrote 200 by 9 table to /data/analysis/16112022/Combined/KO-NN/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_200	1	ENSMUSG00000047150	1700001C19Rik	mm39	3.5270	1.8090	0.0190	0.0070	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_200	1	ENSMUSG00000035395	Dcaf8l	mm39	3.3090	2.3760	0.0140	0.0060	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_200	1	ENSMUSG00000111960	Gm46349	mm39	3.2990	1.9920	0.0220	0.0130	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_200	1	ENSMUSG00000052504	Epha3	mm39	3.2380	2.3250	0.0140	0.0060	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_200	1	ENSMUSG00000112629	Gm47771	mm39	2.9610	2.6580	0.0110	0.0020	1.000e+00
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/KO-NN/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	10
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+# 
+# Analysis processing sample (3 of 8) KO-TL
+#2 MemStatus: Analysis_samp_3  3.3G proc, 717.0M rss, 2.6G vms, 4.3% usd, 29.7G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (2329, 56749)
+#2 Calling Scanpy to cluster (adata shape (2329, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(2329,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  3.4G proc, 755.6M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_filter_genes_3  3.4G proc, 755.6M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_normalize_total_target_sum=10000.0  3.4G proc, 755.6M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_setting_raw  3.4G proc, 755.6M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_log1p  3.4G proc, 755.6M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_highly_variable_genes  3.4G proc, 755.6M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_scale_(max=10,_zero_center=False)  3.4G proc, 765.4M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 PCA using 5190 highly variable genes
+#2 PCA via irlbpy, input shape (2329, 5190), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(2329, 5190), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 5190), scale=None
+<< lanczos it=26 mprod=296
+#2 MemStatus: SCA_(2329,_20249)_After_irlbpy;_Next_neighbors  3.4G proc, 766.2M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_neighbors,_n_neighbors=50;_Next_umap  3.4G proc, 766.5M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 MemStatus: SCA_(2329,_20249)_After_umap,_min_dist=0.5  3.4G proc, 763.7M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(2329,_20249)_After_clustering_leiden,_done  3.4G proc, 764.2M rss, 2.7G vms, 4.4% usd, 29.6G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/KO-TL/DGE_filtered/anndata.h5ad
+# Wrote 2329 by 2 table to /data/analysis/16112022/Combined/KO-TL/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_2329	10_35_08__s1	8
+#2 SFR_CLUST_ASSIGN	Row_2_of_2329	09_50_63__s1	3
+#2 SFR_CLUST_ASSIGN	Row_3_of_2329	09_10_11__s1	3
+#2 SFR_CLUST_ASSIGN	Row_4_of_2329	10_37_23__s1	8
+#2 SFR_CLUST_ASSIGN	Row_5_of_2329	09_37_21__s1	2
+# Wrote 2329 by 3 table to /data/analysis/16112022/Combined/KO-TL/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_2329	10_35_08__s1	11.6781	-4.9509
+#2 SFR_CLUST_UMAP	Row_2_of_2329	09_50_63__s1	15.8084	-0.0837
+#2 SFR_CLUST_UMAP	Row_3_of_2329	09_10_11__s1	16.4764	0.5511
+#2 SFR_CLUST_UMAP	Row_4_of_2329	10_37_23__s1	12.1569	-4.6282
+#2 SFR_CLUST_UMAP	Row_5_of_2329	09_37_21__s1	18.1713	-0.0434
+# Getting gene enrichment table, 12 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Collecting, cluster 6
+#3 Collecting, cluster 7
+#3 Collecting, cluster 8
+#3 Collecting, cluster 9
+#3 Collecting, cluster 10
+#3 Collecting, cluster 11
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+#3 Calculating, cluster 6
+#3 Calculating, cluster 7
+#3 Calculating, cluster 8
+#3 Calculating, cluster 9
+#3 Calculating, cluster 10
+#3 Calculating, cluster 11
+# Wrote 240 by 9 table to /data/analysis/16112022/Combined/KO-TL/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_240	1	ENSMUSG00000110673	Gm45833	mm39	5.2990	2.5650	0.0540	0.0260	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_240	1	ENSMUSG00000006576	Slc4a3	mm39	4.0920	2.4460	0.0280	0.0170	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_240	1	ENSMUSG00000069678	Pcgf1	mm39	3.9510	2.3620	0.0180	0.0110	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_240	1	ENSMUSG00000022843	Clcn2	mm39	3.6110	1.9960	0.0180	0.0070	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_240	1	ENSMUSG00000097760	6030442K20Rik	mm39	3.5100	1.6980	0.0210	0.0100	1.000e+00
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/KO-TL/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	12
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+# 
+# Analysis processing sample (4 of 8) KO-TR
+#2 MemStatus: Analysis_samp_4  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (1626, 56749)
+#2 Calling Scanpy to cluster (adata shape (1626, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(1626,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_filter_genes_3  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_normalize_total_target_sum=10000.0  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_setting_raw  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_log1p  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_highly_variable_genes  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_scale_(max=10,_zero_center=False)  3.5G proc, 801.4M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 PCA using 6387 highly variable genes
+#2 PCA via irlbpy, input shape (1626, 6387), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(1626, 6387), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 6387), scale=None
+<< lanczos it=26 mprod=310
+#2 MemStatus: SCA_(1626,_21629)_After_irlbpy;_Next_neighbors  3.5G proc, 802.6M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_neighbors,_n_neighbors=50;_Next_umap  3.5G proc, 802.6M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 MemStatus: SCA_(1626,_21629)_After_umap,_min_dist=0.5  3.5G proc, 802.6M rss, 2.7G vms, 4.5% usd, 29.6G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(1626,_21629)_After_clustering_leiden,_done  3.5G proc, 803.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/KO-TR/DGE_filtered/anndata.h5ad
+# Wrote 1626 by 2 table to /data/analysis/16112022/Combined/KO-TR/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_1626	11_07_65__s1	6
+#2 SFR_CLUST_ASSIGN	Row_2_of_1626	11_07_77__s1	8
+#2 SFR_CLUST_ASSIGN	Row_3_of_1626	11_58_92__s1	6
+#2 SFR_CLUST_ASSIGN	Row_4_of_1626	11_04_63__s1	6
+#2 SFR_CLUST_ASSIGN	Row_5_of_1626	11_28_36__s1	6
+# Wrote 1626 by 3 table to /data/analysis/16112022/Combined/KO-TR/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_1626	11_07_65__s1	22.4552	1.1621
+#2 SFR_CLUST_UMAP	Row_2_of_1626	11_07_77__s1	24.3919	-7.0626
+#2 SFR_CLUST_UMAP	Row_3_of_1626	11_58_92__s1	22.8077	-0.2337
+#2 SFR_CLUST_UMAP	Row_4_of_1626	11_04_63__s1	22.5363	0.5295
+#2 SFR_CLUST_UMAP	Row_5_of_1626	11_28_36__s1	21.2760	0.7519
+# Getting gene enrichment table, 10 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Collecting, cluster 6
+#3 Collecting, cluster 7
+#3 Collecting, cluster 8
+#3 Collecting, cluster 9
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+#3 Calculating, cluster 6
+#3 Calculating, cluster 7
+#3 Calculating, cluster 8
+#3 Calculating, cluster 9
+# Wrote 200 by 9 table to /data/analysis/16112022/Combined/KO-TR/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_200	1	ENSMUSG00000094962	Gm21954	mm39	7.1080	3.0740	0.0230	0.0020	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_200	1	ENSMUSG00000085102	1700010K24Rik	mm39	5.9370	1.8520	0.0380	0.0120	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_200	1	ENSMUSG00000027079	Clp1	mm39	5.1630	2.5520	0.0200	0.0090	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_200	1	ENSMUSG00000110462	Gm35572	mm39	4.9020	2.4230	0.0200	0.0090	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_200	1	ENSMUSG00000078695	Cisd3	mm39	4.8670	1.7940	0.0320	0.0120	1.000e+00
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/KO-TR/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	10
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+# 
+# Analysis processing sample (5 of 8) WT-BR
+#2 MemStatus: Analysis_samp_5  3.5G proc, 803.1M rss, 2.7G vms, 4.5% usd, 29.6G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (2437, 56749)
+#2 Calling Scanpy to cluster (adata shape (2437, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(2437,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  3.5G proc, 805.6M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_filter_genes_3  3.5G proc, 805.6M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_normalize_total_target_sum=10000.0  3.5G proc, 805.6M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_setting_raw  3.5G proc, 805.6M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_log1p  3.5G proc, 805.6M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_highly_variable_genes  3.5G proc, 805.6M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_scale_(max=10,_zero_center=False)  3.5G proc, 805.6M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 PCA using 7841 highly variable genes
+#2 PCA via irlbpy, input shape (2437, 7841), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(2437, 7841), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 7841), scale=None
+<< lanczos it=59 mprod=582
+#2 MemStatus: SCA_(2437,_27251)_After_irlbpy;_Next_neighbors  3.5G proc, 808.2M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_neighbors,_n_neighbors=50;_Next_umap  3.5G proc, 808.4M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2437,_27251)_After_umap,_min_dist=0.5  3.5G proc, 808.4M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(2437,_27251)_After_clustering_leiden,_done  3.5G proc, 809.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/WT-BR/DGE_filtered/anndata.h5ad
+# Wrote 2437 by 2 table to /data/analysis/16112022/Combined/WT-BR/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_2437	06_14_63__s1	0
+#2 SFR_CLUST_ASSIGN	Row_2_of_2437	06_73_83__s1	0
+#2 SFR_CLUST_ASSIGN	Row_3_of_2437	06_79_49__s1	1
+#2 SFR_CLUST_ASSIGN	Row_4_of_2437	06_42_73__s1	1
+#2 SFR_CLUST_ASSIGN	Row_5_of_2437	06_13_84__s1	4
+# Wrote 2437 by 3 table to /data/analysis/16112022/Combined/WT-BR/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_2437	06_14_63__s1	24.5792	29.4051
+#2 SFR_CLUST_UMAP	Row_2_of_2437	06_73_83__s1	24.6397	29.4913
+#2 SFR_CLUST_UMAP	Row_3_of_2437	06_79_49__s1	15.8830	28.7453
+#2 SFR_CLUST_UMAP	Row_4_of_2437	06_42_73__s1	16.1964	28.2543
+#2 SFR_CLUST_UMAP	Row_5_of_2437	06_13_84__s1	19.7827	24.3458
+# Getting gene enrichment table, 6 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+# Wrote 120 by 9 table to /data/analysis/16112022/Combined/WT-BR/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_120	1	ENSMUSG00000022454	Nell2	mm39	85.8510	4.0050	0.2140	0.0090	3.886e-15
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_120	1	ENSMUSG00000049119	Fam110b	mm39	79.4330	4.2640	0.2290	0.0120	4.428e-17
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_120	1	ENSMUSG00000038048	Cntnap5c	mm39	76.8840	4.0960	0.2670	0.0140	2.946e-23
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_120	1	ENSMUSG00000100301	6030407O03Rik	mm39	73.9890	4.4240	0.1670	0.0080	5.924e-09
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_120	1	ENSMUSG00000034780	B3galt1	mm39	72.2940	4.1470	0.2370	0.0140	3.567e-18
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/WT-BR/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	6
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+# 
+# Analysis processing sample (6 of 8) WT-TR
+#2 MemStatus: Analysis_samp_6  3.5G proc, 809.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (2044, 56749)
+#2 Calling Scanpy to cluster (adata shape (2044, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(2044,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  3.5G proc, 809.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2044,_21437)_After_filter_genes_3  3.5G proc, 809.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2044,_21437)_After_normalize_total_target_sum=10000.0  3.5G proc, 809.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2044,_21437)_After_setting_raw  3.5G proc, 809.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2044,_21437)_After_log1p  3.5G proc, 809.1M rss, 2.7G vms, 4.6% usd, 29.6G avail
+#2 MemStatus: SCA_(2044,_21437)_After_highly_variable_genes  3.4G proc, 731.8M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(2044,_21437)_After_scale_(max=10,_zero_center=False)  3.4G proc, 731.8M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 PCA using 6510 highly variable genes
+#2 PCA via irlbpy, input shape (2044, 6510), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(2044, 6510), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 6510), scale=None
+<< lanczos it=43 mprod=408
+#2 MemStatus: SCA_(2044,_21437)_After_irlbpy;_Next_neighbors  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(2044,_21437)_After_neighbors,_n_neighbors=50;_Next_umap  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(2044,_21437)_After_umap,_min_dist=0.5  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(2044,_21437)_After_clustering_leiden,_done  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/WT-TR/DGE_filtered/anndata.h5ad
+# Wrote 2044 by 2 table to /data/analysis/16112022/Combined/WT-TR/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_2044	02_80_38__s1	2
+#2 SFR_CLUST_ASSIGN	Row_2_of_2044	02_32_76__s1	8
+#2 SFR_CLUST_ASSIGN	Row_3_of_2044	01_39_92__s1	0
+#2 SFR_CLUST_ASSIGN	Row_4_of_2044	02_43_61__s1	8
+#2 SFR_CLUST_ASSIGN	Row_5_of_2044	01_31_29__s1	2
+# Wrote 2044 by 3 table to /data/analysis/16112022/Combined/WT-TR/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_2044	02_80_38__s1	4.1335	6.7856
+#2 SFR_CLUST_UMAP	Row_2_of_2044	02_32_76__s1	9.1973	-4.8676
+#2 SFR_CLUST_UMAP	Row_3_of_2044	01_39_92__s1	8.4359	-0.8720
+#2 SFR_CLUST_UMAP	Row_4_of_2044	02_43_61__s1	8.8424	-5.0581
+#2 SFR_CLUST_UMAP	Row_5_of_2044	01_31_29__s1	4.7529	5.7987
+# Getting gene enrichment table, 10 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Collecting, cluster 6
+#3 Collecting, cluster 7
+#3 Collecting, cluster 8
+#3 Collecting, cluster 9
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+#3 Calculating, cluster 6
+#3 Calculating, cluster 7
+#3 Calculating, cluster 8
+#3 Calculating, cluster 9
+# Wrote 200 by 9 table to /data/analysis/16112022/Combined/WT-TR/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_200	1	ENSMUSG00000059974	Ntm	mm39	76.6010	4.5540	0.2780	0.0170	2.300e-14
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_200	1	ENSMUSG00000056222	Spock1	mm39	72.2200	4.3860	0.1650	0.0100	2.155e-04
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_200	1	ENSMUSG00000025754	Agbl1	mm39	70.5130	4.0050	0.2590	0.0150	3.016e-12
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_200	1	ENSMUSG00000025576	Rbfox3	mm39	70.4940	4.5220	0.1820	0.0120	1.614e-05
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_200	1	ENSMUSG00000055109	Gm15155	mm39	68.3940	4.4900	0.1960	0.0130	1.433e-06
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/WT-TR/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	10
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+# 
+# Analysis processing sample (7 of 8) WT-TRBR
+#2 MemStatus: Analysis_samp_7  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (3652, 56749)
+#2 Calling Scanpy to cluster (adata shape (3652, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(3652,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_filter_genes_3  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_normalize_total_target_sum=10000.0  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_setting_raw  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_log1p  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_highly_variable_genes  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_scale_(max=10,_zero_center=False)  3.4G proc, 732.4M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 PCA using 6291 highly variable genes
+#2 PCA via irlbpy, input shape (3652, 6291), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(3652, 6291), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 6291), scale=None
+<< lanczos it=40 mprod=380
+#2 MemStatus: SCA_(3652,_20996)_After_irlbpy;_Next_neighbors  3.4G proc, 732.9M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_neighbors,_n_neighbors=50;_Next_umap  3.4G proc, 734.0M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 MemStatus: SCA_(3652,_20996)_After_umap,_min_dist=0.5  3.4G proc, 734.0M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(3652,_20996)_After_clustering_leiden,_done  3.4G proc, 734.5M rss, 2.6G vms, 4.3% usd, 29.7G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/WT-TRBR/DGE_filtered/anndata.h5ad
+# Wrote 3652 by 2 table to /data/analysis/16112022/Combined/WT-TRBR/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_3652	03_49_50__s1	6
+#2 SFR_CLUST_ASSIGN	Row_2_of_3652	04_48_44__s1	10
+#2 SFR_CLUST_ASSIGN	Row_3_of_3652	04_05_79__s1	8
+#2 SFR_CLUST_ASSIGN	Row_4_of_3652	03_27_44__s1	6
+#2 SFR_CLUST_ASSIGN	Row_5_of_3652	04_63_82__s1	6
+# Wrote 3652 by 3 table to /data/analysis/16112022/Combined/WT-TRBR/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_3652	03_49_50__s1	8.4057	17.5489
+#2 SFR_CLUST_UMAP	Row_2_of_3652	04_48_44__s1	3.7842	15.0550
+#2 SFR_CLUST_UMAP	Row_3_of_3652	04_05_79__s1	2.0736	12.1930
+#2 SFR_CLUST_UMAP	Row_4_of_3652	03_27_44__s1	8.4279	16.6894
+#2 SFR_CLUST_UMAP	Row_5_of_3652	04_63_82__s1	8.8466	17.1743
+# Getting gene enrichment table, 11 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Collecting, cluster 6
+#3 Collecting, cluster 7
+#3 Collecting, cluster 8
+#3 Collecting, cluster 9
+#3 Collecting, cluster 10
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+#3 Calculating, cluster 6
+#3 Calculating, cluster 7
+#3 Calculating, cluster 8
+#3 Calculating, cluster 9
+#3 Calculating, cluster 10
+# Wrote 220 by 9 table to /data/analysis/16112022/Combined/WT-TRBR/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_220	1	ENSMUSG00000024675	Ms4a4c	mm39	9.8270	2.6590	0.0460	0.0120	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_220	1	ENSMUSG00000040264	Gbp2b	mm39	8.0220	2.4310	0.0410	0.0120	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_220	1	ENSMUSG00000052160	Pld4	mm39	7.5250	2.5500	0.1650	0.0560	1.886e-03
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_220	1	ENSMUSG00000021423	Ly86	mm39	6.8570	2.3150	0.0810	0.0270	1.000e+00
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_220	1	ENSMUSG00000027199	Gatm	mm39	6.8570	2.4480	0.0280	0.0080	1.000e+00
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/WT-TRBR/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	11
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+# 
+# Analysis processing sample (8 of 8) all-well
+#2 MemStatus: Analysis_samp_8  3.4G proc, 765.1M rss, 2.7G vms, 4.4% usd, 29.6G avail
+/home/ec2-user/anaconda3/envs/parse/lib/python3.9/site-packages/splitpipe/utils.py:2773: FutureWarning: X.dtype being converted to np.float32 from int64. In the next version of anndata (0.9) conversion will not be automatic. Pass dtype explicitly to avoid this warning. Pass `AnnData(X, dtype=X.dtype, ...)` to get the future behavour.
+  adata = scanpy.AnnData(X=X,)
+#2 Loaded anndata (16302, 56749)
+#2 Calling Scanpy to cluster (adata shape (16302, 56749))
+# Analysis PCA via irlbpy; Not mem_eff settings; zero_center=False
+#2 MemStatus: SCA_(16302,_56749)_function_scanpy_cluster_anndata_start,_rseed=758  3.6G proc, 864.3M rss, 2.8G vms, 4.7% usd, 29.5G avail
+#2 MemStatus: SCA_(16302,_32965)_After_filter_genes_3  3.6G proc, 864.2M rss, 2.8G vms, 4.7% usd, 29.5G avail
+#2 MemStatus: SCA_(16302,_32965)_After_normalize_total_target_sum=10000.0  3.6G proc, 864.2M rss, 2.8G vms, 4.7% usd, 29.5G avail
+#2 MemStatus: SCA_(16302,_32965)_After_setting_raw  3.8G proc, 962.2M rss, 2.9G vms, 5.1% usd, 29.4G avail
+#2 MemStatus: SCA_(16302,_32965)_After_log1p  3.8G proc, 962.2M rss, 2.9G vms, 5.1% usd, 29.4G avail
+#2 MemStatus: SCA_(16302,_32965)_After_highly_variable_genes  3.8G proc, 962.3M rss, 2.9G vms, 5.1% usd, 29.4G avail
+#2 MemStatus: SCA_(16302,_32965)_After_scale_(max=10,_zero_center=False)  3.8G proc, 962.3M rss, 2.9G vms, 5.1% usd, 29.4G avail
+#2 PCA using 5425 highly variable genes
+#2 PCA via irlbpy, input shape (16302, 5425), n_comps=50, use_hv=True, zero_center=True
+>> lanczos A=(16302, 5425), nval=50, tol=1e-05, maxit=200
+++ lanczos center=(1, 5425), scale=None
+<< lanczos it=78 mprod=608
+#2 MemStatus: SCA_(16302,_32965)_After_irlbpy;_Next_neighbors  3.8G proc, 966.4M rss, 2.9G vms, 5.1% usd, 29.4G avail
+#2 MemStatus: SCA_(16302,_32965)_After_neighbors,_n_neighbors=50;_Next_umap  5.1G proc, 1.2G rss, 3.8G vms, 5.9% usd, 29.2G avail
+#2 MemStatus: SCA_(16302,_32965)_After_umap,_min_dist=0.5  5.1G proc, 1.2G rss, 3.9G vms, 6.0% usd, 29.1G avail
+#2 Clustering (leiden)
+#2 MemStatus: SCA_(16302,_32965)_After_clustering_leiden,_done  5.0G proc, 1.2G rss, 3.8G vms, 5.9% usd, 29.2G avail
+#2 Wrote anndata: /data/analysis/16112022/Combined/all-well/DGE_filtered/anndata.h5ad
+# Wrote 16302 by 2 table to /data/analysis/16112022/Combined/all-well/report/cluster_assignment.csv
+#2 SFR_CLUST_ASSIGN	Column_names	bc_wells	leiden
+#2 SFR_CLUST_ASSIGN	Row_1_of_16302	10_35_08__s1	7
+#2 SFR_CLUST_ASSIGN	Row_2_of_16302	07_50_94__s1	0
+#2 SFR_CLUST_ASSIGN	Row_3_of_16302	09_50_63__s1	0
+#2 SFR_CLUST_ASSIGN	Row_4_of_16302	07_01_68__s1	0
+#2 SFR_CLUST_ASSIGN	Row_5_of_16302	07_28_47__s1	0
+# Wrote 16302 by 3 table to /data/analysis/16112022/Combined/all-well/report/cluster_umap.csv
+#2 SFR_CLUST_UMAP	Column_names	bc_wells	umap_X	umap_Y
+#2 SFR_CLUST_UMAP	Row_1_of_16302	10_35_08__s1	-0.0062	1.2009
+#2 SFR_CLUST_UMAP	Row_2_of_16302	07_50_94__s1	14.7984	4.8221
+#2 SFR_CLUST_UMAP	Row_3_of_16302	09_50_63__s1	15.5659	5.0190
+#2 SFR_CLUST_UMAP	Row_4_of_16302	07_01_68__s1	15.0702	6.1844
+#2 SFR_CLUST_UMAP	Row_5_of_16302	07_28_47__s1	12.8918	5.7202
+# Getting gene enrichment table, 13 clusters, top 20 genes each
+#3 Collecting, cluster 0
+#3 Collecting, cluster 1
+#3 Collecting, cluster 2
+#3 Collecting, cluster 3
+#3 Collecting, cluster 4
+#3 Collecting, cluster 5
+#3 Collecting, cluster 6
+#3 Collecting, cluster 7
+#3 Collecting, cluster 8
+#3 Collecting, cluster 9
+#3 Collecting, cluster 10
+#3 Collecting, cluster 11
+#3 Collecting, cluster 12
+#3 Calculating, cluster 0
+#3 Calculating, cluster 1
+#3 Calculating, cluster 2
+#3 Calculating, cluster 3
+#3 Calculating, cluster 4
+#3 Calculating, cluster 5
+#3 Calculating, cluster 6
+#3 Calculating, cluster 7
+#3 Calculating, cluster 8
+#3 Calculating, cluster 9
+#3 Calculating, cluster 10
+#3 Calculating, cluster 11
+#3 Calculating, cluster 12
+# Wrote 260 by 9 table to /data/analysis/16112022/Combined/all-well/report/cluster_diff_exp.csv
+#2 SFR_CLUST_DIFF_EXP	Column_names	cluster	gene_id	gene_name	genome	score	log2_FC	pct1	pct2	pval_adj
+#2 SFR_CLUST_DIFF_EXP	Row_1_of_260	1	ENSMUSG00000001504	Irx2	mm39	30.5150	2.2500	0.1660	0.0120	7.330e-34
+#2 SFR_CLUST_DIFF_EXP	Row_2_of_260	1	ENSMUSG00000000567	Sox9	mm39	21.8920	2.0720	0.3530	0.0330	7.792e-145
+#2 SFR_CLUST_DIFF_EXP	Row_3_of_260	1	ENSMUSG00000062380	Tubb3	mm39	21.5790	1.9770	0.1320	0.0120	4.974e-20
+#2 SFR_CLUST_DIFF_EXP	Row_4_of_260	1	ENSMUSG00000028463	Car9	mm39	21.2800	1.9160	0.1160	0.0100	1.827e-15
+#2 SFR_CLUST_DIFF_EXP	Row_5_of_260	1	ENSMUSG00000034457	Eda2r	mm39	20.9490	1.8510	0.1430	0.0130	5.569e-24
+# Wrote 7 by 2 table to /data/analysis/16112022/Combined/all-well/report/analysis_proc_def.csv
+#2 SFR_ANA_PROC_DEF	Column_names	statistic	value
+#2 SFR_ANA_PROC_DEF	Row_1_of_7	status	good
+#2 SFR_ANA_PROC_DEF	Row_2_of_7	cluster_num	13
+#2 SFR_ANA_PROC_DEF	Row_3_of_7	cluster_alg	leiden
+#2 SFR_ANA_PROC_DEF	Row_4_of_7	cluster_min_bc	30
+#2 SFR_ANA_PROC_DEF	Row_5_of_7	cluster_1base	True
+#2 MemStatus: Analysis  5.1G proc, 1.2G rss, 3.8G vms, 6.0% usd, 29.1G avail
+#2 DskStatus: Analysis  '/data/' 787.3G total, 466.3G (59.24%) used, 285.9G (36.31%) free
+# << Running Analysis; Status True; Duration 0:04:24.90
+
+# Time	Before Reports	2022-11-17 06:26:03.79
+# >> Running Reports
+#2 MemStatus: Reports  5.1G proc, 1.2G rss, 3.8G vms, 6.0% usd, 29.1G avail
+#2 DskStatus: Reports  '/data/' 787.3G total, 466.3G (59.24%) used, 285.9G (36.31%) free
+# 
+# Report processing sample (1 of 8) KO-BL
+#2 MemStatus: Report_samp_1  5.1G proc, 1.2G rss, 3.8G vms, 6.0% usd, 29.1G avail
+#2 Loaded anndata (2975, 18734) from /data/analysis/16112022/Combined/KO-BL/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/KO-BL_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-BL/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-BL/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-BL/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-BL/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-BL/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-BL/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 10 x 2, Mem 240B (240) from /data/analysis/16112022/Combined/KO-BL/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 10 x 2, Mem 240B (240) from /data/analysis/16112022/Combined/KO-BL/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 18416 x 1, Mem 287.8K (294656) from /data/analysis/16112022/Combined/KO-BL/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 140 x 9, Mem 10.0K (10208) from /data/analysis/16112022/Combined/KO-BL/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 No cell subsampling for gex plot; All 2975
+#2  packaged 935	4.99%
+#2  packaged 1871	9.99%
+#2  packaged 2807	14.98%
+#2  packaged 3743	19.98%
+#2  packaged 4679	24.98%
+#2  packaged 5615	29.97%
+#2  packaged 6551	34.97%
+#2  packaged 7487	39.96%
+#2  packaged 8423	44.96%
+#2  packaged 9359	49.96%
+#2  packaged 10295	54.95%
+#2  packaged 11231	59.95%
+#2  packaged 12167	64.95%
+#2  packaged 13103	69.94%
+#2  packaged 14039	74.94%
+#2  packaged 14975	79.93%
+#2  packaged 15911	84.93%
+#2  packaged 16847	89.93%
+#2  packaged 17783	94.92%
+#2  packaged 18719	99.92%
+# New report html: /data/analysis/16112022/Combined/KO-BL_analysis_summary.html
+# 
+# Report processing sample (2 of 8) KO-NN
+#2 MemStatus: Report_samp_2  4.7G proc, 1.1G rss, 3.7G vms, 5.4% usd, 29.3G avail
+#2 Loaded anndata (2291, 19494) from /data/analysis/16112022/Combined/KO-NN/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/KO-NN_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-NN/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-NN/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-NN/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-NN/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-NN/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-NN/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 21 x 2, Mem 504B (504) from /data/analysis/16112022/Combined/KO-NN/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 21 x 2, Mem 504B (504) from /data/analysis/16112022/Combined/KO-NN/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 36864 x 1, Mem 576.0K (589824) from /data/analysis/16112022/Combined/KO-NN/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 200 x 9, Mem 14.2K (14528) from /data/analysis/16112022/Combined/KO-NN/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 No cell subsampling for gex plot; All 2291
+#2  packaged 973	4.99%
+#2  packaged 1947	9.99%
+#2  packaged 2921	14.98%
+#2  packaged 3895	19.98%
+#2  packaged 4869	24.98%
+#2  packaged 5843	29.97%
+#2  packaged 6817	34.97%
+#2  packaged 7791	39.97%
+#2  packaged 8765	44.96%
+#2  packaged 9739	49.96%
+#2  packaged 10713	54.96%
+#2  packaged 11687	59.95%
+#2  packaged 12661	64.95%
+#2  packaged 13635	69.94%
+#2  packaged 14609	74.94%
+#2  packaged 15583	79.94%
+#2  packaged 16557	84.93%
+#2  packaged 17531	89.93%
+#2  packaged 18505	94.93%
+#2  packaged 19479	99.92%
+# New report html: /data/analysis/16112022/Combined/KO-NN_analysis_summary.html
+# 
+# Report processing sample (3 of 8) KO-TL
+#2 MemStatus: Report_samp_3  4.8G proc, 1.1G rss, 3.7G vms, 5.5% usd, 29.3G avail
+#2 Loaded anndata (2329, 20249) from /data/analysis/16112022/Combined/KO-TL/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/KO-TL_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-TL/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-TL/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TL/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TL/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TL/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TL/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 21 x 2, Mem 504B (504) from /data/analysis/16112022/Combined/KO-TL/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 21 x 2, Mem 504B (504) from /data/analysis/16112022/Combined/KO-TL/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 36863 x 1, Mem 576.0K (589808) from /data/analysis/16112022/Combined/KO-TL/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 240 x 9, Mem 17.0K (17408) from /data/analysis/16112022/Combined/KO-TL/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 No cell subsampling for gex plot; All 2329
+#2  packaged 1011	4.99%
+#2  packaged 2023	9.99%
+#2  packaged 3035	14.99%
+#2  packaged 4047	19.99%
+#2  packaged 5059	24.98%
+#2  packaged 6071	29.98%
+#2  packaged 7083	34.98%
+#2  packaged 8095	39.98%
+#2  packaged 9107	44.98%
+#2  packaged 10119	49.97%
+#2  packaged 11131	54.97%
+#2  packaged 12143	59.97%
+#2  packaged 13155	64.97%
+#2  packaged 14167	69.96%
+#2  packaged 15179	74.96%
+#2  packaged 16191	79.96%
+#2  packaged 17203	84.96%
+#2  packaged 18215	89.96%
+#2  packaged 19227	94.95%
+#2  packaged 20239	99.95%
+# New report html: /data/analysis/16112022/Combined/KO-TL_analysis_summary.html
+# 
+# Report processing sample (4 of 8) KO-TR
+#2 MemStatus: Report_samp_4  4.9G proc, 1.1G rss, 3.8G vms, 5.7% usd, 29.2G avail
+#2 Loaded anndata (1626, 21629) from /data/analysis/16112022/Combined/KO-TR/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/KO-TR_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-TR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/KO-TR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/KO-TR/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 21 x 2, Mem 504B (504) from /data/analysis/16112022/Combined/KO-TR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 21 x 2, Mem 504B (504) from /data/analysis/16112022/Combined/KO-TR/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 18432 x 1, Mem 288.0K (294912) from /data/analysis/16112022/Combined/KO-TR/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 200 x 9, Mem 14.2K (14528) from /data/analysis/16112022/Combined/KO-TR/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 No cell subsampling for gex plot; All 1626
+#2  packaged 2161	9.99%
+#2  packaged 4323	19.99%
+#2  packaged 6485	29.98%
+#2  packaged 8647	39.98%
+#2  packaged 10809	49.97%
+#2  packaged 12971	59.97%
+#2  packaged 15133	69.97%
+#2  packaged 17295	79.96%
+#2  packaged 19457	89.96%
+#2  packaged 21619	99.95%
+# New report html: /data/analysis/16112022/Combined/KO-TR_analysis_summary.html
+# 
+# Report processing sample (5 of 8) WT-BR
+#2 MemStatus: Report_samp_5  4.9G proc, 1.1G rss, 3.8G vms, 5.7% usd, 29.2G avail
+#2 Loaded anndata (2437, 27251) from /data/analysis/16112022/Combined/WT-BR/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/WT-BR_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/WT-BR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/WT-BR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-BR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-BR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-BR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-BR/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 14 x 2, Mem 336B (336) from /data/analysis/16112022/Combined/WT-BR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 14 x 2, Mem 336B (336) from /data/analysis/16112022/Combined/WT-BR/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 36787 x 1, Mem 574.8K (588592) from /data/analysis/16112022/Combined/WT-BR/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 120 x 9, Mem 8.6K (8768) from /data/analysis/16112022/Combined/WT-BR/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 No cell subsampling for gex plot; All 2437
+#2  packaged 1361	4.99%
+#2  packaged 2723	9.99%
+#2  packaged 4085	14.99%
+#2  packaged 5447	19.99%
+#2  packaged 6809	24.99%
+#2  packaged 8171	29.98%
+#2  packaged 9533	34.98%
+#2  packaged 10895	39.98%
+#2  packaged 12257	44.98%
+#2  packaged 13619	49.98%
+#2  packaged 14981	54.97%
+#2  packaged 16343	59.97%
+#2  packaged 17705	64.97%
+#2  packaged 19067	69.97%
+#2  packaged 20429	74.97%
+#2  packaged 21791	79.96%
+#2  packaged 23153	84.96%
+#2  packaged 24515	89.96%
+#2  packaged 25877	94.96%
+#2  packaged 27239	99.96%
+# New report html: /data/analysis/16112022/Combined/WT-BR_analysis_summary.html
+# 
+# Report processing sample (6 of 8) WT-TR
+#2 MemStatus: Report_samp_6  4.9G proc, 1.2G rss, 3.8G vms, 5.7% usd, 29.2G avail
+#2 Loaded anndata (2044, 21437) from /data/analysis/16112022/Combined/WT-TR/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/WT-TR_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/WT-TR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/WT-TR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TR/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 13 x 2, Mem 312B (312) from /data/analysis/16112022/Combined/WT-TR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 13 x 2, Mem 312B (312) from /data/analysis/16112022/Combined/WT-TR/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 36680 x 1, Mem 573.1K (586880) from /data/analysis/16112022/Combined/WT-TR/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 200 x 9, Mem 14.2K (14528) from /data/analysis/16112022/Combined/WT-TR/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 No cell subsampling for gex plot; All 2044
+#2  packaged 1070	4.99%
+#2  packaged 2141	9.99%
+#2  packaged 3212	14.98%
+#2  packaged 4283	19.98%
+#2  packaged 5354	24.98%
+#2  packaged 6425	29.97%
+#2  packaged 7496	34.97%
+#2  packaged 8567	39.96%
+#2  packaged 9638	44.96%
+#2  packaged 10709	49.96%
+#2  packaged 11780	54.95%
+#2  packaged 12851	59.95%
+#2  packaged 13922	64.94%
+#2  packaged 14993	69.94%
+#2  packaged 16064	74.94%
+#2  packaged 17135	79.93%
+#2  packaged 18206	84.93%
+#2  packaged 19277	89.92%
+#2  packaged 20348	94.92%
+#2  packaged 21419	99.92%
+# New report html: /data/analysis/16112022/Combined/WT-TR_analysis_summary.html
+# 
+# Report processing sample (7 of 8) WT-TRBR
+#2 MemStatus: Report_samp_7  5.0G proc, 1.2G rss, 3.8G vms, 5.8% usd, 29.2G avail
+#2 Loaded anndata (3652, 20996) from /data/analysis/16112022/Combined/WT-TRBR/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/WT-TRBR_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/WT-TRBR/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/WT-TRBR/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TRBR/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TRBR/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TRBR/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/WT-TRBR/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 11 x 2, Mem 264B (264) from /data/analysis/16112022/Combined/WT-TRBR/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 11 x 2, Mem 264B (264) from /data/analysis/16112022/Combined/WT-TRBR/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 36805 x 1, Mem 575.1K (588880) from /data/analysis/16112022/Combined/WT-TRBR/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 220 x 9, Mem 15.6K (15968) from /data/analysis/16112022/Combined/WT-TRBR/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 No cell subsampling for gex plot; All 3652
+#2  packaged 1048	4.99%
+#2  packaged 2097	9.99%
+#2  packaged 3146	14.98%
+#2  packaged 4195	19.98%
+#2  packaged 5244	24.98%
+#2  packaged 6293	29.97%
+#2  packaged 7342	34.97%
+#2  packaged 8391	39.96%
+#2  packaged 9440	44.96%
+#2  packaged 10489	49.96%
+#2  packaged 11538	54.95%
+#2  packaged 12587	59.95%
+#2  packaged 13636	64.95%
+#2  packaged 14685	69.94%
+#2  packaged 15734	74.94%
+#2  packaged 16783	79.93%
+#2  packaged 17832	84.93%
+#2  packaged 18881	89.93%
+#2  packaged 19930	94.92%
+#2  packaged 20979	99.92%
+# New report html: /data/analysis/16112022/Combined/WT-TRBR_analysis_summary.html
+# 
+# Report processing sample (8 of 8) all-well
+#2 MemStatus: Report_samp_8  5.0G proc, 1.2G rss, 3.8G vms, 5.8% usd, 29.2G avail
+#2 Loaded anndata (16302, 32965) from /data/analysis/16112022/Combined/all-well/DGE_filtered/anndata.h5ad
+#2 Read Dataframe: Dims 23 x 3, Mem 736B (736) from /data/analysis/16112022/Combined/all-well_analysis_summary.csv
+#2 Collecting stats to report
+#2 Generating plate figures
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/all-well/report/tscp_median_by_rnd1_well.csv
+#2 Read Dataframe: Dims 12 x 3, Mem 384B (384) from /data/analysis/16112022/Combined/all-well/report/cell_counts_by_rnd1_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/all-well/report/tscp_median_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/all-well/report/cell_counts_by_rnd2_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/all-well/report/tscp_median_by_rnd3_well.csv
+#2 Read Dataframe: Dims 96 x 3, Mem 3.0K (3072) from /data/analysis/16112022/Combined/all-well/report/cell_counts_by_rnd3_well.csv
+#2 Generating subsample plots
+#2 Read Dataframe: Dims 16 x 2, Mem 384B (384) from /data/analysis/16112022/Combined/all-well/report/tscp_counts_subsampled.csv
+#2 Read Dataframe: Dims 16 x 2, Mem 384B (384) from /data/analysis/16112022/Combined/all-well/report/gene_counts_subsampled.csv
+#2 Generating tscp cell count figure
+#2 Read Dataframe: Dims 220847 x 1, Mem 3.4M (3533552) from /data/analysis/16112022/Combined/all-well/report/tscp_counts.csv
+#2 Generating gene enrichment table (pb)
+#2 Read Dataframe: Dims 260 x 9, Mem 18.4K (18848) from /data/analysis/16112022/Combined/all-well/report/cluster_diff_exp.csv
+#2 Generating umap cluster plot figures
+#2 Packaging gene expression data for plots
+#2 Subsampling cells to plot; Target 10000 with 10 min per cluster
+#2 Subsampled 10000 of 16302 cells for gex plots
+#2  packaged 1647	5.0%
+#2  packaged 3295	10.0%
+#2  packaged 4943	14.99%
+#2  packaged 6591	19.99%
+#2  packaged 8239	24.99%
+#2  packaged 9887	29.99%
+#2  packaged 11535	34.99%
+#2  packaged 13183	39.99%
