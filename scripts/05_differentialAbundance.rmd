@@ -1,0 +1,98 @@
+---
+title: "02D_subclustering"
+output: html_document
+date: "2023-08-08"
+---
+```{r chunk_options, include = FALSE}
+knitr::opts_chunk$set(warning=FALSE, 
+                      message=FALSE,
+                      echo=TRUE,
+                      include=TRUE)
+```
+
+# Overview
+
+This 3rd analysis notebook showcases the steps involved in identifying a cluster
+of interest and then subclustering it with a particular resolution using Seurat's
+`FindSubCluster` command. This is followed by investigating the marker genes
+for the identified subclusters, plotting them in the form of a heatmap,
+and then renaming the clusters appropriately based on biology. 
+
+Finally, we also conduct a differential abundance analysis test to determine
+if the cells n the identified clusters differ between conditions (KO/WT).
+
+# Load Libraries
+```{r library}
+library(Seurat)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(miloR)
+library(SingleCellExperiment)
+# BiocManager::install(c("miloR", "SingleCellExperiment"))
+
+source("helper.R")
+
+res_path <- "../results_310823/"
+```
+
+# Load annotated seurat object from 02.rmd
+```{r load-qced-object}
+# Import R object 
+mbladder <- readRDS(paste0(res_path, "rds/bladder.unintegrated.remove2samples.annotated.rds"))
+```
+
+# Run Milo for DA analysis
+
+```{r}
+mbladder<-readRDS(paste0(res_path, "rds/bladder.unintegrated.remove2samples.annotated.macroSubclusters.rds"))
+# First, convert seurat to sce object
+mbladder_sce <- as.SingleCellExperiment(mbladder)
+colData(mbladder_sce)
+# Next, prepare Milo object
+mbladder_sce_milo <- Milo(mbladder_sce)
+
+# Build the KNN graph
+traj_milo <- buildGraph(mbladder_sce_milo, k=30, d=30)
+
+# Defining representative neighborhoods
+traj_milo <- makeNhoods(traj_milo, prop = 0.1, k = 30, d=30, refined = TRUE)
+
+# Counting cells in neighborhoods
+traj_milo <- countCells(traj_milo, meta.data = data.frame(colData(traj_milo)), sample="sample_name")
+colData(traj_milo)
+head(nhoodCounts(traj_milo))
+
+# Differential abundance testing
+## defining design matrix
+traj_design <- data.frame(colData(traj_milo))[,c("sample_name", "Condition")]
+traj_design <- distinct(traj_design)
+rownames(traj_design) <- traj_design$sample_name
+traj_design$Condition <- factor(traj_design$Condition, levels=c("WT", "KO"))
+
+traj_milo <- calcNhoodDistance(traj_milo, d=30)
+traj_milo <- buildNhoodGraph(traj_milo)
+
+da_results <- testNhoods(traj_milo, design = ~ Condition, design.df = traj_design)
+da_results <- annotateNhoods(traj_milo, da_results, coldata_col = "ident")
+da_results$macro_sub_mixed<- ifelse(da_results$macrophages_sub_fraction < 0.7, "Mixed", da_results$ident)
+da_results %>%
+  dplyr::filter(SpatialFDR < 0.1) %>%
+  dplyr::arrange(logFC)
+```
+
+# Plotting Milo results
+
+We observe that M1 macrophages appear to be more abundant in the KO condition, along 
+with the inflammatory TAMs and other stem-like cells, whereas M2 macrophages 
+are more abundant in the WT condition.
+
+```{r}
+top <- DimPlot(mbladder, reduction = "umap",  pt.size = 0.5,
+        repel=TRUE, label=FALSE, label.box=TRUE, cols=seurat_colors)
+bottom <-  plotDAbeeswarm(da_results, group.by = "ident", alpha=0.1) + scater::plotUMAP(traj_milo, colour_by="Condition")  + plotNhoodGraphDA(traj_milo, da_results, alpha=0.05)
+png(paste0(res_path, "results/milo_mbladder.png"), res=300, width = 50, height= 40 , units="cm")
+cowplot::plot_grid(top, bottom,
+          labels="AUTO", nrow = 2)
+dev.off()
+```

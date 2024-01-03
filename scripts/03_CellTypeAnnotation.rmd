@@ -1,0 +1,293 @@
+---
+title: "2) Manual annotation of mouse bladder cells"
+author:
+- Kane Toh^[Genomics and Data Analytics Core (GeDaC), Cancer Science Institute of Singapore, National University of Singapore; kanetoh@nus.edu.sg]
+date: "`r Sys.Date()`"
+output:
+  bookdown::pdf_document2:
+    fig_caption: yes
+    toc: yes
+  bookdown::html_document2:
+    code_folding: show
+    df_print: paged
+    theme: cerulean
+    highlight: tango
+    toc: yes
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    number_sections: true
+editor_options: 
+  markdown: 
+    wrap: 72
+urlcolor: blue
+---
+
+# Overview
+
+In this notebook, we attempt to annotate each cluster in the dataset based
+on their marker genes, with the assistance of GPT4. We then explore the various
+means of plotting gene expression of these clusters, including featureplots to
+plot the expression on top of the umaps directly, as well as violinplots.
+
+
+```{r chunk_options, include = FALSE}
+knitr::opts_chunk$set(warning=FALSE, 
+                      message=FALSE,
+                      echo=TRUE,
+                      include=TRUE)
+```
+# Load libraries
+
+```{r library}
+library(Seurat)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+# Define global variables 
+
+```{r globalVar}
+# Loads in custom functions that I've written to assist with plotting/saving tasks
+source("helper.R")
+
+# Path to saving the results fo the analysis
+res_path <- "../results/03_CellTypeAnnotation/"
+if (!dir.exists(res_path)){
+  
+  dir.create(res_path)
+}else{
+  print("Results directory exists")
+}
+# Data path specifes where all the outputs from the parseBio split-pipe pipeline is stored.
+data_path <- "../data/"
+if (!dir.exists(data_path)){
+  warning("Directory does not exist: ", data_path)
+}else{
+  print("Data directory exists")
+}
+
+# RDS path specifies where all the intermediate generated R objects will be saved.
+rds_path <- "../rds/"
+if (!dir.exists(rds_path)){
+  warning("Directory does not exist: ", rds_path)
+}else{
+  print("RDS directory exists")
+}
+
+seurat_colors <- ArchR::paletteDiscrete(names(manual_annotations), set="stallion")
+```
+
+
+# Load seurat object
+
+```{r load-qced-object}
+mbladder <-  ReadObject(rds_path, "02_seuratMerged_processed")
+# Rerun scaledata again on all genes (instead of just top 2000 variable genes by default in seurat)
+mbladder <- ScaleData(mbladder, features=rownames(mbladder))
+```
+
+# Finding marker genes for each cluster
+
+```{r eval=FALSE}
+# takes a while to run the FindAllMarkers function
+marker_genes <- FindAllMarkers(mbladder, only.pos=TRUE)
+marker_genes_sig <- marker_genes %>%
+  dplyr::filter(p_val_adj<0.05)
+# Saving the file
+marker_genes_sig %>% write.csv(file=paste0(res_path, "marker_genes_byCluster_onlyPos.csv"))
+
+# Getting top 5 significant genes per cluster with highest avg_log2FC
+marker_genes_sig_top5 <- marker_genes_sig %>%
+  dplyr::group_by(cluster) %>%
+  dplyr::arrange(desc(avg_log2FC)) %>%
+  dplyr::slice_head(n=5)
+
+# Get just the gene names
+marker_genes_sig_top5_genes <- marker_genes_sig_top5 %>%
+  pull()
+```
+
+# Manual cluster annotation 
+
+Following the preprint of [Hou and Ji (2023)](https://www.biorxiv.org/content/10.1101/2023.04.16.537094v1.full.pdf), 
+there is growing consensus that GPT-4
+can assist researchers with cell type annotations. With this in mind, using the set 
+of marker genes obtained from Seurat, I leveraged
+chatgpt to assist with the annotation step. Screenshots of the chatgpt output 
+can be found in the `miscellaneous/cell_type_annotation_chatgpt` folder.
+
+
+```{r adding-manual-annotations}
+manual_annotations <- c("M2 Macrophages", # 0 
+"Activated fibroblasts", # 1
+"Tumor cells 1", # 2
+"Neuronal cells 1", # 3
+"Tumor cells 2", #4
+"M1 Macrophages", #5
+"Neuronal cells 2" ,#6
+"Urothelial cells", #7
+"Matrix remodelling fibroblasts 1", #8
+"Matrix remodelling fibroblasts 2", #9
+"Tumor-associated myeloid cells" ,#10
+"Vascular Endothelial cells", #11
+"Lymphatic and Specialized Vascular Endothelial Cells") #12
+#marker_genes_sig %>% filter(cluster ==12) %>% dplyr::select(gene) %>% pull()
+
+
+# Assigning each cluster to each label above
+Idents(mbladder) <- mbladder@meta.data$seurat_clusters
+names(manual_annotations) <- levels(mbladder)
+
+# Relabelling identities to full annotated labels
+mbladder <- RenameIdents(mbladder, manual_annotations)
+mbladder@meta.data$cell_type_annotations <- Idents(mbladder)
+unannotated_colors <- seurat_colors
+names(unannotated_colors) <- levels(mbladder@meta.data$seurat_clusters)
+
+# Plotting dimplots
+seurat_dimplot <- DimPlot(mbladder, reduction = "umap", group.by="seurat_clusters", pt.size = 0.5,
+        repel=TRUE, cols = unannotated_colors, label = TRUE)
+annotated_dimplot_labels <- DimPlot(mbladder, reduction = "umap",  pt.size = 0.5,
+        repel=TRUE, label=TRUE, label.box=TRUE, cols=seurat_colors) + NoLegend()
+annotated_dimplot <- DimPlot(mbladder, reduction = "umap",  pt.size = 0.5,
+        repel=TRUE, cols=seurat_colors) 
+  
+# Comparison of unannotated and annotated umaps 
+umap_plots_comparison <- cowplot::plot_grid(seurat_dimplot,
+                   annotated_dimplot_labels, nrow = 2)
+SaveFigure(res_path = res_path,
+           plots = umap_plots_comparison,
+           name = "umap_plots_comparison_annotation", 
+           width = 15, 
+           height = 8)
+```
+
+# Plot heatmap
+
+```{r}
+# Plot heatmap
+heatmap_plot <- DoHeatmap(mbladder, features = marker_genes_sig_top5_genes,
+                          label=FALSE, group.colors=seurat_colors)
+
+SaveFigure(res_path = res_path,
+           plots = heatmap_plot,
+           name = "heatmap_unannotated_plot_5markers", 
+           width = 15, 
+           height = 8)
+```
+
+# Plot expression of genes 
+
+The purpose of this is to double check that our manual annotation assignments
+make sense, in the context of marker gene expression.
+
+## Defining gene lists
+
+You can customise the gene list below to your liking.
+
+```{r}
+# Gene lists
+neuronal_genes <- c("Tenm2", "Cntnap2","Csmd1", "Cdh12")
+#uro_cafs_normal_genes <- c("Hmga1", "Vim","Cald1", "S100a4", "Pdgfa", "Ddr2",
+#                     "Upk1a", "Upk1b", "Krt5")
+uro_normal_genes <- c("Upk1a", "Upk1b", "Krt5")
+#proliferative_cafs_genes<- c("Top2a", "Mki67", "Cenpf", "Cenpe", "Incenp", "S100a4")
+proliferative_genes<- c("Top2a", "Mki67", "Cenpe", "S100a4")
+#macrophage_genes <- c("Cxcl2", "Cxcl3", "Il1rn", "Il1b", "G0s2",
+#                      "Cd86", "H2-Ab1", "H2-Eb1", "Nos2")
+m2_macrophage <- c("Cd74", "Lyz2",  "Ptprc",
+                      "H2-Ab1", "H2-Eb1", "Nos2")
+m1_macrophage <- c("S100a8", "S100a9", "Cxcl2", "Il1b")
+endothelial_genes <- c("Runx1", "Galnt18", "Flt4")
+collagen_genes <- c("Col3a1", "Col1a1", "Col1a2", "Col4a1", "Col18a1")
+```
+
+## Plotting on the umap
+
+```{r}
+umap_neuronal <- FeaturePlot(mbladder, features=neuronal_genes)
+SaveFigure(res_path = paste0(res_path,"feature_plots/"),
+           plots = umap_neuronal,
+           name = "umap_neuronal", 
+           width = 15, 
+           height = 8)
+
+urothelial_umap<- FeaturePlot(object = mbladder, features= uro_normal_genes)
+SaveFigure(res_path = paste0(res_path,"feature_plots/"),
+           plots = urothelial_umap,
+           name = "urothelial_umap", 
+           width = 15, 
+           height = 8)
+m1_macrophage_umap <- FeaturePlot(object = mbladder, features= m1_macrophage )
+SaveFigure(res_path = paste0(res_path,"feature_plots/"),
+           plots = m1_macrophage_umap,
+           name = "m1_macrophage_umap", 
+           width = 15, 
+           height = 8)
+m2_macrophage_umap <- FeaturePlot(object = mbladder, features= m2_macrophage )
+SaveFigure(res_path = paste0(res_path,"feature_plots/"),
+           plots = m2_macrophage_umap,
+           name = "m2_macrophage_umap", 
+           width = 15, 
+           height = 8)
+endothelial_umap <- FeaturePlot(object = mbladder, features= endothelial_genes )
+SaveFigure(res_path = paste0(res_path,"feature_plots/"),
+           plots = endothelial_umap,
+           name = "endothelial_umap", 
+           width = 15,
+           height = 8)
+fibroblasts_umap <- FeaturePlot(object = mbladder, features= collagen_genes)
+SaveFigure(res_path = paste0(res_path,"feature_plots/"),
+           plots = fibroblasts_umap,
+           name = "fibroblasts_umap", 
+           width = 15, 
+           height = 8)
+```
+## Plotting with violin plots
+
+```{r violin_genes}
+neuronal_violin <- VlnPlot_2(object = mbladder, features.plot= neuronal_genes )
+SaveFigure(res_path = paste0(res_path,"violin_plots/"),
+           plots = neuronal_violin,
+           name = "neuronal_violin", 
+           width = 15, 
+           height = 8)
+urothelial_violin <- VlnPlot_2(object = mbladder, features.plot= uro_normal_genes)
+SaveFigure(res_path = paste0(res_path,"violin_plots/"),
+           plots = urothelial_violin,
+           name = "urothelial_violin", 
+           width = 15, 
+           height = 8)
+m1_macrophage_violin <- VlnPlot_2(object = mbladder, features.plot= m1_macrophage )
+SaveFigure(res_path = paste0(res_path,"violin_plots/"),
+           plots = m1_macrophage_violin,
+           name = "m1_macrophage_violin", 
+           width = 15, 
+           height = 8)
+m2_macrophage_violin <- VlnPlot_2(object = mbladder, features.plot= m2_macrophage )
+SaveFigure(res_path = paste0(res_path,"violin_plots/"),
+           plots = m2_macrophage_violin,
+           name = "m2_macrophage_violin", 
+           width = 15, 
+           height = 8)
+endothelial_violin <- VlnPlot_2(object = mbladder, features.plot= endothelial_genes )
+SaveFigure(res_path = paste0(res_path,"violin_plots/"),
+           plots = endothelial_violin,
+           name = "endothelial_violin", 
+           width = 15,
+           height = 8)
+fibroblasts_violin <- VlnPlot_2(object = mbladder, features.plot= collagen_genes )
+SaveFigure(res_path = paste0(res_path,"violin_plots/"),
+           plots = fibroblasts_violin,
+           name = "fibroblasts_violin", 
+           width = 15, 
+           height = 8)
+```
+
+```{r, eval=FALSE}
+SaveObject(rds_path, mbladder, "03_seuratMerged_annotated")
+```
+
+

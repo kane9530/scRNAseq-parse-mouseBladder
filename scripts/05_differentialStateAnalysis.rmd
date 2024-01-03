@@ -1,0 +1,322 @@
+---
+title: "07_Differential_state_analysis"
+output: html_document
+date: "2023-03-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library}
+library(Seurat)
+library(dplyr)
+library(distinct)
+library(SingleCellExperiment)
+library(scater)
+library(UpSetR)
+library(ggplotify)
+
+res_path <- "../results_310823/"
+source("helper.R")
+```
+
+# Running `distinct` analysis
+https://bioconductor.org/packages/release/bioc/vignettes/distinct/inst/doc/distinct.html#plotting-significant-results
+
+```{r}
+mbladder <- readRDS(paste0(res_path, "rds/bladder.unintegrated.remove2samples.annotated.macroSubclusters.rds"))
+
+sample_group_df <- mbladder@meta.data %>%
+  dplyr::select(sample_name, Condition) %>%
+  dplyr::distinct()
+
+samples = sample_group_df$sample_name
+group = sample_group_df$Condition
+design = model.matrix(~group)
+design
+# rownames of the design must indicate sample ids:
+rownames(design) <- samples
+design
+```
+
+```{r distinct-run}
+set.seed(2023)
+mbladder_sce <- as.SingleCellExperiment(mbladder)
+
+# Takes around 15 minutes.
+res = distinct::distinct_test(x = mbladder_sce, 
+                    name_assays_expression = "logcounts",
+                    name_cluster = "celltypes",
+                    name_sample = "label",
+                    design = design,
+                    column_to_test = 2,
+                    min_non_zero_cells = 20,
+                    n_cores = 60,
+                    P_4 = 20000) #Recommended in tutorial to increase
+res %>% write.csv(paste0(res_path, "results/distinct_res.csv"))
+#res <- read.csv("../results/16112022/differential_state_analysis/distinct_res.csv")
+```
+
+```{r distinct-log2fc}
+res <- read.csv(paste0(res_path, "results/distinct_res.csv"))
+# Create cpm slot
+assay(mbladder_sce, "cpm") <- scater::calculateCPM(mbladder_sce, assay.type="counts")
+# Compute log2fc between groups
+res_log2fc = distinct::log2_FC(res = res,
+              x = mbladder_sce, 
+              name_assays_expression = "cpm",
+              name_group = "Condition",
+              name_cluster = "celltypes")
+
+distinct::top_results(res_log2fc) %>% write.csv(paste0(res_path, "differential_state/distinct_log2fc_topresults.csv"))
+distinct::top_results(res_log2fc, sort_by = "p_adj.glb", up_down ="up") %>%
+  write.csv(paste0(res_path, "differential_state/distinct_log2fc_topresults_padjglb_KOup.csv"))
+
+distinct::top_results(res_log2fc, sort_by = "p_adj.glb", up_down ="down") %>%
+ write.csv(paste0(res_path,"differential_state/distinct_log2fc_topresults_padjglb_WTup.csv"))
+
+distinct::top_results(res_log2fc, sort_by = "p_adj.glb", up_down ="up") %>% 
+  dplyr::filter(cluster_id == "Inflammatory TAMs")
+
+table(mbladder_sce$celltypes)
+```
+
+```{r}
+cmss1_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Cmss1",
+          cluster = "Inflammatory TAMs",
+          name_assays_expression = "logcounts",
+          name_cluster = "celltypes",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+hsp90aa1_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Hsp90aa1",
+          cluster = "Inflammatory TAMs",
+          name_assays_expression = "logcounts",
+          name_cluster = "celltypes",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+hsp90ab1_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Hsp90ab1",
+          cluster = "Inflammatory TAMs",
+          name_assays_expression = "logcounts",
+          name_cluster = "celltypes",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+cdk8_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Cdk8",
+          cluster = "Inflammatory TAMs",
+          name_assays_expression = "logcounts",
+          name_cluster = "celltypes",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+png(paste0(res_path, "differential_state/distinct_cdfs_TAMs.png"), res=300, width = 40, height= 40 , units="cm")
+cowplot::plot_grid(hsp90aa1_cdf,
+                   hsp90ab1_cdf, 
+                   cdk8_cdf,
+                   cmss1_cdf,
+                   nrow = 2,
+                   labels="AUTO")
+dev.off()
+```
+
+Heatmap
+```{r}
+genes_to_plot_top_5_up<- distinct::top_results(res_log2fc) %>%
+  dplyr::group_by(cluster_id) %>%
+    dplyr::filter(p_adj.glb < 0.05) %>%
+dplyr::arrange(desc((`log2FC_KO/WT`)), .by_group=TRUE) %>%
+  dplyr::top_n(n=5) %>%
+  dplyr::select(gene) %>%
+  dplyr::pull()
+
+distinct::top_results(res_log2fc) %>%
+  dplyr::group_by(cluster_id) %>%
+  dplyr::filter(p_adj.glb < 0.05) %>%
+  dplyr::arrange(desc((`log2FC_KO/WT`)), .by_group=TRUE) %>%
+  dplyr::top_n(n=5)
+
+# Change Ident to sample_name
+Idents(mbladder) <- mbladder@meta.data$Condition
+
+# Scale all the genes in genes_to_plot_top_5
+mbladder_scale <- ScaleData(mbladder, features=genes_to_plot_top_5_up)
+
+distinct_heatmap <- DoHeatmap(mbladder_scale, features = genes_to_plot_top_5_up, slot = "scale.data",
+          label = FALSE) + 
+    theme(text = element_text(size = 14))
+
+distinct_heatmap
+```
+
+Examining top 3 DE genes more highly expressed in KO vs WT in the M1 macrophage, granulocyte/macropage and TAM clusters
+```{r distinct-violin-plots}
+colData(mbladder_sce)
+plot_de_violin <- function(cluster, res_log2fc, sce_object){
+  sel_cluster = res_log2fc$cluster_id == cluster
+  sel_column = mbladder_sce$ident == cluster
+  genes = res_log2fc %>%
+  dplyr::filter((p_adj.glb < 0.01) & cluster_id == cluster) %>%
+  dplyr::arrange(desc(`log2FC_KO/WT`)) %>%
+  dplyr::top_n(5)%>%
+  dplyr::select(gene) %>%
+  dplyr::pull()
+  
+  violin <- scater::plotExpression(mbladder_sce[,sel_column],
+               features = genes, exprs_values = "logcounts",
+               log2_values = FALSE,
+               x = "label_swap", colour_by = "Condition_swap", ncol = 3) +
+  guides(fill = guide_legend(override.aes = list(size = 5, alpha = 1))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  violin
+}
+
+gm_violin <- plot_de_violin("Granulocyte/Neutrophils", res_log2fc, mbladder_sce)
+m1_violin <- plot_de_violin("M1 macrophages/APC", res_log2fc, mbladder_sce)
+tam_violin <- plot_de_violin("Inflammatory TAMs", res_log2fc, mbladder_sce)
+gm_violin
+tam_violin
+table(colData(mbladder_sce)[colData(mbladder_sce)$celltypes == "Granulocyte/Neutrophils",]$Condition_swap)
+```
+
+```{r distinct-density-plots}
+density_inflammatory_tams_Peak1 <- distinct::plot_densities(x = mbladder_sce,
+               gene = "Peak1",
+               cluster = "Inflammatory TAMs",
+               name_assays_expression = "logcounts",
+               name_cluster = "ident",
+               name_sample = "sample_name",
+               name_group = "Condition")
+density_inflammatory_tams_Cd53 <- distinct::plot_densities(x = mbladder_sce,
+               gene = "Cd53",
+               cluster = "Inflammatory TAMs",
+               name_assays_expression = "logcounts",
+               name_cluster = "ident",
+               name_sample = "sample_name",
+               name_group = "Condition")
+density_inflammatory_tams_Slc2a1 <- distinct::plot_densities(x = mbladder_sce,
+               gene = "Slc2a1",
+               cluster = "Inflammatory TAMs",
+               name_assays_expression = "logcounts",
+               name_cluster = "ident",
+               name_sample = "sample_name",
+               name_group = "Condition")
+density_plots <- cowplot::plot_grid(density_inflammatory_tams_Peak1, density_inflammatory_tams_Cd53,
+                                    density_inflammatory_tams_Slc2a1, nrow=1)
+```
+
+```{r distinct-upset}
+res_by_cluster = split( ifelse(res_log2fc$p_adj.glb < 0.01, 1, 0), res_log2fc$cluster_id)
+upset_plot <- UpSetR::upset(data.frame(do.call(cbind, res_by_cluster)), nsets = 50, 
+              nintersects = 100, order.by = "freq") 
+```
+
+```{r distinct-combine}
+bottom_row <- cowplot::plot_grid(ggplotify::as.grob(upset_plot), distinct_heatmap, nrow= 1)
+png("../results/16112022/differential_state_analysis/distinct_combined.png", width = 40, height = 70, units = "cm", res=200)
+cowplot::plot_grid(gm_violin, m1_violin, tam_violin, density_plots, bottom_row,
+                   nrow=5, labels="AUTO")
+dev.off()
+```
+
+# Muscat: prep_sce
+
+```{r}
+mbladder_sce <- Seurat::as.SingleCellExperiment(mbladder)
+
+# remove lowly expressed genes
+mbladder_sce <- mbladder_sce[rowSums(counts(mbladder_sce) >=3) >= 10, ]
+
+# 1) Prep sce into specific format for muscat
+mbladder_sce <- prepSCE(mbladder_sce, 
+    kid = "ident", # subpopulation assignments
+    gid = "Condition",  # group IDs (ctrl/stim)
+    sid = "sample_name",   # sample IDs (ctrl/stim.1234)
+    drop = TRUE) 
+```
+
+# Muscat: pseudobulk approach
+
+```{r pb-muscat}
+mbladder_agg <- muscat::aggregateData(mbladder_sce,
+    assay = "counts", fun = "sum",
+    by = c("cluster_id", "sample_id"))
+
+pb_mds <- muscat::pbMDS(mbladder_agg)
+
+pb_mds_plot <- pb_mds + 
+  scale_shape_manual(values = c(17, 4)) +
+  scale_color_manual(values = RColorBrewer::brewer.pal(11, "Set3"))
+# change point size & alpha
+pb_mds_plot$layers[[1]]$aes_params$size <- 5
+pb_mds_plot$layers[[1]]$aes_params$alpha <- 0.6
+pb_mds_plot
+
+# run DS analysis
+ei <- metadata(mbladder_sce)$experiment_info
+mm <- model.matrix(~ 0 + ei$group_id)
+dimnames(mm) <- list(ei$sample_id, levels(ei$group_id))
+levels(mm)
+contrast <- limma::makeContrasts("KO-WT", levels = mm)
+
+res <- pbDS(mbladder_agg, design = mm, contrast=contrast, verbose = TRUE) 
+res_df <- dplyr::bind_rows(res$table[[1]])
+res_filtered <- res_df %>%
+  dplyr::filter(p_adj.glb <= 0.05) %>%
+  dplyr::arrange(desc(logFC))
+
+res_filtered
+```
+# Muscat: mixed models approach
+
+```{r}
+mm <- mmDS(mbladder_sce, method = "dream",
+  n_cells = 10, n_samples = 2,
+  min_count = 1, min_cells = 20,
+  verbose = TRUE)
+
+mm_vst <- mmDS(mbladder_sce, method = "vst",
+               n_cells = 10, n_samples = 2,
+               min_count = 1, min_cells = 20,
+               vst = "sctransform", verbose=TRUE)
+
+mm_vst$`Fibroblasts/Neutrophils`  %>%
+  dplyr::filter(p_adj.glb < 0.01 ) 
+
+res_mm_df
+res_mm_df <- dplyr::bind_rows(mm)
+res_mm_df %>%
+  dplyr::filter(p_adj.glb < 0.01 & logFC > 0.5) 
+res_mm_df
+mbladder_sce@metadata$experiment_info$group_id
+```
+
+Visualise muscat results
+```{r}
+# filter FDR < 5%, abs(logFC) > 1 & sort by adj. p-value
+tbl_fil <- lapply(tbl, function(u) {
+  u <- dplyr::filter(u, p_adj.loc < 0.05, abs(logFC) > 1)
+  dplyr::arrange(u, p_adj.loc)
+})
+
+tbl
+
+tbl_fil
+
+# nb. of DS genes & % of total by cluster
+n_de <- vapply(tbl_fil, nrow, numeric(1))
+p_de <- format(n_de / nrow(mbladder_sce) * 100, digits = 3)
+data.frame("#DS" = n_de, "%DS" = p_de, check.names = FALSE)
+
+str(tbl)
+```
+
