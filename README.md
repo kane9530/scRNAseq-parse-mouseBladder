@@ -8,6 +8,10 @@ placed in `reports/`.
 
 Following the generation of the cells x gene count matrix, the data was analysed in R using the `Seurat` package. Standard downstream Seurat analyses was conducted, including dimensional reduction and clustering, marker gene identification, manual cell type annotation and pathway enrichment analysis. Scripts for differential abundance (DA) analysis and differential state analysis are included alongside the aforementioned analysis in `scripts/`, which were run in a previous round of analysis. 
 
+# Location of raw data
+
+s3://parse-biosciences-mugdha
+
 # Download
 
 The files in this repository are also stored in an S3 bucket: s3://parse-scrnaseq-bladder/. The raw and processed data files are kept in the 
