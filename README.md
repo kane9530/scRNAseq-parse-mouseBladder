@@ -11,6 +11,7 @@ Following the generation of the cells x gene count matrix, the data was analysed
 # Location of raw data
 
 s3://parse-biosciences-mugdha
+On Biodebian, the files are stored at: /media/gedac/kane/projects/parse-bladder-scrnaseq
 
 # Download
 
