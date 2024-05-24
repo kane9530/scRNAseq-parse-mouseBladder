@@ -1,0 +1,104 @@
+---
+title: "miscellaneous"
+output: html_document
+date: "2024-05-24"
+---
+
+```{r}
+BiocManager::install("muscat")
+library(muscat)
+```
+
+
+# Muscat: prep_sce
+
+```{r}
+mbladder_sce <- Seurat::as.SingleCellExperiment(mbladder)
+
+# remove lowly expressed genes
+mbladder_sce <- mbladder_sce[rowSums(counts(mbladder_sce) >=3) >= 10, ]
+
+# 1) Prep sce into specific format for muscat
+mbladder_sce <- prepSCE(mbladder_sce, 
+    kid = "ident", # subpopulation assignments
+    gid = "Condition",  # group IDs (ctrl/stim)
+    sid = "sample_name",   # sample IDs (ctrl/stim.1234)
+    drop = TRUE) 
+```
+
+# Muscat: pseudobulk approach
+
+```{r pb-muscat}
+mbladder_agg <- muscat::aggregateData(mbladder_sce,
+    assay = "counts", fun = "sum",
+    by = c("cluster_id", "sample_id"))
+
+pb_mds <- muscat::pbMDS(mbladder_agg)
+
+pb_mds_plot <- pb_mds + 
+  scale_shape_manual(values = c(17, 4)) +
+  scale_color_manual(values = RColorBrewer::brewer.pal(11, "Set3"))
+# change point size & alpha
+pb_mds_plot$layers[[1]]$aes_params$size <- 5
+pb_mds_plot$layers[[1]]$aes_params$alpha <- 0.6
+pb_mds_plot
+
+# run DS analysis
+ei <- metadata(mbladder_sce)$experiment_info
+mm <- model.matrix(~ 0 + ei$group_id)
+dimnames(mm) <- list(ei$sample_id, levels(ei$group_id))
+levels(mm)
+contrast <- limma::makeContrasts("KO-WT", levels = mm)
+
+res <- pbDS(mbladder_agg, design = mm, contrast=contrast, verbose = TRUE) 
+res_df <- dplyr::bind_rows(res$table[[1]])
+res_filtered <- res_df %>%
+  dplyr::filter(p_adj.glb <= 0.05) %>%
+  dplyr::arrange(desc(logFC))
+
+res_filtered
+```
+# Muscat: mixed models approach
+
+```{r}
+mm <- mmDS(mbladder_sce, method = "dream",
+  n_cells = 10, n_samples = 2,
+  min_count = 1, min_cells = 20,
+  verbose = TRUE)
+
+mm_vst <- mmDS(mbladder_sce, method = "vst",
+               n_cells = 10, n_samples = 2,
+               min_count = 1, min_cells = 20,
+               vst = "sctransform", verbose=TRUE)
+
+mm_vst$`Fibroblasts/Neutrophils`  %>%
+  dplyr::filter(p_adj.glb < 0.01 ) 
+
+res_mm_df
+res_mm_df <- dplyr::bind_rows(mm)
+res_mm_df %>%
+  dplyr::filter(p_adj.glb < 0.01 & logFC > 0.5) 
+res_mm_df
+mbladder_sce@metadata$experiment_info$group_id
+```
+
+Visualise muscat results
+```{r}
+# filter FDR < 5%, abs(logFC) > 1 & sort by adj. p-value
+tbl_fil <- lapply(tbl, function(u) {
+  u <- dplyr::filter(u, p_adj.loc < 0.05, abs(logFC) > 1)
+  dplyr::arrange(u, p_adj.loc)
+})
+
+tbl
+
+tbl_fil
+
+# nb. of DS genes & % of total by cluster
+n_de <- vapply(tbl_fil, nrow, numeric(1))
+p_de <- format(n_de / nrow(mbladder_sce) * 100, digits = 3)
+data.frame("#DS" = n_de, "%DS" = p_de, check.names = FALSE)
+
+str(tbl)
+```
+
