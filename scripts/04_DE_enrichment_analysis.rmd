@@ -1,0 +1,369 @@
+---
+title: "4) DE by condition"
+author:
+- Kane Toh^[Genomics and Data Analytics Core (GeDaC), Cancer Science Institute of Singapore, National University of Singapore; kanetoh@nus.edu.sg]
+date: "`r Sys.Date()`"
+output:
+  bookdown::pdf_document2:
+    fig_caption: yes
+    toc: yes
+  bookdown::html_document2:
+    code_folding: show
+    df_print: paged
+    theme: cerulean
+    highlight: tango
+    toc: yes
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    number_sections: true
+editor_options: 
+  markdown: 
+    wrap: 72
+urlcolor: blue
+---
+
+```{r chunk_options, include = FALSE}
+knitr::opts_chunk$set(warning=FALSE, 
+                      message=FALSE,
+                      echo=TRUE,
+                      include=TRUE)
+```
+
+```{r library}
+library(Seurat)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(clusterProfiler)
+library(msigdbr)
+library(rjson)
+library(biomaRt)
+```
+```{r globalVar}
+# Loads in custom functions that I've written to assist with plotting/saving tasks
+source("helper.R")
+
+# Path to saving the results fo the analysis
+res_path <- "../results/04_DE_enrichment_analysis/"
+if (!dir.exists(res_path)){
+  
+  dir.create(res_path)
+}else{
+  print("Results directory exists")
+}
+# Data path specifes where all the outputs from the parseBio split-pipe pipeline is stored.
+data_path <- "../data/"
+if (!dir.exists(data_path)){
+  warning("Directory does not exist: ", data_path)
+}else{
+  print("Data directory exists")
+}
+
+# RDS path specifies where all the intermediate generated R objects will be saved.
+rds_path <- "../rds/"
+if (!dir.exists(rds_path)){
+  warning("Directory does not exist: ", rds_path)
+}else{
+  print("RDS directory exists")
+}
+```
+
+# Load seurat object
+
+```{r load-qced-object}
+mbladder <-  ReadObject(rds_path, "03_seuratMerged_annotated")
+# Rerun scaledata again on all genes (instead of just top 2000 variable genes by default in seurat)
+mbladder <- ScaleData(mbladder, features=rownames(mbladder))
+```
+
+# Set identity to condition for subsequent comparison
+
+```{r}
+Idents(mbladder) <- mbladder@meta.data$Condition
+```
+
+
+# Find DE genes between condition for all cells.
+
+```{r}
+#condition_markers <- FindMarkers(mbladder, ident.1 = "KO", ident.2="WT",
+#                                logfc.threshold = -Inf, min.pct = -Inf, min.diff.pct = -Inf)
+marker_genes <- FindAllMarkers(mbladder, only.pos=TRUE)
+marker_genes_sig_condition <- marker_genes %>%
+  dplyr::filter(p_val_adj<0.05)
+marker_genes_sig_condition_top_30 <- marker_genes_sig_condition %>%
+  dplyr::group_by(cluster) %>%
+  dplyr::arrange(desc(avg_log2FC)) %>%
+  dplyr::slice_head(n=30) %>%
+  pull()
+marker_genes_sig_condition %>% write.csv(file=paste0(res_path, "marker_genes_byCondition_onlyPos.csv"))
+marker_genes_sig_condition_genelist <- marker_genes_sig_condition %>%
+  dplyr::select(gene) %>%
+  pull()
+```
+
+# Read marker genes sig condition
+
+```{r}
+marker_genes_sig_condition <- read.csv(file=paste0(res_path, "marker_genes_byCondition_onlyPos.csv"))
+marker_genes_sig_condition_top_30 <- marker_genes_sig_condition %>%
+  dplyr::group_by(cluster) %>%
+  dplyr::arrange(desc(avg_log2FC)) %>%
+  dplyr::slice_head(n=30) %>%
+  pull()
+marker_genes_sig_condition_genelist <- marker_genes_sig_condition %>%
+  dplyr::select(gene) %>%
+  pull()
+```
+
+
+# Plotting heatmap of all cells grouped by condition
+```{r}
+heatmap_plot <- DoHeatmap(mbladder, features = marker_genes_sig_condition_top_30,
+                          label=FALSE)
+SaveFigure(res_path = res_path,
+           plots = heatmap_plot,
+           name = "heatmap_conditions", 
+           width = 15, 
+           height = 8)
+```
+# KEGG analysis of KO vs WT
+
+```{r}
+# First, obtian the genes that are statistically significantly enrihed in KO vs WT
+KO_enriched_genes <- marker_genes_sig_condition %>%
+  dplyr::filter(cluster == "KO") %>%
+  pull()
+
+WT_enriched_genes <- marker_genes_sig_condition %>%
+  dplyr::filter(cluster == "WT") %>%
+  pull()
+
+# Next, convert gene symbols to entrez ID by querying BioMart to convert symbols to Entrez IDs
+ensembl <- biomaRt::useMart("ensembl", dataset = "mmusculus_gene_ensembl")
+# 
+entrez_KO_genes <- getBM(attributes = c('entrezgene_id'),
+                     filters = 'mgi_symbol',
+                     values = KO_enriched_genes,
+                     mart = ensembl) %>% pull()
+
+entrez_WT_genes <- getBM(attributes = c('entrezgene_id'),
+                     filters = 'mgi_symbol',
+                     values = WT_enriched_genes,
+                     mart = ensembl) %>% pull()
+
+# Perform KEGG Overrepresentation analysis
+KO_genes_kegg <- enrichKEGG(gene = entrez_KO_genes,
+                 organism     = 'mmu',
+                 pvalueCutoff = 0.05)
+WT_genes_kegg <- enrichKEGG(gene = entrez_WT_genes,
+                 organism     = 'mmu',
+                 pvalueCutoff = 0.05)
+# Plot
+dotplot_KEGG_KO <- dotplot(KO_genes_kegg, showCategory=10, font.size=12) + ggtitle("KEGG Pathway enrichment for KO-upregulated genes")
+dotplot_KEGG_KO
+SaveFigure(res_path = res_path,
+           plots = dotplot_KEGG_KO,
+           name = "dotplot_KEGG_KO2", 
+           width = 15, 
+           height = 8)
+
+dotplot_KEGG_WT <- dotplot(WT_genes_kegg, showCategory=10, font.size=12) + ggtitle("KEGG Pathway enrichment for WT-upregulated genes")
+SaveFigure(res_path = res_path,
+           plots = dotplot_KEGG_WT,
+           name = "dotplot_KEGG_WT2", 
+           width = 15, 
+           height = 12)
+```
+
+# MSigDB analysis
+
+```{r}
+m_t2g <- msigdbr(species = "Mus musculus", category="H") %>%
+  dplyr::select(gs_name, entrez_gene)
+KO_genes_msigdb <- enricher(entrez_KO_genes, TERM2GENE=m_t2g)
+WT_genes_msigdb <- enricher(entrez_WT_genes, TERM2GENE=m_t2g)
+
+# Plot
+dotplot_MSigDB_KO <- dotplot(KO_genes_msigdb, showCategory=10, font.size=12) + ggtitle("MSigDB Hallmark enrichment for KO-upregulated genes")
+SaveFigure(res_path = res_path,
+           plots = dotplot_MSigDB_KO,
+           name = "dotplot_MSigDB_KO", 
+           width = 15, 
+           height = 8)
+
+dotplot_MSigDB_WT <- dotplot(WT_genes_msigdb, showCategory=10, font.size=12) + ggtitle("MSigDB Hallmark enrichment for WT-upregulated genes")
+SaveFigure(res_path = res_path,
+           plots = dotplot_MSigDB_WT,
+           name = "dotplot_MSigDB_WT", 
+           width = 15, 
+           height = 12)
+```
+## Identifying genes in a particular hallmark of interest
+
+```{r}
+# Import the msigdb hallmarks JSON file 
+msigdb_hallmarks_json <- fromJSON(file="../miscellaneous/mh.all.v2023.2.Mm.json.txt")
+
+# Obtain the gene symbols for the hallmark of interest. Replace HALLMARK_MYC_TARGETS_V1
+# with the hallmark in question.
+
+myc_gene_symbols <- msigdb_hallmarks_json$HALLMARK_MYC_TARGETS_V1$geneSymbols
+
+# Filter the marker genes list to obtain information on the genes within the DE list
+# that are present in the msigdb hallmarks file.
+
+marker_genes_sig_condition %>%
+  dplyr::filter(cluster == "KO") %>% 
+  dplyr::filter(gene %in% myc_gene_symbols)
+```
+# Find DE genes between condition for macrophages
+
+```{r}
+# Subset for macrophages of interest
+mbladder_m1_macro <- mbladder[,mbladder@meta.data$cell_type_annotations == "M1 Macrophages"]
+mbladder_m2_macro <- mbladder[,mbladder@meta.data$cell_type_annotations == "M2 Macrophages"]
+
+# Set identity for macrophages to be the KO/WT condition
+Idents(mbladder_m1_macro) <- mbladder_m1_macro@meta.data$Condition
+Idents(mbladder_m2_macro) <- mbladder_m2_macro@meta.data$Condition
+
+# Find marker genes
+marker_genes_m1_macro <- FindAllMarkers(mbladder_m1_macro, only.pos=TRUE)
+marker_genes_m2_macro <- FindAllMarkers(mbladder_m2_macro, only.pos=TRUE)
+
+# Filter for significant genes
+marker_genes_m1_macro
+marker_genes_sig_condition_m1Macro <- marker_genes_m1_macro %>%
+  dplyr::filter(p_val_adj<0.05)
+marker_genes_sig_condition_m2Macro <- marker_genes_m2_macro %>%
+  dplyr::filter(p_val_adj<0.05)
+
+marker_genes_sig_condition_m1Macro %>% write.csv(file=paste0(res_path, "marker_genes_m1Macro_onlyPos.csv"))
+marker_genes_sig_condition_m2Macro %>% write.csv(file=paste0(res_path, "marker_genes_m2Macro_onlyPos.csv"))
+```
+# KEGG and MSigDB analysis of M1 macrophages between KO and WT
+
+```{r}
+# First, obtian the genes that are statistically significantly enrihed in KO vs WT
+KO_enriched_genes_m1macro <- marker_genes_sig_condition_m1Macro %>%
+  dplyr::filter(cluster == "KO") %>%
+  pull()
+marker_genes_sig_condition_m1Macro
+
+WT_enriched_genes_m1macro <- marker_genes_sig_condition_m1Macro %>%
+  dplyr::filter(cluster == "WT") %>%
+  pull()
+
+# Next, convert gene symbols to entrez ID by querying BioMart to convert symbols to Entrez IDs
+ensembl <- useMart("ensembl", dataset = "mmusculus_gene_ensembl")
+# 
+entrez_KO_genes_m1macro <- getBM(attributes = c('entrezgene_id'),
+                     filters = 'mgi_symbol',
+                     values = KO_enriched_genes_m1macro,
+                     mart = ensembl) %>% pull()
+
+entrez_WT_genes_m1macro <- getBM(attributes = c('entrezgene_id'),
+                     filters = 'mgi_symbol',
+                     values = WT_enriched_genes_m1macro,
+                     mart = ensembl) %>% pull()
+# Perform KEGG Overrepresentation analysis
+KO_genes_kegg_m1macro <- enrichKEGG(gene = entrez_KO_genes_m1macro,
+                 organism     = 'mmu',
+                 pvalueCutoff = 0.05)
+
+WT_genes_kegg_m1macro <- enrichKEGG(gene = entrez_WT_genes_m1macro,
+                 organism     = 'mmu',
+                 pvalueCutoff = 0.05)
+# Plot
+dotplot_KEGG_KO_m1macro <- dotplot(KO_genes_kegg_m1macro, showCategory=10, font.size=12) + ggtitle("KEGG Pathway enrichment for KO-upregulated genes in M1 macrophages")
+dotplot_KEGG_KO_m1macro
+
+dotplot_KEGG_WT_m1macro <- dotplot(WT_genes_kegg_m1macro, showCategory=10, font.size=12) + ggtitle("KEGG Pathway enrichment for WT-upregulated gene for M1 macrophages")
+dotplot_KEGG_WT_m1macro
+
+m_t2g <- msigdbr(species = "Mus musculus", category="H") %>%
+  dplyr::select(gs_name, entrez_gene)
+KO_genes_msigdb_m1macro <- enricher(entrez_KO_genes_m1macro, TERM2GENE=m_t2g)
+WT_genes_msigdb_m1macro <- enricher(entrez_WT_genes_m1macro, TERM2GENE=m_t2g)
+
+# Plot
+dotplot_MSigDB_KO_m1macro <- dotplot(KO_genes_msigdb_m1macro, showCategory=10, font.size=12) + ggtitle("MSigDB Hallmark enrichment for KO-upregulated genes in M1 macrophages")
+dotplot_MSigDB_KO_m1macro
+SaveFigure(res_path = res_path,
+           plots = dotplot_MSigDB_KO,
+           name = "dotplot_MSigDB_KO_m1macro", 
+           width = 15, 
+           height = 8)
+
+dotplot_MSigDB_WT_m1macro <- dotplot(WT_genes_msigdb_m1macro, showCategory=10, font.size=12) + ggtitle("MSigDB Hallmark enrichment for WT-upregulated genes")
+dotplot_MSigDB_WT_m1macro
+SaveFigure(res_path = res_path,
+           plots = dotplot_MSigDB_WT_m1macro,
+           name = "dotplot_MSigDB_WT_m1macro", 
+           width = 15, 
+           height = 12)
+```
+# KEGG and MSigDB analysis of M2 macrophages between KO and WT
+
+```{r}
+# First, obtian the genes that are statistically significantly enrihed in KO vs WT
+KO_enriched_genes_m2macro <- marker_genes_sig_condition_m2Macro %>%
+  dplyr::filter(cluster == "KO") %>%
+  pull()
+
+
+WT_enriched_genes_m2macro <- marker_genes_sig_condition_m2Macro %>%
+  dplyr::filter(cluster == "WT") %>%
+  pull()
+
+# Next, convert gene symbols to entrez ID by querying BioMart to convert symbols to Entrez IDs
+ensembl <- useMart("ensembl", dataset = "mmusculus_gene_ensembl")
+# 
+entrez_KO_genes_m2macro <- getBM(attributes = c('entrezgene_id'),
+                     filters = 'mgi_symbol',
+                     values = KO_enriched_genes_m2macro,
+                     mart = ensembl) %>% pull()
+
+entrez_WT_genes_m2macro <- getBM(attributes = c('entrezgene_id'),
+                     filters = 'mgi_symbol',
+                     values = WT_enriched_genes_m2macro,
+                     mart = ensembl) %>% pull()
+# Perform KEGG Overrepresentation analysis
+KO_genes_kegg_m2macro <- enrichKEGG(gene = entrez_KO_genes_m2macro,
+                 organism     = 'mmu',
+                 pvalueCutoff = 0.05)
+
+WT_genes_kegg_m2macro <- enrichKEGG(gene = entrez_WT_genes_m2macro,
+                 organism     = 'mmu',
+                 pvalueCutoff = 0.05)
+# Plot
+dotplot_KEGG_KO_m2macro <- dotplot(KO_genes_kegg_m2macro, showCategory=10, font.size=12) + ggtitle("KEGG Pathway enrichment for KO-upregulated genes in M2 macrophages")
+dotplot_KEGG_KO_m2macro
+
+dotplot_KEGG_WT_m2macro <- dotplot(WT_genes_kegg_m2macro, showCategory=10, font.size=12) + ggtitle("KEGG Pathway enrichment for WT-upregulated gene for M1 macrophages")
+dotplot_KEGG_WT_m2macro
+
+m_t2g <- msigdbr(species = "Mus musculus", category="H") %>%
+  dplyr::select(gs_name, entrez_gene)
+KO_genes_msigdb_m2macro <- enricher(entrez_KO_genes_m2macro, TERM2GENE=m_t2g)
+WT_genes_msigdb_m2macro <- enricher(entrez_WT_genes_m2macro, TERM2GENE=m_t2g)
+
+# Plot
+dotplot_MSigDB_KO_m2macro <- dotplot(KO_genes_msigdb_m2macro, showCategory=10, font.size=12) + ggtitle("MSigDB Hallmark enrichment for KO-upregulated genes in M2 macrophages")
+dotplot_MSigDB_KO_m2macro
+SaveFigure(res_path = res_path,
+           plots = dotplot_MSigDB_KO_m2macro,
+           name = "dotplot_MSigDB_KO_m2macro", 
+           width = 15, 
+           height = 8)
+
+dotplot_MSigDB_WT_m2macro <- dotplot(WT_genes_msigdb_m2macro, showCategory=10, font.size=12) + ggtitle("MSigDB Hallmark enrichment for KO-downregulated genes in M2 macrophages")
+SaveFigure(res_path = res_path,
+           plots = dotplot_MSigDB_WT_m2macro,
+           name = "dotplot_MSigDB_WT_m2macro", 
+           width = 15, 
+           height = 12)
+```
+
