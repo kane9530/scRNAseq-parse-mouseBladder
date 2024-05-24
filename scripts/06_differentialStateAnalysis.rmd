@@ -1,0 +1,238 @@
+---
+title: "07_Differential_state_analysis"
+output: html_document
+date: "2023-03-16"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library}
+library(Seurat)
+library(dplyr)
+library(distinct)
+library(SingleCellExperiment)
+library(scater)
+library(UpSetR)
+library(ggplotify)
+```
+
+```{r globalVar}
+# Loads in custom functions that I've written to assist with plotting/saving tasks
+source("helper.R")
+
+# Path to saving the results fo the analysis
+res_path <- "../results/06_differentialStateAnalysis/"
+if (!dir.exists(res_path)){
+  
+  dir.create(res_path)
+}else{
+  print("Results directory exists")
+}
+# Data path specifes where all the outputs from the parseBio split-pipe pipeline is stored.
+data_path <- "../data/"
+if (!dir.exists(data_path)){
+  warning("Directory does not exist: ", data_path)
+}else{
+  print("Data directory exists")
+}
+
+# RDS path specifies where all the intermediate generated R objects will be saved.
+rds_path <- "../rds/"
+if (!dir.exists(rds_path)){
+  warning("Directory does not exist: ", rds_path)
+}else{
+  print("RDS directory exists")
+}
+```
+
+
+# Running `distinct` analysis
+https://bioconductor.org/packages/release/bioc/vignettes/distinct/inst/doc/distinct.html#plotting-significant-results
+
+```{r}
+mbladder <- ReadObject(rds_path, "03_seuratMerged_annotated")
+
+sample_group_df <- mbladder@meta.data %>%
+  dplyr::select(sample_name, Condition) %>%
+  dplyr::distinct()
+
+samples = sample_group_df$sample_name
+group = sample_group_df$Condition
+design = model.matrix(~group)
+print(design)
+
+# rownames of the design must indicate sample ids:
+rownames(design) <- samples
+```
+
+# Running distinct-test (Optional)
+
+The `distinct_test` function is computationally demanding. Running this on a local server is recommended, otherwise the runtime may be prohibitive. If you do not want to rerun this step from scratch, simply load the resultant csv in the next chunk.
+
+```{r distinct-run}
+set.seed(2023)
+mbladder_sce <- as.SingleCellExperiment(mbladder)
+# Takes around 15 minutes.
+res = distinct::distinct_test(x = mbladder_sce, 
+                    name_assays_expression = "logcounts",
+                    name_cluster = "cell_type_annotations",
+                    name_sample = "sample_name",
+                    design = design,
+                    column_to_test = 2,
+                    min_non_zero_cells = 20,
+                    n_cores = 6,
+                    P_4 = 10000) #Recommended in tutorial to increase
+res %>% write.csv(paste0(res_path, "distinct_res.csv"))
+```
+
+# Loading output of distinct_test (distinct_res.csv)
+
+```{r}
+res <- read.csv(paste0(res_path, "distinct_res.csv"))
+```
+
+
+# Computing log2FC and identifying significant genes
+```{r distinct-log2fc}
+# Create cpm slot
+assay(mbladder_sce, "cpm") <- scater::calculateCPM(mbladder_sce, assay.type="counts")
+# Compute log2fc between groups
+res_log2fc = distinct::log2_FC(res = res,
+              x = mbladder_sce, 
+              name_assays_expression = "cpm",
+              name_group = "Condition",
+              name_cluster = "cell_type_annotations")
+
+# Saving various outputs
+distinct::top_results(res_log2fc) %>% write.csv(paste0(res_path, "distinct_log2fc_topresults.csv"))
+distinct::top_results(res_log2fc, sort_by = "p_adj.glb", up_down ="up") %>%
+  write.csv(paste0(res_path, "distinct_log2fc_topresults_padjglb_KOup.csv"))
+
+distinct::top_results(res_log2fc, sort_by = "p_adj.glb", up_down ="down") %>%
+ write.csv(paste0(res_path,"distinct_log2fc_topresults_padjglb_WTup.csv"))
+```
+
+# Run this to look at the cell annotations of interest
+
+I chose M2 macrophages for the below, but you can choose any of the cluster annotations here: e.g. Tumor cells 2 , Matrix remodelling fibroblasts 1 ...
+
+```{r}
+table(colData(mbladder_sce)$cell_type_annotations)
+```
+
+
+# Plotting CDFs of interesting genes for 1 cell type of interest - M2 macrophages
+
+Just change the cluster name to whichever cell type you want to look at, and the gene can be replaced to be those that are reported by distinct to have significant changes between conditions (see res_log2fc results above ). I have chosen the top 5 genes that are significant for the M2 macrophages cluster:
+
+```{r}
+# Identifying genes of interest
+distinct::top_results(res_log2fc, sort_by = "p_adj.glb", up_down ="up")
+```
+
+Selceting cmss1, plec, msr1, ybx1 and cdk8:
+
+```{r}
+cmss1_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Cmss1",
+          cluster = "M2 Macrophages",
+          name_assays_expression = "logcounts",
+          name_cluster = "cell_type_annotations",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+plec_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Plec",
+          cluster = "M2 Macrophages",
+          name_assays_expression = "logcounts",
+          name_cluster = "cell_type_annotations",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+msr1_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Msr1",
+          cluster = "M2 Macrophages",
+          name_assays_expression = "logcounts",
+          name_cluster = "cell_type_annotations",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+ybx1_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Ybx1",
+          cluster = "M2 Macrophages",
+          name_assays_expression = "logcounts",
+          name_cluster = "cell_type_annotations",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+cdk8_cdf <- plot_cdfs(x = mbladder_sce,
+          gene = "Ybx1",
+          cluster = "M2 Macrophages",
+          name_assays_expression = "logcounts",
+          name_cluster = "cell_type_annotations",
+          name_sample = "label",
+          name_group = "Condition",
+          group_level = TRUE)
+
+png(paste0(res_path, "distinct_cdfs_M2_Macrophages.png"), res=300, width = 40, height= 40 , units="cm")
+cowplot::plot_grid(cmss1_cdf,
+                   plec_cdf, 
+                   msr1_cdf,
+                   ybx1_cdf,
+                   cdk8_cdf,
+                   nrow = 2,
+                   labels="AUTO")
+dev.off()
+```
+
+# Plotting heatmap of several interesting genes
+
+```{r}
+genes_to_plot_top_5_up<- distinct::top_results(res_log2fc) %>%
+  dplyr::group_by(cluster_id) %>%
+    dplyr::filter(p_adj.glb < 0.05) %>%
+dplyr::arrange(desc((`log2FC_KO/WT`)), .by_group=TRUE) %>%
+  dplyr::top_n(n=5) %>%
+  dplyr::select(gene) %>%
+  dplyr::pull()
+
+distinct::top_results(res_log2fc) %>%
+  dplyr::group_by(cluster_id) %>%
+  dplyr::filter(p_adj.glb < 0.05) %>%
+  dplyr::arrange(desc((`log2FC_KO/WT`)), .by_group=TRUE) %>%
+  dplyr::top_n(n=5)
+
+# Change Ident to sample_name
+Idents(mbladder) <- mbladder@meta.data$Condition
+
+# Scale all the genes in genes_to_plot_top_5
+mbladder_scale <- ScaleData(mbladder, features=genes_to_plot_top_5_up)
+
+distinct_heatmap <- DoHeatmap(mbladder_scale, features = genes_to_plot_top_5_up, slot = "scale.data",
+          label = FALSE) + 
+    theme(text = element_text(size = 14))
+
+png(paste0(res_path, "distinct_heatmap_greaterInKO.png"), res=300, width = 20, height= 30 , units="cm")
+distinct_heatmap
+dev.off()
+```
+
+# Plotting violin plots
+
+```{r}
+png(paste0(res_path, "distinct_violins_sigGenes_M2_Macrophages.png"), res=300, width = 40, height= 60 , units="cm")
+plotExpression(mbladder_sce[,sel_column],
+               features = genes, exprs_values = "logcounts",
+               log2_values = FALSE,
+               x = "sample_name", colour_by = "Condition", ncol = 3) +
+  guides(fill = guide_legend(override.aes = list(size = 5, alpha = 1))) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  dev.off()
+```
+

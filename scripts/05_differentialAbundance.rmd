@@ -29,26 +29,50 @@ library(tidyr)
 library(ggplot2)
 library(miloR)
 library(SingleCellExperiment)
-# BiocManager::install(c("miloR", "SingleCellExperiment"))
+```
 
+```{r globalVar}
+# Loads in custom functions that I've written to assist with plotting/saving tasks
 source("helper.R")
 
-res_path <- "../results_310823/"
+# Path to saving the results fo the analysis
+res_path <- "../results/05_differential_abundance/"
+if (!dir.exists(res_path)){
+  
+  dir.create(res_path)
+}else{
+  print("Results directory exists")
+}
+# Data path specifes where all the outputs from the parseBio split-pipe pipeline is stored.
+data_path <- "../data/"
+if (!dir.exists(data_path)){
+  warning("Directory does not exist: ", data_path)
+}else{
+  print("Data directory exists")
+}
+
+# RDS path specifies where all the intermediate generated R objects will be saved.
+rds_path <- "../rds/"
+if (!dir.exists(rds_path)){
+  warning("Directory does not exist: ", rds_path)
+}else{
+  print("RDS directory exists")
+}
 ```
+
 
 # Load annotated seurat object from 02.rmd
 ```{r load-qced-object}
 # Import R object 
-mbladder <- readRDS(paste0(res_path, "rds/bladder.unintegrated.remove2samples.annotated.rds"))
+mbladder <- ReadObject(rds_path, "03_seuratMerged_annotated")
 ```
 
 # Run Milo for DA analysis
 
 ```{r}
-mbladder<-readRDS(paste0(res_path, "rds/bladder.unintegrated.remove2samples.annotated.macroSubclusters.rds"))
 # First, convert seurat to sce object
 mbladder_sce <- as.SingleCellExperiment(mbladder)
-colData(mbladder_sce)
+
 # Next, prepare Milo object
 mbladder_sce_milo <- Milo(mbladder_sce)
 
@@ -60,8 +84,6 @@ traj_milo <- makeNhoods(traj_milo, prop = 0.1, k = 30, d=30, refined = TRUE)
 
 # Counting cells in neighborhoods
 traj_milo <- countCells(traj_milo, meta.data = data.frame(colData(traj_milo)), sample="sample_name")
-colData(traj_milo)
-head(nhoodCounts(traj_milo))
 
 # Differential abundance testing
 ## defining design matrix
@@ -74,8 +96,9 @@ traj_milo <- calcNhoodDistance(traj_milo, d=30)
 traj_milo <- buildNhoodGraph(traj_milo)
 
 da_results <- testNhoods(traj_milo, design = ~ Condition, design.df = traj_design)
-da_results <- annotateNhoods(traj_milo, da_results, coldata_col = "ident")
-da_results$macro_sub_mixed<- ifelse(da_results$macrophages_sub_fraction < 0.7, "Mixed", da_results$ident)
+da_results <- annotateNhoods(traj_milo, da_results, coldata_col = "cell_type_annotations")
+
+#da_results$macro_sub_mixed<- ifelse(da_results$macrophages_sub_fraction < 0.7, "Mixed", da_results$ident)
 da_results %>%
   dplyr::filter(SpatialFDR < 0.1) %>%
   dplyr::arrange(logFC)
@@ -89,10 +112,13 @@ are more abundant in the WT condition.
 
 ```{r}
 top <- DimPlot(mbladder, reduction = "umap",  pt.size = 0.5,
-        repel=TRUE, label=FALSE, label.box=TRUE, cols=seurat_colors)
-bottom <-  plotDAbeeswarm(da_results, group.by = "ident", alpha=0.1) + scater::plotUMAP(traj_milo, colour_by="Condition")  + plotNhoodGraphDA(traj_milo, da_results, alpha=0.05)
+        repel=TRUE, label=FALSE, label.box=TRUE, cols=stallion)
+bottom <-  plotDAbeeswarm(da_results, group.by = "cell_type_annotations", alpha=0.1) + 
+scater::plotUMAP(traj_milo, colour_by="Condition")  + plotNhoodGraphDA(traj_milo, da_results, alpha=0.05)
 png(paste0(res_path, "results/milo_mbladder.png"), res=300, width = 50, height= 40 , units="cm")
 cowplot::plot_grid(top, bottom,
           labels="AUTO", nrow = 2)
 dev.off()
+
+da_results
 ```

@@ -76,7 +76,7 @@ if (!dir.exists(rds_path)){
   print("RDS directory exists")
 }
 
-seurat_colors <- ArchR::paletteDiscrete(names(manual_annotations), set="stallion")
+seurat_colors <- stallion
 ```
 
 
@@ -99,6 +99,8 @@ marker_genes_sig <- marker_genes %>%
 marker_genes_sig %>% write.csv(file=paste0(res_path, "marker_genes_byCluster_onlyPos.csv"))
 
 # Getting top 5 significant genes per cluster with highest avg_log2FC
+marker_genes_sig <- read.csv(file=paste0(res_path, "marker_genes_byCluster_onlyPos.csv"))
+
 marker_genes_sig_top5 <- marker_genes_sig %>%
   dplyr::group_by(cluster) %>%
   dplyr::arrange(desc(avg_log2FC)) %>%
@@ -143,17 +145,15 @@ names(manual_annotations) <- levels(mbladder)
 # Relabelling identities to full annotated labels
 mbladder <- RenameIdents(mbladder, manual_annotations)
 mbladder@meta.data$cell_type_annotations <- Idents(mbladder)
-unannotated_colors <- seurat_colors
-names(unannotated_colors) <- levels(mbladder@meta.data$seurat_clusters)
+annotated_colors <- seurat_colors
+names(annotated_colors) <- levels(mbladder@meta.data$cell_type_annotations)
 
 # Plotting dimplots
 seurat_dimplot <- DimPlot(mbladder, reduction = "umap", group.by="seurat_clusters", pt.size = 0.5,
-        repel=TRUE, cols = unannotated_colors, label = TRUE)
-annotated_dimplot_labels <- DimPlot(mbladder, reduction = "umap",  pt.size = 0.5,
-        repel=TRUE, label=TRUE, label.box=TRUE, cols=seurat_colors) + NoLegend()
-annotated_dimplot <- DimPlot(mbladder, reduction = "umap",  pt.size = 0.5,
-        repel=TRUE, cols=seurat_colors) 
-  
+        repel=TRUE, cols = seurat_colors, label = TRUE)
+annotated_dimplot_labels <- DimPlot(mbladder, reduction = "umap", pt.size = 0.5,
+        repel=TRUE, label=TRUE, label.box=TRUE, cols=annotated_colors) + NoLegend()
+
 # Comparison of unannotated and annotated umaps 
 umap_plots_comparison <- cowplot::plot_grid(seurat_dimplot,
                    annotated_dimplot_labels, nrow = 2)

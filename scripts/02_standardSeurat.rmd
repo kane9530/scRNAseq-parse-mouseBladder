@@ -41,7 +41,6 @@ library(stringr) # string manipulation
 library(biomaRt) # To convert ensembl_ids to gene symbols
 library(ggplot2) # For plotting
 library(cowplot) #For placing plots in a grid, similar to patchwork
-library(ArchR) #Library for scATAC-seq analysis, but with awesome color palettes
 ```
 
 # Define global variables 
@@ -173,7 +172,7 @@ Idents(mbladder) <- "seurat_clusters"
 
 ## View seurat cluster labels 
 ```{r umapSeurat}
-cell_types_colors <- ArchR::paletteDiscrete(mbladder@meta.data$seurat_clusters, set="stallion")
+cell_types_colors <- stallion
 umap_seurat <- DimPlot(mbladder, reduction="umap", cols = 
           cell_types_colors, label=TRUE)
 ```
@@ -201,7 +200,6 @@ SaveFigure(res_path = res_path,
            width = 15, 
            height = 8)
 ```
-
 # Save processed seurat object
 ```{r}
 SaveObject(rds_path, mbladder, "02_seuratMerged_processed")
