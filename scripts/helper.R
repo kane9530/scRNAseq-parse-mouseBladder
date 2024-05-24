@@ -1,3 +1,7 @@
+# color palette taken from archR package. Shifted to start from 0.
+stallion = c("0"="#D51F26","1"="#272E6A","2"="#208A42","3"="#89288F","4"="#F47D2B", "5"="#FEE500","6"="#8A9FD1","7"="#C06CAB","18"="#E6C2DC",
+             "8"="#90D5E4", "10"="#89C75F","11"="#F37B7D","12"="#9983BD","13"="#D24B27","14"="#3BBCA8", "15"="#6E4B9E","16"="#0C727C", "17"="#7E1416","9"="#D8A767","19"="#3D3D3D")
+
 SaveFigure <- function(res_path, plots, name, type = "png", width, height, res){
   if(type == "png") {
     png(paste0(res_path, name, ".", type),
