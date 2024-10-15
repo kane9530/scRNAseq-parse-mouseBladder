@@ -1,4 +1,6 @@
-# Project summary
+In this project, I analysed single-cell RNA-sequencing datasets of mouse bladder tumors generated from the Parse Evercode Whole Transcriptome Mini kit. The writeup for the project at various stages of analysis can be found in the `reports/` folder. Results were used for this journal submission abstract [submission](https://aacrjournals.org/cancerres/article/84/8_Supplement/P29/742880/Abstract-P29-GSTT2-AND-THE-RESPONSE-TO-BCG).
+
+# Project description
 
 Bladder tumors were implanted orthotopically into 3 WT and 4 GSTT2-KO mice (7 samples) at 3-4 months of age and then treated with 4 instillations of M. bovis BCG, following which the bladders were harvested and isolated as single cells for scRNA-seq.
 
