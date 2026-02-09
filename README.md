@@ -1,4 +1,8 @@
-In this project, I analysed single-cell RNA-sequencing datasets of mouse bladder tumors generated from the Parse Evercode Whole Transcriptome Mini kit. The writeup for the project at various stages of analysis can be found in the `reports/` folder. Results were used for this journal submission abstract [submission](https://aacrjournals.org/cancerres/article/84/8_Supplement/P29/742880/Abstract-P29-GSTT2-AND-THE-RESPONSE-TO-BCG).
+# Introduction
+
+In this project, I was the bioinformatician consultant under the [Genomics and Data Analytics Core] (https://csi.nus.edu.sg/our-research/core-facilities/genomics-and-data-analytics-core-gedac/) for a scientific project (see [Project Description](#project-description)). Here, I analysed single-cell RNA-sequencing datasets of mouse bladder tumors generated from the Parse Evercode Whole Transcriptome Mini kit. The writeup for the project at various stages of analysis can be found in the `reports/` folder. Results were used for this journal submission abstract [submission](https://aacrjournals.org/cancerres/article/84/8_Supplement/P29/742880/Abstract-P29-GSTT2-AND-THE-RESPONSE-TO-BCG). 
+
+The results of the analysis was used to generate figure 3 of the [Publication](https://www.mdpi.com/1422-0067/25/24/13296), and supplementary figures S1, S2, S3 and main figure 3. 
 
 # Project description
 
@@ -32,5 +36,3 @@ Approximately 15h (extensive amount of work, approx 80+h since October 2022,was 
 # Citation
 
 Patwardhan, M. V., Kane, T. Q., Chiong, E., Rahmat, J. N., & Mahendran, R. (2024). Loss of Glutathione-S-Transferase Theta 2 (GSTT2) Modulates the Tumor Microenvironment and Response to BCG Immunotherapy in a Murine Orthotopic Model of Bladder Cancer. International journal of molecular sciences, 25(24), 13296. https://doi.org/10.3390/ijms252413296
-
-[Publication](https://www.mdpi.com/1422-0067/25/24/13296)
