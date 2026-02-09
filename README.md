@@ -29,3 +29,8 @@ Bioinformatician: [Toh Qin Kane](kane9530@hotmail.com)
 
 Approximately 15h (extensive amount of work, approx 80+h since October 2022,was performed as a gesture of goodwill, prior to an official consulting model being put in place).
 
+# Citation
+
+Patwardhan, M. V., Kane, T. Q., Chiong, E., Rahmat, J. N., & Mahendran, R. (2024). Loss of Glutathione-S-Transferase Theta 2 (GSTT2) Modulates the Tumor Microenvironment and Response to BCG Immunotherapy in a Murine Orthotopic Model of Bladder Cancer. International journal of molecular sciences, 25(24), 13296. https://doi.org/10.3390/ijms252413296
+
+[Publication](https://www.mdpi.com/1422-0067/25/24/13296)
